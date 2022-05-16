@@ -1,0 +1,38 @@
+
+<app-edit-button class="d-flex justify-content-end mt-2 pe-2"></app-edit-button>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Edit work experience</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formGroup">
+            <div class="">
+              <label for="workPosition" class="col-form-label">Position:</label>
+              <input type="text" class="form-control" id="workPosition" formControlName="workPosition" placeholder="Your position on the company/project:">
+            </div>
+            <div class="">
+              <label for="workDuration" class="col-form-label">Duration:</label>
+              <input type="date" class="form-control" id="workDuration" formControlName="workDuration" placeholder="The time interval in which you worked:">
+            </div>
+            <div class="">
+              <label for="workDescription" class="col-form-label">Description:</label>
+              <textarea class="form-control" id="workDescription" formControlName="workDescription" placeholder="Describe your experience or view regarding the job:" rows="5"></textarea>
+            </div>
+            <div class="">
+              <label for="workVideo" class="col-form-label">Video:</label>
+              <input type="text" class="form-control" id="workVideo" placeholder="Add the youtube video url:" formControlName="workVideo">
+            </div>
+          </form>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success">Save Changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
