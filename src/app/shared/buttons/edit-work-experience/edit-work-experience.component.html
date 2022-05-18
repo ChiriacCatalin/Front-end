@@ -1,4 +1,3 @@
-
 <app-edit-button class="d-flex justify-content-end mt-2 pe-2"></app-edit-button>
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -9,14 +8,22 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form [formGroup]="formGroup">
+
+          <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+            
             <div class="">
               <label for="workPosition" class="col-form-label">Position:</label>
               <input type="text" class="form-control" id="workPosition" formControlName="workPosition" placeholder="Your position on the company/project:">
             </div>
-            <div class="">
-              <label for="workDuration" class="col-form-label">Duration:</label>
-              <input type="date" class="form-control" id="workDuration" formControlName="workDuration" placeholder="The time interval in which you worked:">
+            <div class="row">
+              <div class="col-sm-6">
+                <label for="workStartDate" class="col-form-label">Start date:</label>
+                <input type="date" class="form-control" id="workStartDate" formControlName="workStartDate" max="{{formGroup.value.workEndDate}}" placeholder="The time at which you started working:">
+              </div>
+              <div class="col-sm-6">
+                <label for="workEndDate" class="col-form-label">End date:</label>
+                <input type="date" class="form-control" id="workEndDate" formControlName="workEndDate" min="{{formGroup.value.workStartDate}}" placeholder="The time at which you stopped working:">
+              </div>
             </div>
             <div class="">
               <label for="workDescription" class="col-form-label">Description:</label>
@@ -26,13 +33,14 @@
               <label for="workVideo" class="col-form-label">Video:</label>
               <input type="text" class="form-control" id="workVideo" placeholder="Add the youtube video url:" formControlName="workVideo">
             </div>
+            <div class="modal-footer mt-3">
+              <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid">Save Changes</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
           </form>
           
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success">Save Changes</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        </div>
+      
       </div>
     </div>
   </div>

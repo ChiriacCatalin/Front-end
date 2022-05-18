@@ -10,15 +10,21 @@ export class EditWorkExperienceComponent implements OnInit {
   formGroup: FormGroup;
 
   constructor() {
-    this.formGroup = new FormGroup({
-      workPosition: new FormControl(null, [Validators.required]),
-      workDuration: new FormControl(null, Validators.required),
-      workDescripton: new FormControl(null,[]),
-      workVideo: new FormControl(null,[]),
-    });
-   }
+  }
+
 
   ngOnInit(): void {
+    this.formGroup = new FormGroup({
+      workPosition: new FormControl(null, [Validators.required]),
+      workStartDate: new FormControl(null, Validators.required),
+      workEndDate: new FormControl(null, [Validators.required]),
+      workDescripton: new FormControl(null, []),
+      workVideo: new FormControl(null, []),
+    });
+  }
+
+  onSubmit() {
+    console.log(this.formGroup);
   }
 
 }

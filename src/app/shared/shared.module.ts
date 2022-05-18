@@ -11,7 +11,7 @@ import { HeaderComponent } from './header/header.component';
     ReactiveFormsModule,
   ],
   exports: [
-      HeaderComponent
+    HeaderComponent
   ],
   declarations: [HeaderComponent]
 })
