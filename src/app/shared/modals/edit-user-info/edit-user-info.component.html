@@ -1,0 +1,65 @@
+
+<button #myModalTrigger [hidden]="true" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Sign Up form</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formGroup">
+            <div class="">
+              <label for="name" class="col-form-label">Name:</label>
+              <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter your full name:">
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <label for="country" class="col-form-label">Country:</label>
+                <input class="form-control" list="datalistOptions" id="country" placeholder="Type to search..." formControlName="country">
+                <datalist id="datalistOptions">
+                  <option value="Romania">
+                  <option value="Germany">
+                  <option value="Spain">
+                  <option value="France">
+                </datalist>
+              </div>
+              <div class="col-sm-6">
+                <label for="city" class="col-form-label">City:</label>
+                <input class="form-control" list="datalistOptions" id="city" placeholder="Type to search..." formControlName="city">
+                <datalist id="datalistOptions">
+                  <option value="Iasi">
+                  <option value="Bucuresti">
+                  <option value="Cluj">
+                  <option value="Berlin">
+                  <option value="Paris">
+                </datalist>
+                </div>
+              </div>
+            <div class="">
+              <label for="birthdate" class="col-form-label">Birthdate:</label>
+              <input type="date" class="form-control" id="birthdate"  formControlName="birthdate">
+            </div>
+            <div class="">
+              <label for="email" class="col-form-label">Contact email:</label>
+              <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter your email:">
+            </div>
+            <div class="">
+              <label for="studied_at" class="col-form-label">Studied at:</label>
+              <input type="text" class="form-control" id="studied_at" formControlName="studied_at" placeholder="Enter your last school/university:">
+            </div>
+            <div class="">
+              <label for="works_at" class="col-form-label">Working at:</label>
+              <input type="text" class="form-control" id="works_at" formControlName="works_at" placeholder="Enter your current workplace:">
+            </div>
+          </form>  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" (click)="onSave()" [disabled]="!formGroup.valid" data-bs-dismiss="modal">Save Data</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>

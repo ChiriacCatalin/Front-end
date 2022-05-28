@@ -12,13 +12,13 @@ import { UserEducationComponent } from './pages/user-profile/user-education/user
 import { UserSkillsComponent } from './pages/user-profile/user-skills/user-skills.component';
 import { UserHobbiesComponent } from './pages/user-profile/user-hobbies/user-hobbies.component';
 import { UserPersonalProjectsComponent } from './pages/user-profile/user-personal-projects/user-personal-projects.component';
-import { HomeComponent } from './pages/home/home.component';
-import { JobsComponent } from './pages/jobs/jobs.component';
-import { LoginComponent } from './pages/login/login.component';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { HomeComponent, JobsComponent, LoginComponent } from './pages';
 
 @NgModule({
   declarations: [
@@ -39,11 +39,12 @@ import { MaterialModule } from './material';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
     SharedModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,9 @@
-<app-edit-button class="d-flex justify-content-end mt-2 pe-2"></app-edit-button>
+<!-- <app-edit-button class="d-flex justify-content-end mt-2 pe-2"></app-edit-button> -->
+<button #myModalTrigger [hidden]="true" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">SignUp</button>
+  
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Edit work experience</h5>

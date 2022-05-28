@@ -17,14 +17,14 @@ export class EditWorkExperienceComponent implements OnInit {
     this.formGroup = new FormGroup({
       workPosition: new FormControl(null, [Validators.required]),
       workStartDate: new FormControl(null, Validators.required),
-      workEndDate: new FormControl(null, [Validators.required]),
-      workDescripton: new FormControl(null, []),
+      workEndDate: new FormControl(null, []),
+      workDescription: new FormControl(null, []),
       workVideo: new FormControl(null, []),
     });
   }
 
-  onSubmit() {
-    console.log(this.formGroup);
+  onSave() {
+    console.log(this.formGroup.getRawValue());
   }
 
 }
