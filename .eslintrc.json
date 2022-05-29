@@ -25,7 +25,7 @@
         "quotes": ["error", "single"],
         "max-len": ["error", { "code": 140 }],
         "max-params": ["error", 5],
-        "max-lines-per-function": ["error", 35],
+        "max-lines-per-function": ["error", 45],
         "keyword-spacing": ["error", { "before": true }],
         "@typescript-eslint/member-ordering": ["error"],
         "@angular-eslint/directive-selector": [

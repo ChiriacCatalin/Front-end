@@ -19,6 +19,7 @@ import { MaterialModule } from './material';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { HomeComponent, JobsComponent, LoginComponent } from './pages';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { HomeComponent, JobsComponent, LoginComponent } from './pages';
     SharedModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
 
   ],
   providers: [],

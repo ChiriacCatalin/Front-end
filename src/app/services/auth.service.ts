@@ -10,7 +10,10 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   user = new BehaviorSubject<UserToken | null>(null);
+
   isLoggedIn = false;
+  userId: string | undefined = '';
+  userToken: UserToken | null = null;
 
   constructor(private readonly afAuth: AngularFireAuth,
     private router: Router
