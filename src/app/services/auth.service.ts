@@ -4,6 +4,7 @@ import { UserToken } from './user-token';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
+import { User } from './user/types/user.types';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,8 @@ export class AuthService {
   isLoggedIn = false;
   userId: string | undefined = '';
   userToken: UserToken | null = null;
+
+  userData: User = {};
 
   constructor(private readonly afAuth: AngularFireAuth,
     private router: Router

@@ -18,7 +18,7 @@ export class AuthGuardService implements CanActivate {
     let userToken: UserToken | null = null;
     if (condition) {
       return this.authService.googleSignIn().pipe(catchError(_ => of(false)), tap(res => {
-        console.log('tap', res);
+        // console.log('tap', res);
         if (typeof res !== 'boolean') { // if no error occured on firebase
           userToken = this.createToken(res.user?.uid, res.credential as firebase.auth.OAuthCredential);
           this.authService.user.next(userToken); //emit the userToken
