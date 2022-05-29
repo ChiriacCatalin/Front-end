@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { from } from 'rxjs';
+import { from, take } from 'rxjs';
 import { AuthService } from 'src/app/services';
 
 @Component({
@@ -13,7 +13,12 @@ export class SignInDropdownComponent {
   constructor(private readonly router: Router, private authService: AuthService) { }
 
   signUp() {
-    const navigator = this.router.navigate(['sign-In'], { state : { comesFromSignUp : true } });
+    const navigator = from(this.router.navigate(['sign-In'], { state : { comesFromSignUp : true } }));
+    navigator.pipe(take(1)).subscribe(response => {
+      if(!response){
+        this.router.navigate(['profile']);
+      }
+    })
     
     // this.authService.googleSignIn().subscribe(result => {
     //   console.log(result);

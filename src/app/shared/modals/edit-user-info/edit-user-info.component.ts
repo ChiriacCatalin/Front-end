@@ -7,7 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./edit-user-info.component.css']
 })
 export class EditUserInfoComponent implements OnInit, AfterViewInit {
-  @ViewChild('myModalTrigger') myModalTrigger!: ElementRef;
+  @ViewChild('myModalTriggerInfo') myModalTrigger!: ElementRef;
   formGroup: FormGroup;
 
   constructor() {
