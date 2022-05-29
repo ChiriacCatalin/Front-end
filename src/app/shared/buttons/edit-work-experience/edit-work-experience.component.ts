@@ -10,10 +10,6 @@ export class EditWorkExperienceComponent implements OnInit {
   formGroup: FormGroup;
 
   constructor() {
-  }
-
-
-  ngOnInit(): void {
     this.formGroup = new FormGroup({
       workPosition: new FormControl(null, [Validators.required]),
       workStartDate: new FormControl(null, Validators.required),
@@ -21,6 +17,10 @@ export class EditWorkExperienceComponent implements OnInit {
       workDescription: new FormControl(null, []),
       workVideo: new FormControl(null, []),
     });
+  }
+
+
+  ngOnInit(): void {
   }
 
   onSave() {

@@ -7,7 +7,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
-        "strict": true
+          "strict": true
         }
       },
       "root": "",
@@ -103,9 +103,21 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "licenta"
+  "defaultProject": "licenta",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
