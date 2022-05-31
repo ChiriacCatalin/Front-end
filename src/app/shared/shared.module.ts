@@ -8,6 +8,7 @@ import { UserWorkExperienceComponent } from './modals/user-work-experience/user-
 import { EditUserInfoComponent } from './modals/edit-user-info/edit-user-info.component';
 import { SignupUserEducationComponent } from './modals/signup-user-education/signup-user-education.component';
 import { SignupUserPersonalProjectsComponent } from './modals/signup-user-personal-projects/signup-user-personal-projects.component';
+import { SpinnerComponent } from './header/spinner/spinner.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { SignupUserPersonalProjectsComponent } from './modals/signup-user-person
     UserWorkExperienceComponent,
     EditUserInfoComponent,
     SignupUserEducationComponent,
-    SignupUserPersonalProjectsComponent
+    SignupUserPersonalProjectsComponent,
+    SpinnerComponent
   ],
   declarations: [
     HeaderComponent,
@@ -28,7 +30,8 @@ import { SignupUserPersonalProjectsComponent } from './modals/signup-user-person
     UserWorkExperienceComponent,
     EditUserInfoComponent,
     SignupUserEducationComponent,
-    SignupUserPersonalProjectsComponent
+    SignupUserPersonalProjectsComponent,
+    SpinnerComponent
   ]
 })
 export class SharedModule { }

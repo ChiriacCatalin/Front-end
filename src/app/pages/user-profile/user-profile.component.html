@@ -1,13 +1,12 @@
 <div class="container border">
   <div class="container bg-light py-1 mb-3">
-    <app-user-main-info></app-user-main-info>
+    <app-user-main-info [user]="user"></app-user-main-info>
   </div>
   <div class="container bg-light">
-    <app-work-experience></app-work-experience>
+    <app-work-experience [user]="user"></app-work-experience>
     <app-user-education></app-user-education>
     <app-user-skills></app-user-skills>
-    <app-user-personal-projects></app-user-personal-projects>
+    <app-user-personal-projects [user]="user"></app-user-personal-projects>
     <app-user-hobbies></app-user-hobbies>
-   
   </div>
 </div>

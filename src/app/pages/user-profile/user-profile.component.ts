@@ -18,12 +18,13 @@ export class UserProfileComponent implements OnInit {
   constructor(private readonly userService: UserService,
     private readonly activatedRoute: ActivatedRoute,
     readonly authService: AuthService) {
-    this.userId = this.activatedRoute.snapshot.params['usedId'];
+    this.userId = this.activatedRoute.snapshot.params['userId'];
   }
 
   ngOnInit(): void {
     this.userService.getUser(this.userId).pipe(take(1)).subscribe(user => {
       this.user = user;
     });
+    
   }
 }

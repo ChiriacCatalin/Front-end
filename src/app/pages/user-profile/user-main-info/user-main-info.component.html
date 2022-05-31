@@ -39,27 +39,29 @@
     </div>
   </div>
 </div> -->
-
-<div class="card mb-3 mx-sm-5 mt-sm-5 border" style="max-width: 100%">
+<div class="d-flex justify-content-center" *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
+<div class="card mb-3 mx-sm-5 mt-sm-5 border" style="max-width: 100%" *ngIf="!isLoading">
   <div class="row g-0">
     <div class="col-lg-6 px-sm-4">
       <div class="col-md-10 px-sm-4">
         <img
-          src="https://picsum.photos/id/237/200/200"
+          src= {{user!.mainInfo!.imageUrl}}
           class="img-fluid rounded-circle"
           style="max-width: 18rem"
           alt="profile pic"
         />
       </div>
       <div class="card-body ps-sm-5">
-        <h5 class="card-title">John DoeDoo</h5>
-        <p class="card-text mt-4"><b>Address:</b> Iasi, Iasi, Romania</p>
-        <p class="card-text"><b>Birth date:</b> 10 May, 2000</p>
-        <p class="card-text"><b>Contact:</b> chiriac13@yahoo.com</p>
+        <h5 class="card-title">{{user!.mainInfo!.name}}</h5>
+        <p class="card-text mt-4"><b>Address: </b>{{address}}</p>
+        <p class="card-text"><b>Birthdate: </b>{{user!.mainInfo!.birthdate}}</p>
+        <p class="card-text"><b>Contact: </b> {{user!.mainInfo!.email}}</p>
         <p class="card-text">
-          <b>Studied at:</b> Alexandru Ioan Cuza University
+          <b>Studied at: </b> {{user!.mainInfo!.studiedAt}}
         </p>
-        <p class="card-text"><b>Works at:</b> Alabama Pro</p>
+        <p *ngIf="user?.mainInfo?.worksAt" class="card-text"><b>Works at: </b> {{user!.mainInfo!.worksAt}}</p>
       </div>
     </div>
 

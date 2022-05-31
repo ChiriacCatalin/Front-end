@@ -11,7 +11,7 @@ type MainInfo = {
     city?: string;
     birthdate?: string;
     email?: string;
-    imageUrl?: string;
+    imageUrl?: string | null;
     studiedAt?: string;
     worksAt?: string;
 }

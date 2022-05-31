@@ -1,15 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services';
+import { User } from 'src/app/services/user/types/user.types';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-user-personal-projects',
   templateUrl: './user-personal-projects.component.html',
   styleUrls: ['./user-personal-projects.component.css']
 })
-export class UserPersonalProjectsComponent implements OnInit {
+export class UserPersonalProjectsComponent implements OnChanges {
+  @Input() user?: User;
 
-  constructor() { }
+  userId: string;
+  isLoading: boolean = true;
 
-  ngOnInit(): void {
+  constructor(
+    private readonly userService: UserService,
+    private activatedRoute: ActivatedRoute,
+    readonly authService: AuthService) {
+    this.userId = this.activatedRoute.snapshot.params['userId'];
+  }
+
+  ngOnChanges(): void {
+    if (this.user) {
+      this.isLoading = false;
+    }
   }
 
 }

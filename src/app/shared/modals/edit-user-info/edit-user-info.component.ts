@@ -60,7 +60,7 @@ export class EditUserInfoComponent {
   private storeUserData() {
     const data = this.formGroup.getRawValue();
     this.authService.userData.mainInfo = { ...data };
-    this.authService.userData.mainInfo!.imageUrl = undefined;
+    this.authService.userData.mainInfo!.imageUrl = null;
     console.log(this.authService.userData);
   }
   // private storeUserData(birthdate: string | undefined, city: string, country: string, name: string,

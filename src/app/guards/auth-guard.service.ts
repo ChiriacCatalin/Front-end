@@ -46,6 +46,7 @@ export class AuthGuardService implements CanActivate {
           this.authService.isLoggedIn = true;
           this.authService.userId = uid;
           this.authService.userToken = userToken;
+          this.authService.userData = response;
           localStorage.setItem('userData', JSON.stringify(userToken));
           return of(false);
         }
