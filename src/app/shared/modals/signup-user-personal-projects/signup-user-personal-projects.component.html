@@ -1,0 +1,83 @@
+<!-- <button #myModalTriggerProject [hidden]="true" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropProject">SignUp</button>
+   -->
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="staticBackdropProject"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Edit personal projects:</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formGroup">
+          <div class="">
+            <label for="projectName" class="col-form-label">Project name:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="projectName"
+              formControlName="projectName"
+              placeholder="The name of the project:"
+            />
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <label for="projectStartDate" class="col-form-label">Start date:</label>
+              <input
+                type="date"
+                class="form-control"
+                id="projectStartDate"
+                formControlName="projectStartDate"
+                max="{{ formGroup.value.projectEndDate }}"
+                placeholder="The date at which you started:"
+              />
+            </div>
+            <div class="col-sm-6">
+              <label for="projectEndDate" class="col-form-label">End date:</label>
+              <input
+                type="date"
+                class="form-control"
+                id="projectEndDate"
+                formControlName="projectEndDate"
+                min="{{ formGroup.value.projectStartDate }}"
+                placeholder="The date at which you finished:"
+              />
+            </div>
+          </div>
+          <div class="">
+            <label for="projectDescription" class="col-form-label">Description:</label>
+            <textarea
+              class="form-control"
+              id="projectDescription"
+              formControlName="projectDescription"
+              placeholder="Describe your project:"
+              rows="5"
+            ></textarea>
+          </div>
+          <div class="">
+            <label for="projectVideo" class="col-form-label">Video:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="projectVideo"
+              placeholder="Add the youtube video url with a short demo:"
+              formControlName="projectVideo"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onSave()">Save Changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

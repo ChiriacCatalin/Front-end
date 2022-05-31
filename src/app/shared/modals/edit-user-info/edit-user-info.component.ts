@@ -13,8 +13,9 @@ import { UserService } from 'src/app/services/user/user.service';
   templateUrl: './edit-user-info.component.html',
   styleUrls: ['./edit-user-info.component.css']
 })
-export class EditUserInfoComponent implements AfterViewInit {
-  @ViewChild('myModalTriggerInfo') myModalTrigger!: ElementRef;
+export class EditUserInfoComponent {
+  // @ViewChild('myModalTriggerInfo') myModalTrigger!: ElementRef;
+  @ViewChild('myModalTriggerWork') myModalTrigger!: ElementRef;
   formGroup: FormGroup;
 
   constructor(private readonly userService: UserService, private readonly router: Router, private readonly authService: AuthService) {
@@ -29,27 +30,30 @@ export class EditUserInfoComponent implements AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    this.myModalTrigger.nativeElement.click();
-  }
+  // ngAfterViewInit(): void {
+  //   this.myModalTrigger.nativeElement.click();
+  // }
 
   onSave() {
     const data = this.formGroup.getRawValue();
     let userId: string | undefined = '';
-    this.userService.userFirebaseUid.pipe((take(1)), switchMap(uid => {
-      userId = uid;
-      // console.log(data);
-      this.storeUserData(data.birthdate, data.city, data.country, data.name, data.email, data.studiedAt, data.worksAt);
-      return this.userService.createUser({ ...data }, uid);
-    }), untilDestroyed(this)).subscribe(_ => {
-      this.router.navigate(['profile']);
-      this.authService.isLoggedIn = true;
-      this.authService.userId = userId;
-      this.authService.user.subscribe(userToken => {
-        this.authService.userToken = userToken;
-        localStorage.setItem('userData', JSON.stringify(userToken));
-      });
-    });
+    this.storeUserData(data.birthdate, data.city, data.country, data.name, data.email, data.studiedAt, data.worksAt);
+
+    // this.userService.userFirebaseUid.pipe((take(1)), switchMap(uid => {
+    //   userId = uid;
+    //   // console.log(data);
+    //   this.storeUserData(data.birthdate, data.city, data.country, data.name, data.email, data.studiedAt, data.worksAt);
+    //   return this.userService.createUser({ ...data }, uid);
+    // }), untilDestroyed(this)).subscribe(_ => {
+    //   this.router.navigate(['profile']);
+    //   this.authService.isLoggedIn = true;
+    //   this.authService.userId = userId;
+    //   this.authService.user.subscribe(userToken => {
+    //     this.authService.userToken = userToken;
+    //     localStorage.setItem('userData', JSON.stringify(userToken));
+    //   });
+    // });
+    this.myModalTrigger.nativeElement.click();
   }
 
   storeUserData(birthdate: string | undefined, city: string, country: string, name: string,

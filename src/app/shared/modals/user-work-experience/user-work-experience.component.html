@@ -1,8 +1,8 @@
 <!-- <app-edit-button class="d-flex justify-content-end mt-2 pe-2"></app-edit-button> -->
-<button #myModalTrigger [hidden]="true" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">SignUp</button>
-  
+<!-- <button #myModalTriggerWork [hidden]="true" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropWork">SignUp</button>
+   -->
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdropWork" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
@@ -12,7 +12,10 @@
         <div class="modal-body">
 
           <form [formGroup]="formGroup">
-            
+            <div class="">
+              <label for="company" class="col-form-label">Company name:</label>
+              <input type="text" class="form-control" id="company" formControlName="company" placeholder="The company name:">
+            </div>
             <div class="">
               <label for="workPosition" class="col-form-label">Position:</label>
               <input type="text" class="form-control" id="workPosition" formControlName="workPosition" placeholder="Your position on the company/project:">
@@ -44,3 +47,6 @@
       </div>
     </div>
   </div>
+
+  <button #myModalTriggerEducation [hidden]="true" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropEducation">SignUp</button>
+  

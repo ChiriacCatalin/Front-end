@@ -6,7 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './edit-work-experience.component.html',
   styleUrls: ['./edit-work-experience.component.css']
 })
-export class EditWorkExperienceComponent implements OnInit {
+export class EditWorkExperienceComponent {
   formGroup: FormGroup;
 
   constructor() {
@@ -17,10 +17,6 @@ export class EditWorkExperienceComponent implements OnInit {
       workDescription: new FormControl(null, []),
       workVideo: new FormControl(null, []),
     });
-  }
-
-
-  ngOnInit(): void {
   }
 
   onSave() {

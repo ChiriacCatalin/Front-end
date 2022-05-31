@@ -41,12 +41,12 @@
           <a class="nav-link" routerLink="jobs">Jobs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="profile">Profile</a>
+          <a class="nav-link" routerLink="profile" *ngIf="authService.isLoggedIn">Profile</a>
         </li>
-        <li class="nav-item dropdown me-5">
+        <li class="nav-item dropdown me-5" *ngIf="!authService.isLoggedIn">
             <app-sign-in-dropdown></app-sign-in-dropdown>
         </li>
-        <li class="nav-item me-5" *ngIf="isAuthenticated">
+        <li class="nav-item me-5" *ngIf="authService.isLoggedIn">
           <a class="nav-link" (click)="onLogout()">Logout</a>
         </li>
       </ul>

@@ -1,5 +1,5 @@
 
-<button #myModalTriggerInfo [hidden]="true" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">SignUp</button>
+<!-- <button #myModalTriggerInfo [hidden]="true" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">SignUp</button> -->
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -28,8 +28,8 @@
               </div>
               <div class="col-sm-6">
                 <label for="city" class="col-form-label">City:</label>
-                <input class="form-control" list="datalistOptions" id="city" placeholder="Type to search..." formControlName="city">
-                <datalist id="datalistOptions">
+                <input class="form-control" list="datalistOptions2" id="city" placeholder="Type to search..." formControlName="city">
+                <datalist id="datalistOptions2">
                   <option value="Iasi">
                   <option value="Bucuresti">
                   <option value="Cluj">
@@ -63,3 +63,6 @@
       </div>
     </div>
   </div>
+
+  <button #myModalTriggerWork [hidden]="true" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropWork">SignUp</button>
+  

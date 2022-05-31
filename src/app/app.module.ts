@@ -20,6 +20,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { HomeComponent, JobsComponent, LoginComponent } from './pages';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services';
 
 @NgModule({
   declarations: [
@@ -45,8 +46,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
-
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
