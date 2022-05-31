@@ -41,7 +41,7 @@
           <a class="nav-link" routerLink="jobs">Jobs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="profile" *ngIf="authService.isLoggedIn">Profile</a>
+          <a class="nav-link" *ngIf="authService.isLoggedIn">Profile</a>
         </li>
         <li class="nav-item dropdown me-5" *ngIf="!authService.isLoggedIn">
             <app-sign-in-dropdown></app-sign-in-dropdown>

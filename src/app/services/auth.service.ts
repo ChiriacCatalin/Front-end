@@ -16,14 +16,15 @@ export class AuthService {
   userId: string | undefined = '';
   userToken: UserToken | null = null;
 
-  userData: User = {};
+  userData: User;
 
-  constructor(private readonly afAuth: AngularFireAuth,
-    private router: Router
-  ) { }
+  constructor(private readonly afAuth: AngularFireAuth, private router: Router) {
+    this.userData = this.initializeUser();
+  }
 
   googleSignIn(): Observable<firebase.auth.UserCredential> {
     const provider = new firebase.auth.GoogleAuthProvider();
+    this.userData = this.initializeUser();
     return from(this.afAuth.signInWithPopup(provider));
   }
 
@@ -32,4 +33,7 @@ export class AuthService {
     this.router.navigate(['']);
   }
 
+  private initializeUser(): User {
+    return { jobs: [], projects: [], schools: [] };
+  }
 }

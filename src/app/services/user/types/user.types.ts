@@ -1,4 +1,11 @@
 export type User = {
+    mainInfo?: MainInfo;
+    jobs?: Job[];
+    schools?: School[];
+    projects?: Project[];
+};
+
+type MainInfo = {
     name?: string;
     country?: string;
     city?: string;
@@ -7,13 +14,8 @@ export type User = {
     imageUrl?: string;
     studiedAt?: string;
     worksAt?: string;
-    jobs?: Job[];
-    schools?: School[];
-    projects?: Project[];
-};
-
-
-interface School {
+}
+type School = {
     school?: string;
     schoolDegree?: string;
     schoolStartDate?: string;
@@ -22,7 +24,7 @@ interface School {
     schoolVideo?: string;
 }
 
-interface Job {
+type Job = {
     company?: string;
     workPosition?: string;
     workStartDate?: string;
@@ -31,7 +33,7 @@ interface Job {
     workVideo?: string;
 }
 
-interface Project{
+type Project = {
     projectName?: string;
     projectStartDate?: string;
     projectEndDate?: string;

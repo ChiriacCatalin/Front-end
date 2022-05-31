@@ -75,7 +75,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onSave()">Save Changes</button>
+        <button type="submit" class="btn btn-success" data-bs-dismiss="modal" [disabled]="!formGroup.valid" (click)="onSave()">Save Changes</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
       </div>
     </div>

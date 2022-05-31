@@ -35,9 +35,11 @@ export class EditUserInfoComponent {
   // }
 
   onSave() {
-    const data = this.formGroup.getRawValue();
+    // const data = this.formGroup.getRawValue();
     let userId: string | undefined = '';
-    this.storeUserData(data.birthdate, data.city, data.country, data.name, data.email, data.studiedAt, data.worksAt);
+    this.storeUserData();
+    // this.authService.userData.mainInfo = { ...data };
+    // this.storeUserData(data.birthdate, data.city, data.country, data.name, data.email, data.studiedAt, data.worksAt);
 
     // this.userService.userFirebaseUid.pipe((take(1)), switchMap(uid => {
     //   userId = uid;
@@ -45,7 +47,7 @@ export class EditUserInfoComponent {
     //   this.storeUserData(data.birthdate, data.city, data.country, data.name, data.email, data.studiedAt, data.worksAt);
     //   return this.userService.createUser({ ...data }, uid);
     // }), untilDestroyed(this)).subscribe(_ => {
-    //   this.router.navigate(['profile']);
+    //   this.router.navigate(['profile', this.authService.userId]);
     //   this.authService.isLoggedIn = true;
     //   this.authService.userId = userId;
     //   this.authService.user.subscribe(userToken => {
@@ -55,16 +57,22 @@ export class EditUserInfoComponent {
     // });
     this.myModalTrigger.nativeElement.click();
   }
-
-  storeUserData(birthdate: string | undefined, city: string, country: string, name: string,
-    email: string, studiedAt: string, worksAt: string | undefined) {
-    this.authService.userData.birthdate = birthdate;
-    this.authService.userData.city = city;
-    this.authService.userData.country = country;
-    this.authService.userData.name = name;
-    this.authService.userData.email = email;
-    this.authService.userData.studiedAt = studiedAt;
-    this.authService.userData.worksAt = worksAt;
+  private storeUserData() {
+    const data = this.formGroup.getRawValue();
+    this.authService.userData.mainInfo = { ...data };
+    this.authService.userData.mainInfo!.imageUrl = undefined;
     console.log(this.authService.userData);
   }
+  // private storeUserData(birthdate: string | undefined, city: string, country: string, name: string,
+  //   email: string, studiedAt: string, worksAt: string | undefined) {
+
+  //   this.authService.userData.birthdate = birthdate;
+  //   this.authService.userData.city = city;
+  //   this.authService.userData.country = country;
+  //   this.authService.userData.name = name;
+  //   this.authService.userData.email = email;
+  //   this.authService.userData.studiedAt = studiedAt;
+  //   this.authService.userData.worksAt = worksAt;
+  //   // console.log(this.authService.userData);
+  // }
 }

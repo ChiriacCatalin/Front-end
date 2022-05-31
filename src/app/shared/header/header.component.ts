@@ -15,7 +15,7 @@ export class HeaderComponent {
     this.authService.userToken = null;
     this.authService.userData = {};
     this.authService.isLoggedIn = !this.authService.isLoggedIn;
-    from(this.router.navigate(['/profile'], { skipLocationChange: true })).subscribe(_ => {
+    from(this.router.navigate(['jobs'], { skipLocationChange: true })).subscribe(_ => {
       localStorage.removeItem('userData');
       this.authService.userId = undefined;
       this.router.navigate(['']);

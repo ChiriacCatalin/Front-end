@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services';
 
 @Component({
   selector: 'app-signup-user-education',
@@ -10,7 +11,7 @@ export class SignupUserEducationComponent {
   @ViewChild('myModalTriggerProject') myModalTrigger!: ElementRef;
   formGroup: FormGroup;
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.formGroup = new FormGroup({
       school: new FormControl(null, [Validators.required]),
       schoolDegree: new FormControl(null, Validators.required),
@@ -22,7 +23,13 @@ export class SignupUserEducationComponent {
   }
 
   onSave(){
-    const data = this.formGroup.getRawValue();
+    this.storeUserEducation();
+    console.log(this.authService.userData);
     this.myModalTrigger.nativeElement.click();
+  }
+  
+  private storeUserEducation(){
+    const data = this.formGroup.getRawValue();
+    this.authService.userData.schools?.push({ ...data });
   }
 }

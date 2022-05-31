@@ -42,6 +42,7 @@ export class AuthGuardService implements CanActivate {
         return of(true);
       }), switchMap(response => {
         if (typeof response !== 'boolean') {
+          console.log(response);
           this.authService.isLoggedIn = true;
           this.authService.userId = uid;
           this.authService.userToken = userToken;

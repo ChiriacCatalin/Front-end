@@ -28,11 +28,14 @@ export class UserWorkExperienceComponent {
   // }
 
   onSave() {
-    const data = this.formGroup.getRawValue();
+    this.storeUserWork();
     console.log(this.authService.userData);
-    this.authService.userData.jobs?.push({ ...data });
-    console.log(this.authService.userData.jobs, this.authService.userData);
     this.myModalTrigger.nativeElement.click();
+  }
+
+  private storeUserWork() {
+    const data = this.formGroup.getRawValue();
+    this.authService.userData.jobs?.push({ ...data });
   }
 
 }
