@@ -65,6 +65,10 @@ export class SignupUserSkillsComponent {
     });
   }
 
+  onExit() {
+    this.router.navigate(['']);
+  }
+
   private storeUserData() {
     const data = this.formGroup.getRawValue();
     this.authService.userData.skillsVideo = data.skillsVideo;

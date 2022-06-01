@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services';
 
 @Component({
@@ -12,7 +13,7 @@ export class UserWorkExperienceComponent {
   @ViewChild('myModalTriggerEducation') myModalTrigger!: ElementRef;
   formGroup: FormGroup;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.formGroup = new FormGroup({
       company: new FormControl(null, [Validators.required, Validators.minLength(2)]),
       workPosition: new FormControl(null, [Validators.required]),
@@ -21,6 +22,14 @@ export class UserWorkExperienceComponent {
       workDescription: new FormControl(null, []),
       workVideo: new FormControl(null, []),
     });
+  }
+
+  onExit() {
+    this.router.navigate(['']);
+  }
+
+  onSkip(){
+    this.myModalTrigger.nativeElement.click();
   }
 
   // ngAfterViewInit(): void {

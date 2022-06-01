@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services';
 
 @Component({
@@ -11,7 +12,7 @@ export class SignupUserEducationComponent {
   @ViewChild('myModalTriggerProject') myModalTrigger!: ElementRef;
   formGroup: FormGroup;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.formGroup = new FormGroup({
       school: new FormControl(null, [Validators.required]),
       schoolDegree: new FormControl(null, Validators.required),
@@ -26,6 +27,10 @@ export class SignupUserEducationComponent {
     this.storeUserEducation();
     console.log(this.authService.userData);
     this.myModalTrigger.nativeElement.click();
+  }
+
+  onExit() {
+    this.router.navigate(['']);
   }
   
   private storeUserEducation(){

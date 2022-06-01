@@ -7,7 +7,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Edit work experience</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onExit()"></button>
         </div>
         <div class="modal-body">
 
@@ -23,11 +23,11 @@
             <div class="row">
               <div class="col-sm-6">
                 <label for="workStartDate" class="col-form-label">Start date:</label>
-                <input type="date" class="form-control" id="workStartDate" formControlName="workStartDate" max="{{formGroup.value.workEndDate}}" placeholder="The time at which you started working:">
+                <input type="date" class="form-control" id="workStartDate" formControlName="workStartDate" max="{{formGroup.value.workEndDate || '2030-12-01'}}" placeholder="The time at which you started working:">
               </div>
               <div class="col-sm-6">
                 <label for="workEndDate" class="col-form-label">End date:</label>
-                <input type="date" class="form-control" id="workEndDate" formControlName="workEndDate" min="{{formGroup.value.workStartDate}}" placeholder="The time at which you stopped working:">
+                <input type="date" class="form-control" id="workEndDate" formControlName="workEndDate" min="{{formGroup.value.workStartDate}}" max="2030-12-01" placeholder="The time at which you stopped working:">
               </div>
             </div>
             <div class="">
@@ -41,8 +41,8 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onSave()">Save Changes</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onSave()">Continue</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onSkip()">Skip</button>
         </div>
       </div>
     </div>

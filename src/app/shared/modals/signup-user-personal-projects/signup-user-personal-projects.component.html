@@ -14,7 +14,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Edit personal projects:</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onExit()"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="formGroup">
@@ -33,6 +33,7 @@
               <label for="projectStartDate" class="col-form-label">Start date:</label>
               <input
                 type="date"
+                max="2030-12-01"
                 class="form-control"
                 id="projectStartDate"
                 formControlName="projectStartDate"
@@ -44,6 +45,7 @@
               <label for="projectEndDate" class="col-form-label">End date:</label>
               <input
                 type="date"
+                max="2030-12-01"
                 class="form-control"
                 id="projectEndDate"
                 formControlName="projectEndDate"
@@ -75,8 +77,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-success" data-bs-dismiss="modal" [disabled]="!formGroup.valid" (click)="onSave()">Save Changes</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-success" data-bs-dismiss="modal" [disabled]="!formGroup.valid" (click)="onSave()">Continue</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onSkip()">Skip</button>
       </div>
     </div>
   </div>
