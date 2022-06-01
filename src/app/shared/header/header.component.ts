@@ -22,4 +22,10 @@ export class HeaderComponent {
     });
   }
 
+  onProfileClick(): void {
+    from(this.router.navigate([''], { skipLocationChange: true })).subscribe(_ => {
+      this.router.navigate(['/profile', this.authService.userId]);
+    });
+  }
+
 }

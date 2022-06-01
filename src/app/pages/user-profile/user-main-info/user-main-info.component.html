@@ -65,12 +65,12 @@
       </div>
     </div>
 
-    <div class="col-lg-6 py-lg-3 px-md-5 px-lg-3 p-3 d-flex align-items-center">
+    <div class="col-lg-6 py-lg-3 px-md-5 px-lg-3 p-3 d-flex align-items-center" *ngIf="user!.mainInfo!.mainVideo !== undefined">
       <div class="ratio ratio-4x3">
         <iframe
           width="1520"
           height="553"
-          src="https://www.youtube.com/embed/TxJtoBAa2w0"
+          [src]="sanitize(user!.mainInfo!.mainVideo)"
           class="card-img-top"
           title="YouTube video player"
           allowfullscreen

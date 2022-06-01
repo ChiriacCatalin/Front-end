@@ -14,6 +14,7 @@ type MainInfo = {
     imageUrl?: string | null;
     studiedAt?: string;
     worksAt?: string;
+    mainVideo?: string;
 }
 type School = {
     school?: string;

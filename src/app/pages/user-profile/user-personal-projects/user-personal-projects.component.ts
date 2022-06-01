@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services';
 import { User } from 'src/app/services/user/types/user.types';
@@ -18,7 +19,8 @@ export class UserPersonalProjectsComponent implements OnChanges {
   constructor(
     private readonly userService: UserService,
     private activatedRoute: ActivatedRoute,
-    readonly authService: AuthService) {
+    readonly authService: AuthService,
+    private sanitizer: DomSanitizer) {
     this.userId = this.activatedRoute.snapshot.params['userId'];
   }
 
@@ -26,6 +28,10 @@ export class UserPersonalProjectsComponent implements OnChanges {
     if (this.user) {
       this.isLoading = false;
     }
+  }
+
+  sanitize(url: string) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
 }
