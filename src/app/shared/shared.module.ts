@@ -9,12 +9,16 @@ import { EditUserInfoComponent } from './modals/edit-user-info/edit-user-info.co
 import { SignupUserEducationComponent } from './modals/signup-user-education/signup-user-education.component';
 import { SignupUserPersonalProjectsComponent } from './modals/signup-user-personal-projects/signup-user-personal-projects.component';
 import { SpinnerComponent } from './header/spinner/spinner.component';
+import { InputChipsComponent } from './input-chips/input-chips.component';
+import { MaterialModule } from '../material';
+import { SignupUserSkillsComponent } from './modals/signup-user-skills/signup-user-skills.component';
 
 @NgModule({
   imports: [
     CommonModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    MaterialModule
   ],
   exports: [
     HeaderComponent,
@@ -22,7 +26,9 @@ import { SpinnerComponent } from './header/spinner/spinner.component';
     EditUserInfoComponent,
     SignupUserEducationComponent,
     SignupUserPersonalProjectsComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    InputChipsComponent,
+    SignupUserSkillsComponent
   ],
   declarations: [
     HeaderComponent,
@@ -31,7 +37,9 @@ import { SpinnerComponent } from './header/spinner/spinner.component';
     EditUserInfoComponent,
     SignupUserEducationComponent,
     SignupUserPersonalProjectsComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    InputChipsComponent,
+    SignupUserSkillsComponent
   ]
 })
 export class SharedModule { }

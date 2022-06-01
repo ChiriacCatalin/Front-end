@@ -32,7 +32,7 @@ export class UserMainInfoComponent implements OnChanges {
     }
   }
 
-  sanitize(url:string){
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  sanitize(url:string | undefined){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url!);
   }
 }

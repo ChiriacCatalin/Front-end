@@ -24,7 +24,10 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUser(this.userId).pipe(take(1)).subscribe(user => {
       this.user = user;
+      if (this.authService.userId == this.userId) {
+        this.authService.userData = user;
+      }
     });
-    
+
   }
 }

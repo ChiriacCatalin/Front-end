@@ -3,6 +3,11 @@ export type User = {
     jobs?: Job[];
     schools?: School[];
     projects?: Project[];
+    fieldsOfExpertise?: string[];
+    toolsAndLanguages?: string[];
+    personalSkills?: string[];
+    hobbies?: string[];
+    skillsVideo?: string;
 };
 
 type MainInfo = {

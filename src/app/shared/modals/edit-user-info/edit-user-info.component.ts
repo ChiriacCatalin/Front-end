@@ -6,6 +6,7 @@ import { switchMap, take } from 'rxjs';
 import { AuthService } from 'src/app/services';
 import { UserToken } from 'src/app/services/user-token';
 import { UserService } from 'src/app/services/user/user.service';
+import { Chips } from '../../input-chips/chips';
 
 @UntilDestroy()
 @Component({
@@ -16,18 +17,22 @@ import { UserService } from 'src/app/services/user/user.service';
 export class EditUserInfoComponent {
   // @ViewChild('myModalTriggerInfo') myModalTrigger!: ElementRef;
   @ViewChild('myModalTriggerWork') myModalTrigger!: ElementRef;
+  chip: Chips;
+  data: string[] = ['Orange'];
   formGroup: FormGroup;
 
   constructor(private readonly userService: UserService, private readonly router: Router, private readonly authService: AuthService) {
     this.formGroup = new FormGroup({
-      name: new FormControl(null, [Validators.required, Validators.minLength(4)]),
-      country: new FormControl(null, Validators.required),
-      city: new FormControl(null, Validators.required),
+      name: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(100)]),
+      country: new FormControl(null, [Validators.required, Validators.maxLength(50)]),
+      city: new FormControl(null, [Validators.required, Validators.maxLength(50)]),
       birthdate: new FormControl(null, []),
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      studiedAt: new FormControl(null, [Validators.required, Validators.minLength(2)]),
-      worksAt: new FormControl(null, [])
+      email: new FormControl(null, [Validators.required, Validators.email, Validators.maxLength(200)]),
+      studiedAt: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(200)]),
+      worksAt: new FormControl(null, [Validators.maxLength(200)]),
+      mainVideo: new FormControl(null, [Validators.maxLength(500)])
     });
+    this.chip = { label: 'Fields of expertise', dataEntered: this.data, dataOptions: ['juice', 'sweets'] };
   }
 
   // ngAfterViewInit(): void {
@@ -38,6 +43,7 @@ export class EditUserInfoComponent {
     // const data = this.formGroup.getRawValue();
     let userId: string | undefined = '';
     this.storeUserData();
+    // console.log(this.data);
     // this.authService.userData.mainInfo = { ...data };
     // this.storeUserData(data.birthdate, data.city, data.country, data.name, data.email, data.studiedAt, data.worksAt);
 

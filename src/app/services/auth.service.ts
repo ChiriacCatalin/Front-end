@@ -34,6 +34,6 @@ export class AuthService {
   }
 
   private initializeUser(): User {
-    return { jobs: [], projects: [], schools: [] };
+    return { jobs: [], projects: [], schools: [], fieldsOfExpertise: [], toolsAndLanguages: [], personalSkills: [], hobbies: [] };
   }
 }

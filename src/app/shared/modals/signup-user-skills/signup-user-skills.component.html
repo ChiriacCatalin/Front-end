@@ -1,0 +1,49 @@
+<!-- <button #myModalTriggerSkils [hidden]="true" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropSkills">SignUp</button> -->
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="staticBackdropSkills"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Edit skills</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-input-chips [fields]="fieldsOfExpertise"></app-input-chips>
+        <app-input-chips [fields]="toolsAndLanguages"></app-input-chips>
+        <app-input-chips [fields]="personalSkills"></app-input-chips>
+        <form [formGroup]="formGroup">
+          <div class="">
+            <label for="skillsVideo" class="col-form-label">Video:</label>
+            <input type="text" class="form-control" id="skillsVideo" formControlName="skillsVideo" placeholder="Add the youtube video url:" />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="onSave()" [disabled]="!formGroup.valid" data-bs-dismiss="modal">
+          Save Data
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button
+  #myModalTriggerWork
+  [hidden]="true"
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#staticBackdropWork"
+>
+  SignUp
+</button>
