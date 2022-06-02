@@ -46,22 +46,22 @@
   <div class="row g-0">
     <div class="col-lg-6 px-sm-4">
       <div class="col-md-10 px-sm-4">
-        <img
-          src= {{user!.mainInfo!.imageUrl}}
-          class="img-fluid rounded-circle"
-          style="max-width: 18rem"
-          alt="profile pic"
-        />
+        <img src="{{ user!.mainInfo!.imageUrl }}" class="img-fluid rounded-circle standard-max-size mt-2" alt="profile pic" />
+        <div class="">
+          <button *ngIf="authService.userId === userId" mat-mini-fab class="back-color position" (click)="uploadButtonClicked()">
+            <mat-icon>add_a_photo</mat-icon>
+          </button>
+        </div>
+        <input hidden #uploadImageRef type="file" accept=".png, .jpg" (change)="onFileSelected($event)" />
       </div>
+
       <div class="card-body ps-sm-5">
-        <h5 class="card-title">{{user!.mainInfo!.name}}</h5>
-        <p class="card-text mt-4"><b>Address: </b>{{address}}</p>
-        <p class="card-text"><b>Birthdate: </b>{{user!.mainInfo!.birthdate}}</p>
-        <p class="card-text"><b>Contact: </b> {{user!.mainInfo!.email}}</p>
-        <p class="card-text">
-          <b>Studied at: </b> {{user!.mainInfo!.studiedAt}}
-        </p>
-        <p *ngIf="user?.mainInfo?.worksAt" class="card-text"><b>Works at: </b> {{user!.mainInfo!.worksAt}}</p>
+        <h5 class="card-title">{{ user!.mainInfo!.name }}</h5>
+        <p class="card-text mt-4"><b>Address: </b>{{ address }}</p>
+        <p class="card-text"><b>Birthdate: </b>{{ user!.mainInfo!.birthdate }}</p>
+        <p class="card-text"><b>Contact: </b> {{ user!.mainInfo!.email }}</p>
+        <p class="card-text"><b>Studied at: </b> {{ user!.mainInfo!.studiedAt }}</p>
+        <p *ngIf="user?.mainInfo?.worksAt" class="card-text"><b>Works at: </b> {{ user!.mainInfo!.worksAt }}</p>
       </div>
     </div>
 

@@ -1,5 +1,12 @@
 .standard-max-size {
-    max-width: 48rem;
-    height: 27rem;
-  }
-  
+  max-width: 27rem;
+  height: 14rem;
+}
+
+.position {
+  margin-left: 13rem;
+}
+
+.back-color {
+  background-color: rgb(226, 217, 217);
+}
