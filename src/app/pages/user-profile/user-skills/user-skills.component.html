@@ -38,12 +38,12 @@
         </div>
       </div>
 
-      <div class="col-md-6 py-lg-5 px-lg-5 p-3 d-flex align-items-center">
+      <div class="col-md-6 py-lg-5 px-lg-5 p-3 d-flex align-items-center" *ngIf="user?.skillsVideo">
         <div class="ratio ratio-4x3">
           <iframe
             width="1520"
             height="553"
-            src="https://www.youtube.com/embed/TxJtoBAa2w0"
+            [src]="sanitize(user!.skillsVideo)"
             class="card-img-top"
             title="YouTube video player"
             allowfullscreen
