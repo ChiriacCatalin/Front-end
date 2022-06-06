@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "licentav2",
     "public": "dist/licenta",
     "ignore": [
       "firebase.json",

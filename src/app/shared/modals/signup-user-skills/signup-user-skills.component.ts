@@ -55,13 +55,13 @@ export class SignupUserSkillsComponent {
       userId = uid;
       return this.userService.createUser({ ...this.authService.userData }, uid);
     }), untilDestroyed(this)).subscribe(_ => {
-      this.router.navigate(['profile', this.authService.userId]);
       this.authService.isLoggedIn = true;
       this.authService.userId = userId;
       this.authService.user.subscribe(userToken => {
         this.authService.userToken = userToken;
         localStorage.setItem('userData', JSON.stringify(userToken));
       });
+      this.router.navigate(['profile', this.authService.userId]);
     });
   }
 

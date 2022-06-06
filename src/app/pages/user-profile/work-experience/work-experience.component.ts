@@ -14,7 +14,7 @@ export class WorkExperienceComponent implements OnChanges {
   @Input() user?: User;
 
   userId: string;
-  isLoading: boolean = true; 
+  isLoading: boolean = true;
 
   constructor(
     private readonly userService: UserService,
@@ -30,7 +30,7 @@ export class WorkExperienceComponent implements OnChanges {
     }
   }
 
-  sanitize(url:string){
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  sanitize(url: string | undefined) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url!);
   }
 }
