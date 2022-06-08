@@ -19,13 +19,5 @@ export class SignInDropdownComponent {
         this.router.navigate(['profile', this.authService.userId]);
       }
     });
-
-    // this.authService.googleSignIn().subscribe(result => {
-    //   console.log(result);
-    //   //we should somehow redirect the user to another page where he
-    //   //can enter info for his profile, if the operation type is sign up
-
-    //   //if the operation type is sign in, we should redirect the user to the home page(or to his profile)
-    // });
   }
 }

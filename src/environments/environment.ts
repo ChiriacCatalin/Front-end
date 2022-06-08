@@ -10,8 +10,8 @@ export const environment = {
     projectId: 'licenta-351510',
     storageBucket: 'licenta-351510.appspot.com',
     messagingSenderId: '842601373385',
-    appId: '1:842601373385:web:6cf8b6f2756a5caac13718',
-    measurementId: 'G-TKKC6VW656'
+    appId: '1:842601373385:web:cac91cc01f5005eec13718',
+    measurementId: 'G-M61K4NWH9C'
   },
   apiUrl: 'http://localhost:8082'
 };
