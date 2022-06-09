@@ -1,11 +1,13 @@
 import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { from, take } from 'rxjs';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { from, switchMap, take } from 'rxjs';
 import { AuthService } from 'src/app/services';
 import { Job } from 'src/app/services/user/types/jobs.types';
 import { UserService } from 'src/app/services/user/user.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-edit-user-work-experience',
   templateUrl: './user-work-experience.component.html',
@@ -18,6 +20,7 @@ export class UserWorkExperienceComponent implements OnChanges {
   @Input() uniqueId?: string;
   @Input() newElement: boolean = false;
   formGroup: FormGroup;
+  index?: number;
 
   constructor(private authService: AuthService, private router: Router, private userService: UserService) {
     this.formGroup = new FormGroup({
@@ -34,6 +37,7 @@ export class UserWorkExperienceComponent implements OnChanges {
     if (this.job) {
       let job_copy = { ...this.job };
       this.formGroup.setValue(job_copy);
+      this.index = +this.uniqueId!.slice(3);
     }
 
   }
@@ -55,20 +59,14 @@ export class UserWorkExperienceComponent implements OnChanges {
   }
 
   onUpdate() {
-    const index = +this.uniqueId!.slice(3);
-    this.authService.userData!.jobs![index] = this.formGroup.getRawValue();
-    this.userService.updateUserField('jobs', this.authService.userData.jobs!, this.authService.userId!).pipe(take(1)).subscribe(_ => {
-      from(this.router.navigate([''], { skipLocationChange: true })).pipe(take(1)).subscribe(_ => {
-        this.router.navigate(['/profile', this.authService.userId]);
-      });
-    });
+    this.authService.userData!.jobs![this.index!] = this.formGroup.getRawValue();
+    this.userService.updateUserField('jobs', this.authService.userData.jobs!, this.authService.userId!)
+      .pipe(take(1)).subscribe();
   }
 
   onDelete() {
     this.userService.deleteUserField('jobs', this.job!, this.authService.userId!).pipe(take(1)).subscribe(_ => {
-      from(this.router.navigate([''], { skipLocationChange: true })).pipe(take(1)).subscribe(_ => {
-        this.router.navigate(['/profile', this.authService.userId]);
-      });
+      this.authService.userData!.jobs!.splice(this.index!, 1);
     });
   }
 
