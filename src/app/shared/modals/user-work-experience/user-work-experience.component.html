@@ -76,7 +76,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <div *ngIf="!job">
+        <div *ngIf="!job && !newElement">
           <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onSave()">Continue</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onSkip()">Skip</button>
         </div>
@@ -85,6 +85,9 @@
             Update
           </button>
           <button type="submit" class="btn btn-danger ms-1" (click)="onDelete()" data-bs-dismiss="modal">Delete</button>
+        </div>
+        <div *ngIf="newElement">
+          <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onAdd()" data-bs-dismiss="modal">Add</button>
         </div>
       </div>
     </div>

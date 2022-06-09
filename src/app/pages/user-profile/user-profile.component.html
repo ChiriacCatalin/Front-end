@@ -1,12 +1,17 @@
-<div class="container border">
-  <div class="container bg-light py-1 mb-3">
-    <app-user-main-info [user]="user"></app-user-main-info>
-  </div>
-  <div class="container bg-light">
-    <app-work-experience [user]="user"></app-work-experience>
-    <app-user-education [user]="user"></app-user-education>
-    <app-user-skills [user]="user"></app-user-skills>
-    <app-user-personal-projects [user]="user"></app-user-personal-projects>
-    <app-user-hobbies></app-user-hobbies>
+<div class="d-flex justify-content-center" *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
+<div class="" *ngIf="!isLoading">
+  <div class="container border">
+    <div class="container bg-light py-1 mb-3">
+      <app-user-main-info [user]="user"></app-user-main-info>
+    </div>
+    <div class="container bg-light">
+      <app-work-experience [user]="user"></app-work-experience>
+      <app-user-education [user]="user"></app-user-education>
+      <app-user-skills [user]="user"></app-user-skills>
+      <app-user-personal-projects [user]="user"></app-user-personal-projects>
+      <app-user-hobbies></app-user-hobbies>
+    </div>
   </div>
 </div>

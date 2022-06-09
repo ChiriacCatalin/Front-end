@@ -16,6 +16,7 @@ export class UserWorkExperienceComponent implements OnChanges {
   @ViewChild('myModalTriggerEducation') myModalTrigger!: ElementRef;
   @Input() job?: Job;
   @Input() uniqueId?: string;
+  @Input() newElement: boolean = false;
   formGroup: FormGroup;
 
   constructor(private authService: AuthService, private router: Router, private userService: UserService) {
@@ -38,7 +39,7 @@ export class UserWorkExperienceComponent implements OnChanges {
   }
 
   onExit() {
-    if (!this.job)
+    if (!this.job && !this.newElement)
       this.router.navigate(['']);
     // console.log(this.job);
   }
@@ -54,19 +55,30 @@ export class UserWorkExperienceComponent implements OnChanges {
   }
 
   onUpdate() {
-    console.log('update');
-  }
-
-  onDelete() {
-    console.log(this.formGroup.getRawValue());
-    console.log(this.authService.userId);
-    this.userService.deleteUserField('jobs', this.job!, this.authService.userId!).pipe(take(1)).subscribe();
-
-    from(this.router.navigate([''], { skipLocationChange: true })).subscribe(_ => {
-      this.router.navigate(['/profile', this.authService.userId]);
+    const index = +this.uniqueId!.slice(3);
+    this.authService.userData!.jobs![index] = this.formGroup.getRawValue();
+    this.userService.updateUserField('jobs', this.authService.userData.jobs!, this.authService.userId!).pipe(take(1)).subscribe(_ => {
+      from(this.router.navigate([''], { skipLocationChange: true })).pipe(take(1)).subscribe(_ => {
+        this.router.navigate(['/profile', this.authService.userId]);
+      });
     });
   }
 
+  onDelete() {
+    this.userService.deleteUserField('jobs', this.job!, this.authService.userId!).pipe(take(1)).subscribe(_ => {
+      from(this.router.navigate([''], { skipLocationChange: true })).pipe(take(1)).subscribe(_ => {
+        this.router.navigate(['/profile', this.authService.userId]);
+      });
+    });
+  }
+
+  onAdd() {
+    this.userService.addUserField('jobs', this.formGroup.getRawValue(), this.authService.userId!).pipe(take(1)).subscribe(_ => {
+      from(this.router.navigate([''], { skipLocationChange: true })).pipe(take(1)).subscribe(_ => {
+        this.router.navigate(['/profile', this.authService.userId]);
+      });
+    });
+  }
 
   private storeUserWork() {
     const data = this.formGroup.getRawValue();

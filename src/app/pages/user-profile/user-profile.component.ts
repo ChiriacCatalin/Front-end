@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { take } from 'rxjs';
 import { AuthService } from 'src/app/services';
 import { User } from 'src/app/services/user/types/user.types';
 import { UserService } from 'src/app/services/user/user.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -13,6 +15,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class UserProfileComponent implements OnInit {
   userId: string;
   user: User | undefined;
+  isLoading: boolean = true;
 
 
   constructor(private readonly userService: UserService,
@@ -22,12 +25,14 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.getUser(this.userId).pipe(take(1)).subscribe(user => {
+    this.isLoading = true;
+    this.userService.getUser(this.userId).pipe(untilDestroyed(this)).subscribe(user => {
       this.user = user;
       if (this.authService.userId === this.userId) {
         this.authService.userData = user;
       }
+      this.isLoading = false;
     });
-
   }
+
 }

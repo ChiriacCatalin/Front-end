@@ -23,7 +23,17 @@ export class UserService {
   }
 
   deleteUserField(fieldName: string, obj: object, uid: string): Observable<unknown> {
-    const url = `${environment.apiUrl}/api/users/${uid}`;
+    const url = `${environment.apiUrl}/api/users/${uid}/fields`;
     return this.http.delete(url, { body: { fieldName, obj } });
+  }
+
+  addUserField(fieldName: string, obj: object, uid: string): Observable<unknown> {
+    const url = `${environment.apiUrl}/api/users/${uid}/fields`;
+    return this.http.post(url, { fieldName, obj });
+  }
+
+  updateUserField(fieldName: string, obj: object, uid: string): Observable<unknown> {
+    const url = `${environment.apiUrl}/api/users/${uid}`;
+    return this.http.put(url, { fieldName, obj });
   }
 }
