@@ -31,10 +31,10 @@ export class UserWorkExperienceComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.job) {
-      this.formGroup.setValue(this.job);
-      console.log(this.job);
+      let job_copy = { ...this.job };
+      this.formGroup.setValue(job_copy);
     }
-    
+
   }
 
   onExit() {
@@ -60,7 +60,7 @@ export class UserWorkExperienceComponent implements OnChanges {
   onDelete() {
     console.log(this.formGroup.getRawValue());
     console.log(this.authService.userId);
-    this.userService.deleteUserField('jobs', this.formGroup.getRawValue(), this.authService.userId!).pipe(take(1)).subscribe();
+    this.userService.deleteUserField('jobs', this.job!, this.authService.userId!).pipe(take(1)).subscribe();
 
     from(this.router.navigate([''], { skipLocationChange: true })).subscribe(_ => {
       this.router.navigate(['/profile', this.authService.userId]);
