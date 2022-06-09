@@ -21,4 +21,9 @@ export class UserService {
     const url = `${environment.apiUrl}/api/users/${uid}`;
     return this.http.post(url, { ...data });
   }
+
+  deleteUserField(fieldName: string, obj: object, uid: string): Observable<unknown> {
+    const url = `${environment.apiUrl}/api/users/${uid}`;
+    return this.http.delete(url, { body: { fieldName, obj } });
+  }
 }

@@ -1,7 +1,8 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services';
+import { Job } from 'src/app/services/user/types/jobs.types';
 import { User } from 'src/app/services/user/types/user.types';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -33,4 +34,5 @@ export class WorkExperienceComponent implements OnChanges {
   sanitize(url: string | undefined) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url!);
   }
+
 }

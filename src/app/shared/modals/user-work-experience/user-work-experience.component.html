@@ -2,51 +2,102 @@
 <!-- <button #myModalTriggerWork [hidden]="true" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropWork">SignUp</button>
    -->
 <!-- Modal -->
-<div class="modal fade" id="staticBackdropWork" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Edit work experience</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onExit()"></button>
-        </div>
-        <div class="modal-body">
+<div
+  class="modal fade"
+  id="{{ uniqueId ? uniqueId : 'staticBackdropWork' }}"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Edit work experience</h5>
 
-          <form [formGroup]="formGroup">
-            <div class="">
-              <label for="company" class="col-form-label">Company name:</label>
-              <input type="text" class="form-control" id="company" formControlName="company" placeholder="The company name:">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onExit()"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formGroup">
+          <div class="">
+            <label for="company" class="col-form-label">Company name:</label>
+            <input type="text" class="form-control" id="company" formControlName="company" placeholder="The company name:" />
+          </div>
+          <div class="">
+            <label for="workPosition" class="col-form-label">Position:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="workPosition"
+              formControlName="workPosition"
+              placeholder="Your position on the company/project:"
+            />
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <label for="workStartDate" class="col-form-label">Start date:</label>
+              <input
+                type="date"
+                class="form-control"
+                id="workStartDate"
+                formControlName="workStartDate"
+                max="{{ formGroup.value.workEndDate || '2030-12-01' }}"
+                placeholder="The time at which you started working:"
+              />
             </div>
-            <div class="">
-              <label for="workPosition" class="col-form-label">Position:</label>
-              <input type="text" class="form-control" id="workPosition" formControlName="workPosition" placeholder="Your position on the company/project:">
+            <div class="col-sm-6">
+              <label for="workEndDate" class="col-form-label">End date:</label>
+              <input
+                type="date"
+                class="form-control"
+                id="workEndDate"
+                formControlName="workEndDate"
+                min="{{ formGroup.value.workStartDate }}"
+                max="2030-12-01"
+                placeholder="The time at which you stopped working:"
+              />
             </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <label for="workStartDate" class="col-form-label">Start date:</label>
-                <input type="date" class="form-control" id="workStartDate" formControlName="workStartDate" max="{{formGroup.value.workEndDate || '2030-12-01'}}" placeholder="The time at which you started working:">
-              </div>
-              <div class="col-sm-6">
-                <label for="workEndDate" class="col-form-label">End date:</label>
-                <input type="date" class="form-control" id="workEndDate" formControlName="workEndDate" min="{{formGroup.value.workStartDate}}" max="2030-12-01" placeholder="The time at which you stopped working:">
-              </div>
-            </div>
-            <div class="">
-              <label for="workDescription" class="col-form-label">Description:</label>
-              <textarea class="form-control" id="workDescription" formControlName="workDescription" placeholder="Describe your experience or view regarding the job:" rows="5"></textarea>
-            </div>
-            <div class="">
-              <label for="workVideo" class="col-form-label">Video:</label>
-              <input type="text" class="form-control" id="workVideo" placeholder="Add the youtube video url:" formControlName="workVideo">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
+          </div>
+          <div class="">
+            <label for="workDescription" class="col-form-label">Description:</label>
+            <textarea
+              class="form-control"
+              id="workDescription"
+              formControlName="workDescription"
+              placeholder="Describe your experience or view regarding the job:"
+              rows="5"
+            ></textarea>
+          </div>
+          <div class="">
+            <label for="workVideo" class="col-form-label">Video:</label>
+            <input type="text" class="form-control" id="workVideo" placeholder="Add the youtube video url:" formControlName="workVideo" />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <div *ngIf="!job">
           <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onSave()">Continue</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onSkip()">Skip</button>
+        </div>
+        <div *ngIf="job">
+          <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onUpdate()" data-bs-dismiss="modal">
+            Update
+          </button>
+          <button type="submit" class="btn btn-danger ms-1" (click)="onDelete()" data-bs-dismiss="modal">Delete</button>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <button #myModalTriggerEducation [hidden]="true" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropEducation">SignUp</button>
-  
+<button
+  #myModalTriggerEducation
+  [hidden]="true"
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#staticBackdropEducation"
+>
+  SignUp
+</button>
