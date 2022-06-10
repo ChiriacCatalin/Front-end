@@ -3,7 +3,7 @@
 <!-- Modal -->
 <div
   class="modal fade"
-  id="staticBackdropProject"
+  id="{{ uniqueId ? uniqueId : 'staticBackdropProject' }}"
   data-bs-backdrop="static"
   data-bs-keyboard="false"
   tabindex="-1"
@@ -20,13 +20,7 @@
         <form [formGroup]="formGroup">
           <div class="">
             <label for="projectName" class="col-form-label">Project name:</label>
-            <input
-              type="text"
-              class="form-control"
-              id="projectName"
-              formControlName="projectName"
-              placeholder="The name of the project:"
-            />
+            <input type="text" class="form-control" id="projectName" formControlName="projectName" placeholder="The name of the project:" />
           </div>
           <div class="row">
             <div class="col-sm-6">
@@ -77,10 +71,32 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-success" data-bs-dismiss="modal" [disabled]="!formGroup.valid" (click)="onSave()">Continue</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onSkip()">Skip</button>
+        <div *ngIf="!project && !newElement">
+          <button type="submit" class="btn btn-success" data-bs-dismiss="modal" [disabled]="!formGroup.valid" (click)="onSave()">
+            Continue
+          </button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onSkip()">Skip</button>
+        </div>
+        <div *ngIf="project">
+          <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onUpdate()" data-bs-dismiss="modal">
+            Update
+          </button>
+          <button type="submit" class="btn btn-danger ms-1" (click)="onDelete()" data-bs-dismiss="modal">Delete</button>
+        </div>
+        <div *ngIf="newElement">
+          <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onAdd()" data-bs-dismiss="modal">Add</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<button #myModalTriggerSkils [hidden]="true" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropSkills">SignUp</button>
+<button
+  #myModalTriggerSkils
+  [hidden]="true"
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#staticBackdropSkills"
+>
+  SignUp
+</button>

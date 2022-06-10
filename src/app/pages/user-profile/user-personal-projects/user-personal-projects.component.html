@@ -2,9 +2,38 @@
   <app-spinner></app-spinner>
 </div>
 <div class="" *ngIf="!isLoading">
-  <h5 class="px-sm-5 pt-sm-5">Personal Projects</h5>
+  <div class="row pt-sm-5">
+    <div class="col-8">
+      <h5 class="px-sm-5 mt-3">Personal Project</h5>
+    </div>
+
+    <!-- add new project button functionality -->
+    <div class="col-4">
+      <div *ngIf="authService.userId === userId">
+        <div class="d-flex justify-content-end  mx-sm-5 mt-2">
+          <button class="edit_item" data-bs-toggle="modal" data-bs-target="#staticBackdropProject" mat-mini-fab>
+            <mat-icon>add</mat-icon>
+          </button>
+          <app-signup-user-personal-projects [newElement]="true"></app-signup-user-personal-projects>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <hr class="px-sm-5" />
-  <div class="card mb-3 mx-sm-5 mt-sm-5 border" style="max-width: 100%" *ngFor="let project of user!.projects">
+  <div class="card mb-3 mx-sm-5 mt-sm-5 border" style="max-width: 100%" *ngFor="let project of user!.projects; let i = index">
+
+    <!-- edit button functionality -->
+    <div *ngIf="authService.userId === userId">
+      <div class="d-flex justify-content-end me-1 mt-1">
+        <button class="edit_item" data-bs-toggle="modal" [attr.data-bs-target]="'#project' + i" mat-mini-fab>
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+      <app-signup-user-personal-projects [project]="project" [uniqueId]="'project' + i"></app-signup-user-personal-projects>
+    </div>
+
     <div class="row g-0">
       <div class="col-md-6">
         <div class="card-body">

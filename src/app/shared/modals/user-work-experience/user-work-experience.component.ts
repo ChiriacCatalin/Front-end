@@ -61,7 +61,11 @@ export class UserWorkExperienceComponent implements OnChanges {
   onUpdate() {
     this.authService.userData!.jobs![this.index!] = this.formGroup.getRawValue();
     this.userService.updateUserField('jobs', this.authService.userData.jobs!, this.authService.userId!)
-      .pipe(take(1)).subscribe();
+      .pipe(take(1)).subscribe(_ => {
+        from(this.router.navigate([''], { skipLocationChange: true })).pipe(take(1)).subscribe(_ => {
+          this.router.navigate(['/profile', this.authService.userId]);
+        });
+      });
   }
 
   onDelete() {
