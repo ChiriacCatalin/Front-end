@@ -2,9 +2,39 @@
   <app-spinner></app-spinner>
 </div>
 <div class="" *ngIf="!isLoading">
-  <h5 class="px-sm-5 pt-sm-5">Education</h5>
+  <div class="row pt-sm-5">
+    <div class="col-8">
+      <h5 class="px-sm-5 mt-3">Education</h5>
+    </div>
+
+    <!-- add new school button functionality -->
+    <div class="col-4">
+      <div *ngIf="authService.userId === userId">
+        <div class="d-flex justify-content-end  mx-sm-5 mt-2">
+          <button class="edit_item" data-bs-toggle="modal" data-bs-target="#staticBackdropEducation" mat-mini-fab>
+            <mat-icon>add</mat-icon>
+          </button>
+          <app-signup-user-education [newElement]="true"></app-signup-user-education>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
   <hr class="px-sm-5" />
-  <div class="card mb-3 mx-sm-5 border mt-sm-5" style="max-width: 100%" *ngFor="let school of user!.schools">
+  <div class="card mb-3 mx-sm-5 border mt-sm-5" style="max-width: 100%" *ngFor="let school of user!.schools; let i = index">
+
+       <!-- edit button functionality -->
+       <div *ngIf="authService.userId === userId">
+        <div class="d-flex justify-content-end me-1 mt-1">
+          <button class="edit_item" data-bs-toggle="modal" [attr.data-bs-target]="'#school' + i" mat-mini-fab>
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+        <app-signup-user-education [school]="school" [uniqueId]="'school' + i"></app-signup-user-education>
+      </div>
+
     <div class="row g-0">
       <div class="col-md-6">
         <div class="card-body">

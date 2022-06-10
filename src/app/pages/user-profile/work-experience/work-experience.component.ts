@@ -2,7 +2,6 @@ import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@ang
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services';
-import { Job } from 'src/app/services/user/types/jobs.types';
 import { User } from 'src/app/services/user/types/user.types';
 import { UserService } from 'src/app/services/user/user.service';
 
