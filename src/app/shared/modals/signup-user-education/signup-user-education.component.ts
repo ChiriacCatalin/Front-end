@@ -52,7 +52,7 @@ export class SignupUserEducationComponent implements OnChanges {
 
   onUpdate() {
     this.authService.userData!.schools![this.index!] = this.formGroup.getRawValue();
-    console.log(this.authService.userData!.schools!);
+    // console.log(this.authService.userData!.schools!);
     this.userService.updateUserField('schools', this.authService.userData.schools!, this.authService.userId!)
       .pipe(take(1)).subscribe(_ => {
         from(this.router.navigate([''], { skipLocationChange: true })).pipe(take(1)).subscribe(_ => {

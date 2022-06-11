@@ -1,12 +1,13 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { switchMap, take } from 'rxjs';
+import { from, take } from 'rxjs';
 import { AuthService } from 'src/app/services';
-import { UserToken } from 'src/app/services/user-token';
+import { MainInfo } from 'src/app/services/user/types/mainInfo.types';
+import { User } from 'src/app/services/user/types/user.types';
 import { UserService } from 'src/app/services/user/user.service';
-import { Chips } from '../../input-chips/chips';
+
 
 @UntilDestroy()
 @Component({
@@ -14,10 +15,10 @@ import { Chips } from '../../input-chips/chips';
   templateUrl: './edit-user-info.component.html',
   styleUrls: ['./edit-user-info.component.css']
 })
-export class EditUserInfoComponent {
+export class EditUserInfoComponent implements OnChanges {
   // @ViewChild('myModalTriggerInfo') myModalTrigger!: ElementRef;
   @ViewChild('myModalTriggerWork') myModalTrigger!: ElementRef;
-
+  @Input() mainInfo?: MainInfo;
   formGroup: FormGroup;
 
   constructor(private readonly userService: UserService, private readonly router: Router, private readonly authService: AuthService) {
@@ -37,6 +38,14 @@ export class EditUserInfoComponent {
   //   this.myModalTrigger.nativeElement.click();
   // }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.mainInfo) {
+      let mainInfo_copy = { ...this.mainInfo };
+      delete mainInfo_copy.imageUrl;
+      this.formGroup.setValue(mainInfo_copy);
+    }
+  }
+
   onSave() {
     // const data = this.formGroup.getRawValue();
     let userId: string | undefined = '';
@@ -45,7 +54,18 @@ export class EditUserInfoComponent {
   }
 
   onExit() {
-    this.router.navigate(['']);
+    if (!this.mainInfo)
+      this.router.navigate(['']);
+  }
+
+  onUpdate() {
+    // console.log(this.formGroup.getRawValue());
+    this.userService.updateUserField('mainInfo', this.formGroup.getRawValue(), this.authService.userId!)
+      .pipe(take(1)).subscribe(_ => {
+        from(this.router.navigate([''], { skipLocationChange: true })).pipe(take(1)).subscribe(_ => {
+          this.router.navigate(['/profile', this.authService.userId]);
+        });
+      });
   }
 
   private storeUserData() {

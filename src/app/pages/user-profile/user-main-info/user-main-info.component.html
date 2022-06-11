@@ -1,39 +1,52 @@
 <div class="d-flex justify-content-center" *ngIf="isLoading">
   <app-spinner></app-spinner>
 </div>
-<div class="card mb-3 mx-sm-5 mt-sm-5 border" style="max-width: 100%" *ngIf="!isLoading">
-  <div class="row g-0">
-    <div class="col-lg-6 px-sm-4">
-      <div class="col-md-10 px-sm-4">
-        <img src="{{ user!.mainInfo!.imageUrl }}" class="img-fluid rounded-circle standard-max-size mt-2" alt="profile pic" />
-        <div class="">
-          <button *ngIf="authService.userId === userId" mat-mini-fab class="back-color position" (click)="uploadButtonClicked()">
-            <mat-icon>add_a_photo</mat-icon>
-          </button>
-        </div>
-        <input hidden #uploadImageRef type="file" accept=".png, .jpg" (change)="onFileSelected($event)" />
+<div *ngIf="!isLoading">
+  <div class="card mb-3 mx-sm-5 mt-sm-5 border" style="max-width: 100%">
+   
+    <!-- edit button functionality -->
+    <div *ngIf="authService.userId === userId">
+      <div class="d-flex justify-content-end me-1 mt-1">
+        <button class="edit_item" data-bs-toggle="modal" data-bs-target="#staticBackdropInfo" mat-mini-fab>
+          <mat-icon>edit</mat-icon>
+        </button>
       </div>
-
-      <div class="card-body ps-sm-5">
-        <h5 class="card-title">{{ user!.mainInfo!.name }}</h5>
-        <p class="card-text mt-4"><b>Address: </b>{{ address }}</p>
-        <p class="card-text"><b>Birthdate: </b>{{ user!.mainInfo!.birthdate }}</p>
-        <p class="card-text"><b>Contact: </b> {{ user!.mainInfo!.email }}</p>
-        <p class="card-text"><b>Studied at: </b> {{ user!.mainInfo!.studiedAt }}</p>
-        <p *ngIf="user?.mainInfo?.worksAt" class="card-text"><b>Works at: </b> {{ user!.mainInfo!.worksAt }}</p>
-      </div>
+      <app-edit-user-info [mainInfo]="user!.mainInfo"></app-edit-user-info>
     </div>
 
-    <div class="col-lg-6 py-lg-3 px-md-5 px-lg-3 p-3 d-flex align-items-center" *ngIf="user?.mainInfo?.mainVideo">
-      <div class="ratio ratio-4x3">
-        <iframe
-          width="1520"
-          height="553"
-          [src]="sanitize(user!.mainInfo!.mainVideo)"
-          class="card-img-top"
-          title="YouTube video player"
-          allowfullscreen
-        ></iframe>
+    <div class="row g-0">
+      <div class="col-lg-6 px-sm-4">
+        <div class="col-md-10 px-sm-4">
+          <img src="{{ user!.mainInfo!.imageUrl }}" class="img-fluid rounded-circle standard-max-size mt-2" alt="profile pic" />
+          <div class="">
+            <button *ngIf="authService.userId === userId" mat-mini-fab class="back-color position" (click)="uploadButtonClicked()">
+              <mat-icon>add_a_photo</mat-icon>
+            </button>
+          </div>
+          <input hidden #uploadImageRef type="file" accept=".png, .jpg" (change)="onFileSelected($event)" />
+        </div>
+
+        <div class="card-body ps-sm-5">
+          <h5 class="card-title">{{ user!.mainInfo!.name }}</h5>
+          <p class="card-text mt-4"><b>Address: </b>{{ address }}</p>
+          <p class="card-text"><b>Birthdate: </b>{{ user!.mainInfo!.birthdate }}</p>
+          <p class="card-text"><b>Contact: </b> {{ user!.mainInfo!.email }}</p>
+          <p class="card-text"><b>Studied at: </b> {{ user!.mainInfo!.studiedAt }}</p>
+          <p *ngIf="user?.mainInfo?.worksAt" class="card-text"><b>Works at: </b> {{ user!.mainInfo!.worksAt }}</p>
+        </div>
+      </div>
+
+      <div class="col-lg-6 py-lg-3 px-md-5 px-lg-3 p-3 d-flex align-items-center" *ngIf="user?.mainInfo?.mainVideo">
+        <div class="ratio ratio-4x3">
+          <iframe
+            width="1520"
+            height="553"
+            [src]="sanitize(user!.mainInfo!.mainVideo)"
+            class="card-img-top"
+            title="YouTube video player"
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
     </div>
   </div>
