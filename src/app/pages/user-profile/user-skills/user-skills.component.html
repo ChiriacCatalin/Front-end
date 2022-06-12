@@ -5,10 +5,20 @@
   <h5 class="px-sm-5 pt-sm-5">Skills</h5>
   <hr class="px-sm-5" />
   <div class="card mb-3 mx-sm-5 mt-sm-5 border" style="max-width: 100%">
+    <!-- edit button functionality -->
+    <div *ngIf="authService.userId === userId">
+      <div class="d-flex justify-content-end me-1 mt-1">
+        <button class="edit_item" data-bs-toggle="modal" data-bs-target="#staticBackdropSkills" mat-mini-fab>
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+      <app-signup-user-skills [toEdit]="true"></app-signup-user-skills>
+    </div>
+
     <div class="row g-0">
       <div class="col-md-6">
         <div class="card-body">
-          <div *ngIf="user?.fieldsOfExpertise">
+          <div *ngIf="user?.fieldsOfExpertise && (user?.fieldsOfExpertise)!.length > 0">
             <h5 class="card-title">Fields of expertise</h5>
             <hr />
             <ul>
@@ -17,7 +27,7 @@
               </div>
             </ul>
           </div>
-          <div *ngIf="user?.toolsAndLanguages">
+          <div *ngIf="user?.toolsAndLanguages && (user?.toolsAndLanguages)!.length > 0">
             <h5 class="card-title">Tools and languages</h5>
             <hr />
             <ul>
@@ -26,7 +36,7 @@
               </div>
             </ul>
           </div>
-          <div *ngIf="user?.personalSkills">
+          <div *ngIf="user?.personalSkills && (user?.personalSkills)!.length > 0">
             <h5 class="card-title">Personal skills</h5>
             <hr />
             <ul>

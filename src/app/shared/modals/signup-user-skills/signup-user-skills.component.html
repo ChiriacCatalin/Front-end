@@ -23,15 +23,28 @@
         <form [formGroup]="formGroup">
           <div class="">
             <label for="skillsVideo" class="col-form-label">Video:</label>
-            <input type="text" class="form-control" id="skillsVideo" formControlName="skillsVideo" placeholder="Add the youtube video url:" />
+            <input
+              type="text"
+              class="form-control"
+              id="skillsVideo"
+              formControlName="skillsVideo"
+              placeholder="Add the youtube video url:"
+            />
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" (click)="onSave()" [disabled]="!formGroup.valid" data-bs-dismiss="modal">
-          Register
-        </button>
-        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> -->
+        <div *ngIf="!toEdit">
+          <button type="button" class="btn btn-success" (click)="onSave()" [disabled]="!formGroup.valid" data-bs-dismiss="modal">
+            Register
+          </button>
+          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> -->
+        </div>
+        <div *ngIf="toEdit">
+          <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onUpdate()" data-bs-dismiss="modal">
+            Update
+          </button>
+        </div>
       </div>
     </div>
   </div>
