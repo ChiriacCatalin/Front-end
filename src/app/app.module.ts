@@ -21,6 +21,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { CompanyProfileComponent, HomeComponent, JobsComponent, LoginComponent } from './pages';
 import { HttpClientModule } from '@angular/common/http';
 import { CompanyMainInfoComponent } from './pages/company-profile/company-main-info';
+import { CompanyAboutComponent } from './pages/company-profile/company-about';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { CompanyMainInfoComponent } from './pages/company-profile/company-main-i
     JobsComponent,
     LoginComponent,
     CompanyProfileComponent,
-    CompanyMainInfoComponent
+    CompanyMainInfoComponent,
+    CompanyAboutComponent
   ],
   imports: [
     BrowserModule,

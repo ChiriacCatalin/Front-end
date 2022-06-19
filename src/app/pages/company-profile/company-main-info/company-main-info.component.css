@@ -14,3 +14,11 @@
 .edit_item {
   background-color: rgb(234, 229, 229);
 }
+
+.nav-link {
+  color: #495057;
+}
+
+.nav-link.active{
+  font-weight: bold;
+}
