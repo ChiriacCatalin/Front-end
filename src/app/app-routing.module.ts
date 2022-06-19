@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from './guards/auth-guard.service';
-import { LoginComponent } from './pages';
+import { CompanyProfileComponent, LoginComponent } from './pages';
 import { HomeComponent } from './pages/home/home.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'sign-In',
     component: LoginComponent,
     canActivate: [AuthGuardService]
+  },
+  {
+    path: 'company',
+    component: CompanyProfileComponent
   }
 ];
 

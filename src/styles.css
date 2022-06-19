@@ -1,5 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%;  background-color: rgb(234, 229, 229);}
+html,
+body {
+  height: 100%;
+  background-color: rgb(234, 229, 229);
+}
 
-/* Mat Autocomplete on Modal Fixes */ .cdk-overlay-container {z-index: 999999 !important;}
+.testCheck {
+  background-color: red;
+}
+
+
+/* Mat Autocomplete on Modal Fixes */
+.cdk-overlay-container {
+  z-index: 999999 !important;
+}

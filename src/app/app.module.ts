@@ -18,9 +18,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
-import { HomeComponent, JobsComponent, LoginComponent } from './pages';
+import { CompanyProfileComponent, HomeComponent, JobsComponent, LoginComponent } from './pages';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthService } from './services';
+import { CompanyMainInfoComponent } from './pages/company-profile/company-main-info';
 
 @NgModule({
   declarations: [
@@ -37,6 +37,8 @@ import { AuthService } from './services';
     HomeComponent,
     JobsComponent,
     LoginComponent,
+    CompanyProfileComponent,
+    CompanyMainInfoComponent
   ],
   imports: [
     BrowserModule,
