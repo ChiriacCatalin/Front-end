@@ -1,32 +1,35 @@
-<div class="container border">
-  <div class="container bg-light py-1 mb-3 ">
+<div class="d-flex justify-content-center" *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
+<div *ngIf="!isLoading" class="container border">
+  <div class="container bg-light py-1 mb-3">
     <div class="card mx-sm-5 mt-sm-5 border" style="max-width: 100%">
       <div class="row g-0 pb-4">
         <div class="col-lg-6 px-sm-4">
           <div class="col-md-10 px-sm-4">
-            <img src="https://picsum.photos/id/237/200/200" class="img-fluid rounded-circle standard-max-size mt-2" alt="company logo" />
+            <img src="{{ company?.imageUrl }}" class="img-fluid rounded-circle standard-max-size mt-2" alt="company logo" />
             <div class="">
-              <button mat-mini-fab class="back-color position">
+              <button mat-mini-fab class="back-color position" (click)="uploadButtonClicked()">
                 <mat-icon>add_a_photo</mat-icon>
               </button>
             </div>
-            <!-- <input hidden #uploadImageRef type="file" accept=".png, .jpg" (change)="onFileSelected($event)" /> -->
+            <input hidden #uploadImageRef type="file" accept=".png, .jpg" (change)="onFileSelected($event)" />
           </div>
 
           <div class="card-body ps-sm-5">
-            <h5 class="card-title">Amazon</h5>
-            <p class="card-text mt-2">The best cloud provider with unique and innovative solutions</p>
-            <p class="card-text mt-4"><strong>Industry </strong> IT Services & IT Consulting</p>
-            <p class="card-text mt-4"><strong>Headquarters: </strong> Amsterdam</p>
+            <h5 class="card-title">{{ company?.name }}</h5>
+            <p class="card-text mt-2">{{ company?.salesPitch }}</p>
+            <p class="card-text mt-4"><strong>Industry </strong>{{ company?.industry }}</p>
+            <p class="card-text mt-4"><strong>Headquarters: </strong>{{ company?.headquarters }}</p>
           </div>
         </div>
 
-        <div class="col-lg-6 py-lg-3 px-md-5 px-lg-3 p-3 d-flex align-items-center">
+        <div class="col-lg-6 py-lg-3 px-md-5 p-3 px-lg-5 d-flex align-items-center" *ngIf="company?.mainVideo">
           <div class="ratio ratio-4x3">
             <iframe
               width="1520"
               height="553"
-              src="https://www.youtube.com/embed/3nGAQWyzY94"
+              [src]="sanitize(company?.mainVideo)"
               class="card-img-top"
               title="YouTube video player"
               allowfullscreen
@@ -41,7 +44,7 @@
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
             <button
-              class="nav-link active  px-sm-4 px-md-5"
+              class="nav-link active px-sm-4 px-md-5"
               id="about-tab"
               data-bs-toggle="tab"
               data-bs-target="#about"
@@ -73,16 +76,13 @@
   </div>
 </div>
 
-
 <div class="container border">
   <div class="container bg-light py-1 mb-3">
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
         <app-company-about></app-company-about>
       </div>
-      <div class="tab-pane fade" id="jobs" role="tabpanel" aria-labelledby="jobs-tab">
-        ...
-      </div>
+      <div class="tab-pane fade" id="jobs" role="tabpanel" aria-labelledby="jobs-tab">...</div>
     </div>
   </div>
 </div>

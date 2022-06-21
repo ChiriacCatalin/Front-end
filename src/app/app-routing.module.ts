@@ -25,7 +25,7 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
-    path: 'company',
+    path: 'company/:companyId',
     component: CompanyProfileComponent
   }
 ];

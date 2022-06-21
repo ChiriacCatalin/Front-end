@@ -1,1 +1,6 @@
-<app-company-main-info></app-company-main-info>
+<div class="d-flex justify-content-center" *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
+<div class="" *ngIf="!isLoading">
+  <app-company-main-info [company]="company"></app-company-main-info>
+</div>

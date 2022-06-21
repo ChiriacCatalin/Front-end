@@ -49,7 +49,7 @@ export class UserMainInfoComponent implements OnChanges {
     // console.log(this.selectedFile);
     this.uploadImage();
   }
-  
+
   uploadButtonClicked() {
     this.uploadImageRef.nativeElement.click();
   }
@@ -62,7 +62,7 @@ export class UserMainInfoComponent implements OnChanges {
       .pipe(
         switchMap(base64 => {
           const value = base64 as string;
-          return this.imageService.uploadImage({ image: value }, this.userId);
+          return this.imageService.uploadImage({ image: value, userType: 'user' }, this.userId);
         })
       )
       .pipe(
