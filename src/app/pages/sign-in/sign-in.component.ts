@@ -14,7 +14,14 @@ export class SignInComponent {
   constructor(private readonly router: Router, private authService: AuthService) { }
 
   signIn() {
-    const navigator = from(this.router.navigate(['sign-Up'], { state: { comesFromSignUp: true } }));
+    let navigator;
+    if (this.selection === 'user') {
+      navigator = from(this.router.navigate(['sign-Up'], { state: { comesFromSignUp: true } }));
+    }
+    else { /// if it's  company
+      navigator = from(this.router.navigate(['sign-Up-company'], { state: { comesFromSignUp: true } }));
+    }
+
     navigator.pipe(take(1)).subscribe(response => {
       if (!response) {
         this.router.navigate(['profile', this.authService.userId]);

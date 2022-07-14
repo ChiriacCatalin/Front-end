@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CompanyMainInfoComponent } from './pages/company-profile/company-main-info';
 import { CompanyAboutComponent } from './pages/company-profile/company-about';
 import { SignInComponent } from './pages/sign-in';
+import { SignUpCompanyComponent } from './pages/sign-up-company/sign-up-company.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { SignInComponent } from './pages/sign-in';
     CompanyProfileComponent,
     CompanyMainInfoComponent,
     CompanyAboutComponent,
-    SignInComponent
+    SignInComponent,
+    SignUpCompanyComponent
   ],
   imports: [
     BrowserModule,

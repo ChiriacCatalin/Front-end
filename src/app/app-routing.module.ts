@@ -5,6 +5,7 @@ import { CompanyProfileComponent, LoginComponent } from './pages';
 import { HomeComponent } from './pages/home/home.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { SignInComponent } from './pages/sign-in';
+import { SignUpCompanyComponent } from './pages/sign-up-company/sign-up-company.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'jobs',
     component: JobsComponent
+  },
+  {
+    path: 'sign-Up-company',
+    component: SignUpCompanyComponent
   },
   {
     path: 'sign-Up',
