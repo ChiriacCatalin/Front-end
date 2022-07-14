@@ -13,7 +13,7 @@ import { UserSkillsComponent } from './pages/user-profile/user-skills/user-skill
 import { UserHobbiesComponent } from './pages/user-profile/user-hobbies/user-hobbies.component';
 import { UserPersonalProjectsComponent } from './pages/user-profile/user-personal-projects/user-personal-projects.component';
 import { SharedModule } from './shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
 import { environment } from 'src/environments/environment';
@@ -22,6 +22,7 @@ import { CompanyProfileComponent, HomeComponent, JobsComponent, LoginComponent }
 import { HttpClientModule } from '@angular/common/http';
 import { CompanyMainInfoComponent } from './pages/company-profile/company-main-info';
 import { CompanyAboutComponent } from './pages/company-profile/company-about';
+import { SignInComponent } from './pages/sign-in';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CompanyAboutComponent } from './pages/company-profile/company-about';
     LoginComponent,
     CompanyProfileComponent,
     CompanyMainInfoComponent,
-    CompanyAboutComponent
+    CompanyAboutComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +53,7 @@ import { CompanyAboutComponent } from './pages/company-profile/company-about';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,12 +10,12 @@
     </div>
 
     <div class="">
-      <div class="col-12 col-lg-6 float-md-end py-lg-3 px-md-5 p-3 d-flex mt-4 align-items-center">
+      <div class="col-12 col-lg-6 float-md-end py-lg-3 px-md-5 p-3 d-flex mt-4 align-items-center" *ngIf="company?.mainVideo">
         <div class="ratio ratio-4x3">
           <iframe
             width="1520"
             height="553"
-            src="https://www.youtube.com/embed/3nGAQWyzY94"
+            [src]="sanitize(company?.mainVideo)"
             class="card-img-top"
             title="YouTube video player"
             allowfullscreen
@@ -23,26 +23,15 @@
         </div>
       </div>
       <div class="card-body">
+        <p class="mt-lg-4 px-3"><strong>About Us: </strong> {{ company?.aboutUs }}</p>
         <p class="mt-lg-4 px-3">
-          <strong>About Us: </strong>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure rem libero nemo harum doloremque?
-          Placeat culpa fugiat sunt tempora deleniti. Commodi autem nulla vel maiores pariatur rem neque asperiores quam. Perferendis quia
-          labore unde aliquam animi. Tempora exercitationem soluta quam omnis hic velit voluptatum suscipit accusantium vel at excepturi
-          earum ipsum consectetur vitae ducimus corporis repudiandae, cumque, quod et. Nostrum impedit reprehenderit quisquam libero nihil
-          nesciunt! Quam repellat ut saepe dolores, necessitatibus dolor exercitationem eveniet eius facilis sunt aspernatur non nobis iusto
-          suscipit consequuntur ad maiores doloribus ullam fugit. Est, illo eaque minus, distinctio exercitationem repellendus voluptatem
-          recusandae architecto tempore, dolorem nemo. Excepturi non quod saepe adipisci deserunt? Error itaque, debitis, hic quisquam earum
-          velit corporis perferendis numquam laudantium illo dolore id repellendus dolorem iusto unde. Neque, eos quod perspiciatis
-          consequuntur suscipit porro, minima possimus omnis nisi hic laudantium at! Ex ratione vel incidunt natus tempore vero recusandae
-          temporibus inventore cumque beatae quisquam corrupti maxime libero, vitae dolores eveniet assumenda nesciunt ut accusamus. Iste
-          non quia quisquam illum rerum vel, nisi molestiae possimus officiis deleniti nam? Odit velit id nihil magnam praesentium. Eligendi
-          maxime sapiente quia necessitatibus ea. Tenetur enim architecto a et perspiciatis placeat dolor? Veniam officiis velit expedita?
+          <strong>Website: </strong> <a href="{{ company?.website }}" target="_blank">{{ company?.website }}</a>
         </p>
-        <p class="mt-lg-4 px-3"><strong>Website: </strong> <a href="https://www.amazon.com/" target="_blank">https://www.amazon.com/</a></p>
-        <p class="px-3"><strong>Contact: </strong> company@gmail.com</p>
-        <p class="px-3"><strong>Industry: </strong> Technology, Information and Internet</p>
-        <p class="px-3"><strong>Company size: </strong> 10.001+ employees</p>
-        <p class="px-3"><strong>Headquaters: </strong> Amsterdam</p>
-        <p class="px-3"><strong>Founded: </strong> 2008</p>
+        <p class="px-3"><strong>Contact: </strong> {{ company?.contact }}</p>
+        <p class="px-3"><strong>Industry: </strong> {{ company?.industry }}</p>
+        <p class="px-3"><strong>Company size: </strong> {{ company?.companySize }} employees</p>
+        <p class="px-3"><strong>Headquaters: </strong> {{ company?.headquarters }}</p>
+        <p class="px-3"><strong>Founded: </strong> {{ company?.founded }}</p>
       </div>
     </div>
   </div>

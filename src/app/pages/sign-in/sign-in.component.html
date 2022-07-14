@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-lg-4 col-md-3"></div>
+  <div class="col-xl-4 col-lg-5 col-sm-6 position-absolute top-50 start-50 translate-middle">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">You need to be signed in to access the platform!</h5>
+        <hr />
+        <h5 class="text-center mb-4">SignIn/ SignUp as a:</h5>
+        <mat-radio-group  [(ngModel)]="selection" aria-label="Select an option">
+          <div class="row d-flex align-content-around flex-wrap">
+            <mat-radio-button class="col h5 ms-md-3 ms-lg-5" value="user" checked>
+              <mat-icon class="me-2">supervisor_account</mat-icon>User</mat-radio-button
+            >
+            <mat-radio-button class="col h5 me-sm-4" value="company">
+              <mat-icon class="me-2">location_city</mat-icon>Company</mat-radio-button
+            >
+          </div>
+        </mat-radio-group>
+        <br />
+        <div class="text-center">
+          <button class="button-center" type="button" class="btn btn-primary" (click)="signIn()">
+            <span class="h5">Continue with Google</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,7 +13,7 @@ export class SignInDropdownComponent {
   constructor(private readonly router: Router, private authService: AuthService) { }
 
   signUp() {
-    const navigator = from(this.router.navigate(['sign-In'], { state: { comesFromSignUp: true } }));
+    const navigator = from(this.router.navigate(['sign-Up'], { state: { comesFromSignUp: true } }));
     navigator.pipe(take(1)).subscribe(response => {
       if (!response) {
         this.router.navigate(['profile', this.authService.userId]);

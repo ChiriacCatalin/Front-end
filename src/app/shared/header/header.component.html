@@ -43,9 +43,12 @@
         <li class="nav-item">
           <a class="nav-link" *ngIf="authService.isLoggedIn" (click)="onProfileClick()">Profile</a>
         </li>
-        <li class="nav-item dropdown me-5" *ngIf="!authService.isLoggedIn">
-            <app-sign-in-dropdown></app-sign-in-dropdown>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="sign-In">Sign-In</a>
         </li>
+        <!-- <li class="nav-item dropdown me-5" *ngIf="!authService.isLoggedIn">
+            <app-sign-in-dropdown></app-sign-in-dropdown>
+        </li> -->
         <li class="nav-item me-5" *ngIf="authService.isLoggedIn">
           <a class="nav-link" (click)="onLogout()">Logout</a>
         </li>

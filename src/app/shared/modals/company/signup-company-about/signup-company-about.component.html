@@ -1,0 +1,123 @@
+<!-- <button #myModalTriggerEducation [hidden]="true" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropEducation">SignUp</button>
+   -->
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="staticBackdropCompanyMain"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Company main information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onExit()"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formGroup">
+          <div class="">
+            <label for="school" class="col-form-label">School:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="school"
+              formControlName="school"
+              placeholder="The name of the school you attend(ed):"
+            />
+          </div>
+          <div class="">
+            <label for="schoolDegree" class="col-form-label">Degree:</label>
+            <input
+              class="form-control"
+              list="schoolDegreesList"
+              id="schoolDegree"
+              placeholder="Type to search..."
+              formControlName="schoolDegree"
+              autocomplete="off"
+            />
+            <datalist id="schoolDegreesList">
+              <option value="Undergraduate"></option>
+              <option value="Bachelor"></option>
+              <option value="Master"></option>
+              <option value="Doctoral"></option>
+            </datalist>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <label for="schoolStartDate" class="col-form-label">Start date:</label>
+              <input
+                type="date"
+                max="2030-12-01"
+                class="form-control"
+                id="schoolStartDate"
+                formControlName="schoolStartDate"
+                max="{{ formGroup.value.schoolEndDate }}"
+                placeholder="The date at which you started:"
+              />
+            </div>
+            <div class="col-sm-6">
+              <label for="schoolEndDate" class="col-form-label">End date:</label>
+              <input
+                type="date"
+                max="2030-12-01"
+                class="form-control"
+                id="schoolEndDate"
+                formControlName="schoolEndDate"
+                min="{{ formGroup.value.schoolStartDate }}"
+                placeholder="The date at which you finished:"
+              />
+            </div>
+          </div>
+          <div class="">
+            <label for="schoolDescription" class="col-form-label">Description:</label>
+            <textarea
+              class="form-control"
+              id="schoolDescription"
+              formControlName="schoolDescription"
+              placeholder="Describe your experience, if relevant:"
+              rows="5"
+            ></textarea>
+          </div>
+          <div class="">
+            <label for="schoolVideo" class="col-form-label">Video:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="schoolkVideo"
+              placeholder="Add the youtube video url:"
+              formControlName="schoolVideo"
+            />
+          </div>
+        </form>
+      </div>
+      <!-- <div class="modal-footer">
+        <div *ngIf="!school && !newElement">
+          <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onSave()">Continue</button>
+        </div>
+        <div *ngIf="school">
+          <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onUpdate()" data-bs-dismiss="modal">
+            Update
+          </button>
+          <button type="submit" class="btn btn-danger ms-1" (click)="onDelete()" data-bs-dismiss="modal">Delete</button>
+        </div>
+        <div *ngIf="newElement">
+          <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onAdd()" data-bs-dismiss="modal">Add</button>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<button
+  #myModalTriggerCompanyAbout
+  [hidden]="true"
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#staticBackdropProject"
+>
+  SignUp
+</button>

@@ -12,6 +12,7 @@ import { SpinnerComponent } from './header/spinner/spinner.component';
 import { InputChipsComponent } from './input-chips/input-chips.component';
 import { MaterialModule } from '../material';
 import { SignupUserSkillsComponent } from './modals/signup-user-skills/signup-user-skills.component';
+import { SignupCompanyAboutComponent } from './modals/company/signup-company-about/signup-company-about.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { SignupUserSkillsComponent } from './modals/signup-user-skills/signup-us
     SignupUserPersonalProjectsComponent,
     SpinnerComponent,
     InputChipsComponent,
-    SignupUserSkillsComponent
+    SignupUserSkillsComponent,
+    SignupCompanyAboutComponent
   ],
   declarations: [
     HeaderComponent,
@@ -39,7 +41,8 @@ import { SignupUserSkillsComponent } from './modals/signup-user-skills/signup-us
     SignupUserPersonalProjectsComponent,
     SpinnerComponent,
     InputChipsComponent,
-    SignupUserSkillsComponent
+    SignupUserSkillsComponent,
+    SignupCompanyAboutComponent
   ]
 })
 export class SharedModule { }
