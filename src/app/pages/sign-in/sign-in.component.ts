@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { from, take } from 'rxjs';
+import { AuthService } from 'src/app/services';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,10 +11,15 @@ import { Component, OnInit } from '@angular/core';
 export class SignInComponent {
   selection: string = 'user';
 
-  constructor() { }
+  constructor(private readonly router: Router, private authService: AuthService) { }
 
   signIn() {
-    console.log(this.selection);
+    const navigator = from(this.router.navigate(['sign-Up'], { state: { comesFromSignUp: true } }));
+    navigator.pipe(take(1)).subscribe(response => {
+      if (!response) {
+        this.router.navigate(['profile', this.authService.userId]);
+      }
+    });
   }
 
 }
