@@ -1,0 +1,97 @@
+<div
+  class="modal fade"
+  id="staticBackdropCompanyMain"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Company main information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onExit()"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formGroup">
+          <div class="">
+            <label for="name" class="col-form-label">Company name:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              formControlName="name"
+              placeholder="The name of the company you represent:"
+            />
+          </div>
+          <div class="">
+            <label for="salesPitch" class="col-form-label">Sales pitch:</label>
+            <textarea
+              class="form-control"
+              id="salesPitch"
+              formControlName="salesPitch"
+              placeholder="Write your company sales pitch"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="">
+            <label for="industry" class="col-form-label">Industry:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="industry"
+              formControlName="industry"
+              placeholder="The name of the industry your company works in:"
+            />
+          </div>
+          <div class="">
+            <label for="headquarters" class="col-form-label">Headquarters:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="headquarters"
+              formControlName="headquarters"
+              placeholder="The location of your headquarters:"
+            />
+          </div>
+         
+          <div class="">
+            <label for="companyVideo" class="col-form-label">Video:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="companyVideo"
+              placeholder="The youtube video url with the company brief description:"
+              formControlName="companyVideo"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <!-- <div *ngIf="!school && !newElement"> -->
+          <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onSave()">Continue</button>
+        <!-- </div> -->
+        <!-- <div *ngIf="school">
+          <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onUpdate()" data-bs-dismiss="modal">
+            Update
+          </button>
+          <button type="submit" class="btn btn-danger ms-1" (click)="onDelete()" data-bs-dismiss="modal">Delete</button>
+        </div>
+        <div *ngIf="newElement">
+          <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onAdd()" data-bs-dismiss="modal">Add</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<button
+  #myModalTriggerCompanyAbout
+  hidden
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#staticBackdropCompanyAbout"
+>
+</button>

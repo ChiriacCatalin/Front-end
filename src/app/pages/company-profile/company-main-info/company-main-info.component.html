@@ -24,12 +24,12 @@
           </div>
         </div>
 
-        <div class="col-lg-6 py-lg-3 px-md-5 p-3 px-lg-5 d-flex align-items-center" *ngIf="company?.mainVideo">
+        <div class="col-lg-6 py-lg-3 px-md-5 p-3 px-lg-5 d-flex align-items-center" *ngIf="company?.companyVideo">
           <div class="ratio ratio-4x3">
             <iframe
               width="1520"
               height="553"
-              [src]="sanitize(company?.mainVideo)"
+              [src]="sanitize(company?.companyVideo)"
               class="card-img-top"
               title="YouTube video player"
               allowfullscreen

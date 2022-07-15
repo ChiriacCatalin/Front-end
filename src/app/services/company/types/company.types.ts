@@ -9,5 +9,6 @@ export type Company = {
     companySize?: string;
     founded?: string;
     aboutUs?: string;
-    mainVideo?: string;
+    companyVideo?: string;
+    companyAboutVideo?: string;
 }

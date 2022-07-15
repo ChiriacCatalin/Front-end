@@ -10,12 +10,12 @@
     </div>
 
     <div class="">
-      <div class="col-12 col-lg-6 float-md-end py-lg-3 px-md-5 p-3 d-flex mt-4 align-items-center" *ngIf="company?.mainVideo">
+      <div class="col-12 col-lg-6 float-md-end py-lg-3 px-md-5 p-3 d-flex mt-4 align-items-center" *ngIf="company?.companyAboutVideo">
         <div class="ratio ratio-4x3">
           <iframe
             width="1520"
             height="553"
-            [src]="sanitize(company?.mainVideo)"
+            [src]="sanitize(company?.companyAboutVideo)"
             class="card-img-top"
             title="YouTube video player"
             allowfullscreen

@@ -1,6 +1,6 @@
 <div
   class="modal fade"
-  id="staticBackdropCompanyMain"
+  id="staticBackdropCompanyAbout"
   data-bs-backdrop="static"
   data-bs-keyboard="false"
   tabindex="-1"
@@ -10,67 +10,77 @@
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Company main information</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Company description</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onExit()"></button>
       </div>
       <div class="modal-body">
         <form [formGroup]="formGroup">
           <div class="">
-            <label for="name" class="col-form-label">Company name:</label>
+            <label for="website" class="col-form-label">Website link:</label>
             <input
               type="text"
               class="form-control"
-              id="name"
-              formControlName="name"
-              placeholder="The name of the company you represent:"
+              id="website"
+              formControlName="website"
+              placeholder="The link to your company website:"
             />
           </div>
           <div class="">
-            <label for="salesPitch" class="col-form-label">Sales pitch:</label>
+            <label for="abotUs" class="col-form-label">About us:</label>
             <textarea
               class="form-control"
-              id="salesPitch"
-              formControlName="salesPitch"
-              placeholder="Write your company sales pitch"
-              rows="3"
+              id="aboutUs"
+              formControlName="aboutUs"
+              placeholder="Write your company description:"
+              rows="5"
             ></textarea>
           </div>
           <div class="">
-            <label for="industry" class="col-form-label">Industry:</label>
+            <label for="contact" class="col-form-label">Email contact:</label>
+            <input type="text" class="form-control" id="contact" formControlName="contact" placeholder="Your company email address:" />
+          </div>
+          <div class="">
+            <label for="companySize" class="col-form-label">CompanySize:</label>
+            <select class="form-select" id="companySize" formControlName="companySize">
+              <option value="1-10">1-10</option>
+              <option value="11-50">11-50</option>
+              <option value="51-250">51-250</option>
+              <option value="251-1000">251-1000</option>
+              <option value="1001+">1001+</option>
+            </select>
+          </div>
+
+          <div class="">
+            <label for="founded" class="col-form-label">Founding year:</label>
             <input
-              type="text"
+              type="number"
               class="form-control"
-              id="industry"
-              formControlName="industry"
-              placeholder="The name of the industry your company works in:"
+              id="founded"
+              min="1900"
+              max="2100"
+              step="1"
+              value="2022"
+              placeholder="The year in which your company was founded"
+              formControlName="founded"
             />
           </div>
           <div class="">
-            <label for="headquarters" class="col-form-label">Headquarters:</label>
+            <label for="companyAboutVideo" class="col-form-label">Video:</label>
             <input
               type="text"
               class="form-control"
-              id="headquarters"
-              formControlName="headquarters"
-              placeholder="The location of your headquarters:"
-            />
-          </div>
-         
-          <div class="">
-            <label for="companyVideo" class="col-form-label">Video:</label>
-            <input
-              type="text"
-              class="form-control"
-              id="companyVideo"
-              placeholder="The youtube video url with the company brief description:"
-              formControlName="companyVideo"
+              id="companyAboutVideo"
+              placeholder="The youtube video url with the company description:"
+              formControlName="companyAboutVideo"
             />
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <!-- <div *ngIf="!school && !newElement"> -->
-          <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onSave()">Continue</button>
+        <button type="button" class="btn btn-success" (click)="onSave()" [disabled]="!formGroup.valid" data-bs-dismiss="modal">
+          Register
+        </button>
         <!-- </div> -->
         <!-- <div *ngIf="school">
           <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onUpdate()" data-bs-dismiss="modal">
@@ -93,5 +103,4 @@
   class="btn btn-primary"
   data-bs-toggle="modal"
   data-bs-target="#staticBackdrop"
->
-</button>
+></button>
