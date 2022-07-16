@@ -24,7 +24,10 @@ export class HeaderComponent {
 
   onProfileClick(): void {
     from(this.router.navigate([''], { skipLocationChange: true })).subscribe(_ => {
-      this.router.navigate(['/profile', this.authService.userId]);
+      if (this.authService.userToken?.type === 'user')
+        this.router.navigate(['/profile', this.authService.userId]);
+      else
+        this.router.navigate(['/company', this.authService.userId]);
     });
   }
 

@@ -14,9 +14,9 @@ export class AppComponent {
   constructor(private readonly router: Router, private authService: AuthService){
     const data = localStorage.getItem('userData');
     if (data) {
-      const userData: {id: string, _token: string, _tokenExpirationDate: string} = JSON.parse(data);
+      const userData: {id: string, type: string, _token: string, _tokenExpirationDate: string} = JSON.parse(data);
 
-      const loadedUser = new UserToken(userData.id, userData._token, new Date(userData._tokenExpirationDate));
+      const loadedUser = new UserToken(userData.id, userData.type, userData._token, new Date(userData._tokenExpirationDate));
 
       if (loadedUser.token) {
         this.authService.isLoggedIn = true;

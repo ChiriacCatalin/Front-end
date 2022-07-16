@@ -16,4 +16,10 @@ export class CompanyService {
     const url = `${environment.apiUrl}/api/companies/${id}`;
     return this.http.get<Company>(url);
   }
+
+  createCompany(data: object, uid: string | undefined): Observable<unknown> {
+    const url = `${environment.apiUrl}/api/companies/${uid}`;
+    return this.http.post(url, { ...data });
+  }
+
 }

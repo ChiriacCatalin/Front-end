@@ -1,6 +1,7 @@
 export class UserToken {
     constructor(
         public id: string | undefined,
+        public type: string | undefined,
         private _token: string | undefined,
         private _tokenExpirationDate: Date
     ) { }

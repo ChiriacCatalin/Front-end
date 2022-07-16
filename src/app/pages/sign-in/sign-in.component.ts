@@ -24,7 +24,10 @@ export class SignInComponent {
 
     navigator.pipe(take(1)).subscribe(response => {
       if (!response) {
-        this.router.navigate(['profile', this.authService.userId]);
+        if (this.selection === 'user')
+          this.router.navigate(['profile', this.authService.userId]);
+        else
+          this.router.navigate(['company', this.authService.userId]);
       }
     });
   }

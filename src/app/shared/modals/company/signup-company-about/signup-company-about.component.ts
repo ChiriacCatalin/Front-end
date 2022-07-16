@@ -1,8 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services';
+import { Router } from '@angular/router'; import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+import { switchMap, take } from 'rxjs';
+import { AuthService } from 'src/app/services';
+import { CompanyService } from 'src/app/services/company/company.service';
+
+@UntilDestroy()
 @Component({
   selector: 'app-signup-company-about',
   templateUrl: './signup-company-about.component.html',
@@ -11,7 +15,9 @@ import { AuthService } from 'src/app/services';
 export class SignupCompanyAboutComponent {
 
   formGroup: FormGroup;
-  constructor(private readonly router: Router, private readonly authService: AuthService) {
+  constructor(private readonly router: Router,
+    private readonly authService: AuthService,
+    private readonly companyService: CompanyService) {
     this.formGroup = new FormGroup({
       website: new FormControl(null, [Validators.maxLength(200)]),
       aboutUs: new FormControl(null, [Validators.required, Validators.maxLength(500)]),
@@ -29,6 +35,20 @@ export class SignupCompanyAboutComponent {
 
   onSave() {
     this.storeCompanyData();
+
+    let companyId: string | undefined = '';
+    this.companyService.companyFirebaseUid.pipe(take(1), switchMap(uid => {
+      companyId = uid;
+      return this.companyService.createCompany({ ...this.authService.companyData }, uid);
+    }), untilDestroyed(this)).subscribe(_ => {
+      this.authService.isLoggedIn = true;
+      this.authService.userId = companyId;
+      this.authService.user.subscribe(userToken => {
+        this.authService.userToken = userToken;
+        localStorage.setItem('userData', JSON.stringify(userToken));
+      });
+      this.router.navigate(['company', this.authService.userId]);
+    });
   }
 
   private storeCompanyData() {
@@ -39,6 +59,5 @@ export class SignupCompanyAboutComponent {
     this.authService.companyData!.companyAboutVideo = data.companyAboutVideo;
     this.authService.companyData!.website = data.website;
     this.authService.companyData!.contact = data.contact;
-    console.log(this.authService.companyData);
   }
 }

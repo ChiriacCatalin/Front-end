@@ -60,7 +60,7 @@ export class AuthGuardService implements CanActivate {
     const token = response.idToken;
     const miliseconds = 3600000;// default logged in time
     const expirationDate = new Date(new Date().getTime() + miliseconds);
-    return new UserToken(id, token, expirationDate);
+    return new UserToken(id, 'user', token, expirationDate);
   }
 
 }
