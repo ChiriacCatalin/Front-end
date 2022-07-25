@@ -4,6 +4,19 @@
 <div *ngIf="!isLoading" class="container border">
   <div class="container bg-light py-1 mb-3">
     <div class="card mx-sm-5 mt-sm-5 border" style="max-width: 100%">
+
+      <!-- edit button functionality -->
+    <div *ngIf="authService.userId === companyId">
+      <div class="d-flex justify-content-end me-1 mt-1">
+        <button class="edit_item" data-bs-toggle="modal" data-bs-target="#staticBackdropCompanyMain" mat-mini-fab>
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+      <!-- <app-edit-user-info [mainInfo]="user!.mainInfo"></app-edit-user-info> -->
+      <app-signup-company-main [company]="company"></app-signup-company-main>
+    </div>
+
+
       <div class="row g-0 pb-4">
         <div class="col-lg-6 px-sm-4">
           <div class="col-md-10 px-sm-4">

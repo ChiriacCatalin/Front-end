@@ -14,6 +14,7 @@ import { MaterialModule } from '../material';
 import { SignupUserSkillsComponent } from './modals/signup-user-skills/signup-user-skills.component';
 import { SignupCompanyAboutComponent } from './modals/company/signup-company-about/signup-company-about.component';
 import { SignupCompanyMainComponent } from './modals/company/signup-company-main/signup-company-main.component';
+import { EditCompanyAboutComponent } from './modals/company/edit-company-about/edit-company-about.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { SignupCompanyMainComponent } from './modals/company/signup-company-main
     InputChipsComponent,
     SignupUserSkillsComponent,
     SignupCompanyAboutComponent,
-    SignupCompanyMainComponent
+    SignupCompanyMainComponent,
+    EditCompanyAboutComponent
   ],
   declarations: [
     HeaderComponent,
@@ -45,7 +47,8 @@ import { SignupCompanyMainComponent } from './modals/company/signup-company-main
     InputChipsComponent,
     SignupUserSkillsComponent,
     SignupCompanyAboutComponent,
-    SignupCompanyMainComponent
+    SignupCompanyMainComponent,
+    EditCompanyAboutComponent
   ]
 })
 export class SharedModule { }

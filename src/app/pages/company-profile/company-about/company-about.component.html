@@ -1,12 +1,13 @@
 <div class="">
   <div class="card mb-3 mx-sm-5 mt-sm-3 border" style="max-width: 100%">
     <!-- edit button functionality -->
-    <div>
+    <div *ngIf="authService.userId === companyId">
       <div class="d-flex justify-content-end me-1 mt-1">
-        <button class="edit_item" data-bs-toggle="modal" mat-mini-fab>
+        <button class="edit_item" data-bs-toggle="modal" data-bs-target="#staticBackdropCompanyAboutEdit" mat-mini-fab>
           <mat-icon>edit</mat-icon>
         </button>
       </div>
+      <app-edit-company-about [company]="company"></app-edit-company-about>
     </div>
 
     <div class="">

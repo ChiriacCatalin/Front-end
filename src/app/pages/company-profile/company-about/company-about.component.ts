@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services';
 import { Company } from 'src/app/services/company/types/company.types';
 
 @Component({
@@ -16,6 +17,7 @@ export class CompanyAboutComponent implements OnChanges {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    readonly authService: AuthService,
     private sanitizer: DomSanitizer) {
     this.companyId = this.activatedRoute.snapshot.params['companyId'];
   }

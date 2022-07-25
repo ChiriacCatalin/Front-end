@@ -17,13 +17,7 @@
         <form [formGroup]="formGroup">
           <div class="">
             <label for="name" class="col-form-label">Company name:</label>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              formControlName="name"
-              placeholder="The name of the company you represent:"
-            />
+            <input type="text" class="form-control" id="name" formControlName="name" placeholder="The name of the company you represent:" />
           </div>
           <div class="">
             <label for="salesPitch" class="col-form-label">Sales pitch:</label>
@@ -55,7 +49,7 @@
               placeholder="The location of your headquarters:"
             />
           </div>
-         
+
           <div class="">
             <label for="companyVideo" class="col-form-label">Video:</label>
             <input
@@ -69,18 +63,14 @@
         </form>
       </div>
       <div class="modal-footer">
-        <!-- <div *ngIf="!school && !newElement"> -->
+        <div *ngIf="!company">
           <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onSave()">Continue</button>
-        <!-- </div> -->
-        <!-- <div *ngIf="school">
+        </div>
+        <div *ngIf="company">
           <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onUpdate()" data-bs-dismiss="modal">
             Update
           </button>
-          <button type="submit" class="btn btn-danger ms-1" (click)="onDelete()" data-bs-dismiss="modal">Delete</button>
         </div>
-        <div *ngIf="newElement">
-          <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onAdd()" data-bs-dismiss="modal">Add</button>
-        </div> -->
       </div>
     </div>
   </div>
@@ -93,5 +83,4 @@
   class="btn btn-primary"
   data-bs-toggle="modal"
   data-bs-target="#staticBackdropCompanyAbout"
->
-</button>
+></button>

@@ -1,15 +1,17 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services';
+import { Company } from 'src/app/services/company/types/company.types';
 
 @Component({
   selector: 'app-signup-company-main',
   templateUrl: './signup-company-main.component.html',
   styleUrls: ['./signup-company-main.component.css']
 })
-export class SignupCompanyMainComponent {
+export class SignupCompanyMainComponent implements OnChanges {
   @ViewChild('myModalTriggerCompanyAbout') myModalTrigger!: ElementRef;
+  @Input() company?: Company;
 
   formGroup: FormGroup;
   constructor(private readonly router: Router, private readonly authService: AuthService) {
@@ -22,15 +24,34 @@ export class SignupCompanyMainComponent {
     });
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.company) {
+      let company_copy = { ...this.company };
+      delete company_copy.imageUrl;
+      console.log(company_copy);
+      this.formGroup.setValue({
+        name: company_copy.name,
+        salesPitch: company_copy.salesPitch,
+        industry: company_copy.industry,
+        headquarters: company_copy.headquarters,
+        companyVideo: company_copy.companyVideo ? company_copy.companyVideo : null
+      });
+    }
+  }
+
   onExit() {
-    // if (!this.mainInfo)
-    //   this.router.navigate(['']);
+    if (!this.company)
+      this.router.navigate(['']);
   }
 
   onSave() {
     //
     this.storeCompanyData();
     this.myModalTrigger.nativeElement.click();
+  }
+
+  onUpdate() {
+    //
   }
 
   private storeCompanyData() {
