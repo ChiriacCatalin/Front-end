@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { take, from } from 'rxjs';
 import { AuthService } from 'src/app/services';
 import { CompanyService } from 'src/app/services/company/company.service';
 import { Company } from 'src/app/services/company/types/company.types';
@@ -19,11 +20,11 @@ export class EditCompanyAboutComponent implements OnChanges {
     private readonly companyService: CompanyService) {
     this.formGroup = new FormGroup({
       website: new FormControl(null, [Validators.maxLength(200)]),
-      aboutUs: new FormControl(null, [Validators.required, Validators.maxLength(500)]),
+      aboutUs: new FormControl(null, [Validators.required, Validators.maxLength(10000)]),
       contact: new FormControl(null, [Validators.required, Validators.maxLength(200), Validators.email]),
       companySize: new FormControl('1-10', [Validators.required, Validators.maxLength(8)]),
       industry: new FormControl(null, [Validators.required, Validators.maxLength(200)]),
-      headquarters: new FormControl(null, [Validators.required, Validators.maxLength(100)]),
+      headquarters: new FormControl(null, [Validators.required, Validators.maxLength(100), Validators.minLength(2)]),
       founded: new FormControl(2022, [Validators.required, Validators.maxLength(10), Validators.min(1900), Validators.max(2100)]),
       companyAboutVideo: new FormControl(null, [Validators.maxLength(500)])
     });
@@ -52,6 +53,12 @@ export class EditCompanyAboutComponent implements OnChanges {
   }
 
   onUpdate() {
-    //
+    console.log(this.formGroup.getRawValue());
+    this.companyService.updateCompanyField('about', this.formGroup.getRawValue(), this.authService.userId!)
+      .pipe(take(1)).subscribe(_ => {
+        from(this.router.navigate([''], { skipLocationChange: true })).pipe(take(1)).subscribe(_ => {
+          this.router.navigate(['/company', this.authService.userId]);
+        });
+      });
   }
 }

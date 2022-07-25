@@ -26,7 +26,7 @@ export class CompanyProfileComponent implements OnInit {
     this.isLoading = true;
     this.companyService.getCompany(this.companyId).pipe(untilDestroyed(this)).subscribe(company => {
       this.company = company;
-      console.log(this.company);
+      // console.log(this.company);
       this.isLoading = false;
     });
   }

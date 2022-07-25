@@ -11,7 +11,7 @@ export class SignUpCompanyComponent implements AfterViewInit {
   constructor() { }
 
   ngAfterViewInit(): void {
-    console.log(this.myModalTrigger);
+    // console.log(this.myModalTrigger);
     this.myModalTrigger.nativeElement.click();
   }
 

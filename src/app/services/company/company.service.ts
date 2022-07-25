@@ -22,4 +22,9 @@ export class CompanyService {
     return this.http.post(url, { ...data });
   }
 
+  updateCompanyField(fieldName: string, obj: object, uid: string): Observable<unknown> {
+    const url = `${environment.apiUrl}/api/companies/${uid}`;
+    return this.http.put(url, { fieldName, obj });
+  }
+
 }

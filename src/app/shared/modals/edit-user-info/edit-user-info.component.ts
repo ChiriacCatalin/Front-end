@@ -72,7 +72,7 @@ export class EditUserInfoComponent implements OnChanges {
     const data = this.formGroup.getRawValue();
     this.authService.userData.mainInfo = { ...data };
     this.authService.userData.mainInfo!.imageUrl = null;
-    console.log(this.authService.userData);
+    // console.log(this.authService.userData);
   }
 
 }
