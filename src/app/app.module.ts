@@ -24,6 +24,8 @@ import { CompanyMainInfoComponent } from './pages/company-profile/company-main-i
 import { CompanyAboutComponent } from './pages/company-profile/company-about';
 import { SignInComponent } from './pages/sign-in';
 import { SignUpCompanyComponent } from './pages/sign-up-company/sign-up-company.component';
+import { CompanyJobsListingComponent } from './pages/company-profile/company-jobs-listing/company-jobs-listing.component';
+import { JobContentComponent } from './pages/company-profile/company-jobs-listing/job-content/job-content.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { SignUpCompanyComponent } from './pages/sign-up-company/sign-up-company.
     CompanyProfileComponent,
     CompanyMainInfoComponent,
     CompanyAboutComponent,
+    CompanyJobsListingComponent,
+    JobContentComponent,
     SignInComponent,
     SignUpCompanyComponent
   ],

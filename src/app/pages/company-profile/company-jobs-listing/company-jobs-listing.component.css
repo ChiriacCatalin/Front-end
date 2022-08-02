@@ -1,0 +1,31 @@
+.job-card:not(.collapsed) {
+  color: #0c63e4;
+  background-color: #e7f1ff;
+  box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}
+
+.job-card {
+  padding: 1rem 1.25rem;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.linkk{
+  margin-bottom: -5px;
+}
+
+.standard-size {
+  max-height: 10rem;
+  max-width: 100%;
+}
+
+.edit_item {
+  background-color: rgb(234, 229, 229);
+}
