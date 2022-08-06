@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Job } from 'src/app/services/jobs/types/job.type';
 
 @Component({
   selector: 'app-job-content',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./job-content.component.css']
 })
 export class JobContentComponent {
-
+  @Input() jobId?: number;
+  @Input() job?: Job;
   constructor() { }
 }

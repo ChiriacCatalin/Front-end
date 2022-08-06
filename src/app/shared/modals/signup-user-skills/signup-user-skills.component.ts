@@ -82,7 +82,7 @@ export class SignupUserSkillsComponent implements OnChanges {
   onSave() {
     let userId: string | undefined = '';
     this.storeUserData();
-    console.log(this.authService.userData);
+    // console.log(this.authService.userData);
 
     this.userService.userFirebaseUid.pipe((take(1)), switchMap(uid => {
       userId = uid;

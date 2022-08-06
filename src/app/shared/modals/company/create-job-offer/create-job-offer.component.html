@@ -1,0 +1,117 @@
+<div
+  class="modal fade"
+  id="staticBackdropJobOffer"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Job information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onExit()"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formGroup">
+          <div class="">
+            <label for="jobTitle" class="col-form-label">Job title:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="jobTitle"
+              formControlName="jobTitle"
+              placeholder="The name of the job title you wish to post:"
+            />
+          </div>
+
+          <div class="">
+            <label for="jobType" class="col-form-label">Job type:</label>
+            <select class="form-select" id="jobType" formControlName="jobType">
+              <option *ngFor="let type of jobTypes; let i = index" value="{{ type }}">{{ type }}</option>
+            </select>
+          </div>
+
+          <div class="">
+            <label for="experienceLevel" class="col-form-label">Experience Level:</label>
+            <select class="form-select" id="experienceLevel" formControlName="experienceLevel">
+              <option *ngFor="let level of experienceLevels; let i = index" value="{{ level }}">{{ level }}</option>
+            </select>
+          </div>
+
+          <div class="">
+            <label for="onSiteRemote" class="col-form-label">On-Site/Remote:</label>
+            <select class="form-select" id="onSiteRemote" formControlName="onSiteRemote">
+              <option *ngFor="let location of siteRemote; let i = index" value="{{ location }}">{{ location }}</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <label for="country" class="col-form-label">Country:</label>
+              <input
+                class="form-control"
+                list="datalistOptions"
+                id="country"
+                placeholder="The job's country location"
+                formControlName="country"
+              />
+              <datalist id="datalistOptions">
+                <option *ngFor="let countr of country; let i = index" value="{{ countr }}">{{ countr }}</option>
+              </datalist>
+            </div>
+            <div class="col-sm-6">
+              <label for="city" class="col-form-label">City:</label>
+              <input class="form-control" list="datalistOptions2" id="city" placeholder="The job's city location" formControlName="city" />
+              <datalist id="datalistOptions2">
+                <option *ngFor="let town of city; let i = index" value="{{ town }}">{{ town }}</option>
+              </datalist>
+            </div>
+          </div>
+          <div class="">
+            <label for="workDescription" class="col-form-label">Job description:</label>
+            <textarea
+              class="form-control"
+              id="jobDescription"
+              formControlName="jobDescription"
+              placeholder="Enter the job descriptions and other useful details:"
+              rows="10"
+            ></textarea>
+          </div>
+
+          <div class="">
+            <label for="jobVideo" class="col-form-label">Video:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="jobVideo"
+              placeholder="The youtube video url with the job description:"
+              formControlName="jobVideo"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <div *ngIf="!company">
+          <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onSave()" data-bs-dismiss="modal">
+            Create job offer
+          </button>
+        </div>
+        <div *ngIf="company">
+          <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onUpdate()" data-bs-dismiss="modal">
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 
+<button
+  #myModalTriggerCompanyAbout
+  hidden
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#staticBackdropCompanyAbout"
+></button> -->

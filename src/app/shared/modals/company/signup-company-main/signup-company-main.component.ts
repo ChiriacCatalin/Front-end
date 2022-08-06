@@ -22,7 +22,7 @@ export class SignupCompanyMainComponent implements OnChanges {
     this.formGroup = new FormGroup({
       name: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(200)]),
       salesPitch: new FormControl(null, [Validators.required, Validators.maxLength(500)]),
-      industry: new FormControl(null, [Validators.required, Validators.maxLength(200)]),
+      industry: new FormControl(null, [Validators.required, Validators.maxLength(300)]),
       headquarters: new FormControl(null, [Validators.required, Validators.maxLength(100), Validators.min(2)]),
       companyVideo: new FormControl(null, [Validators.maxLength(500)])
     });
