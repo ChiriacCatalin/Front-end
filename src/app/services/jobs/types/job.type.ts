@@ -1,4 +1,5 @@
 export type Job = {
+    id: string;
     jobTitle: string;
     jobType: string;
     experienceLevel: string;
@@ -8,6 +9,7 @@ export type Job = {
     companyName: string;
     imgUrl?: string;
     companyId: string;
+    companySize: string;
     date: Date;
     jobDescription: string;
     jobVideo?: string;

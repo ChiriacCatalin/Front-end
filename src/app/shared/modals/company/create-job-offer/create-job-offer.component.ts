@@ -51,7 +51,8 @@ export class CreateJobOfferComponent {
       ... this.formGroup.getRawValue(),
       companyName: this.authService.companyData?.name,
       imgUrl: this.authService.companyData?.imageUrl,
-      companyId: this.authService.userId
+      companyId: this.authService.userId,
+      companySize: this.authService.companyData?.companySize
     };
     this.jobService.createJob(formValues, this.authService.userId!).pipe(take(1)).subscribe(_ => {
       from(this.router.navigate([''], { skipLocationChange: true })).pipe(take(1)).subscribe(_ => {

@@ -7,14 +7,28 @@
   *ngIf="job"
 >
   <div class="accordion-body">
+    <p class="h4 mb-0 text-look boldish">{{ job.jobTitle }}</p>
+    <p class="h5 mb-0 text-look">{{ job.companyName }} • {{ job.companySize }} employees</p>
+    <p class="h5 mb-0 text-look">{{ job.city }}, {{ job.country }} • ({{ job.onSiteRemote }})</p>
+    <p class="h5 mb-0 text-look">{{ job.jobType }} • {{ job.experienceLevel }}</p>
+    <p class="h5 mb-0 text-look"><span class="boldish"> Posted:</span> {{ job.date }}</p>
     <pre>
-      <p class="h4 mb-0"><strong>{{ job.jobTitle }}</strong></p>
-      <p class="h5 mb-0">{{ job.companyName }}</p>
-      <p class="h5 mb-0">{{ job.city }}, {{ job.country }} • ({{ job.onSiteRemote }})</p>
-      <p class="h5 mb-0">{{ job.jobType }} • {{ job.experienceLevel }}</p>
-      <p class="h5 mb-0"><strong> Posted:</strong> {{ job.date }}</p>
-
-      <p class="h5"><strong>Job description:</strong></p>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 py-lg-3 d-flex align-items-center" *ngIf="job?.jobVideo">
+          <div class="ratio ratio-16x9">
+            <iframe
+              width="1520"
+              height="553"
+              [src]="sanitize(job.jobVideo)"
+              class="card-img-top"
+              title="YouTube video player"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <p class="h5 lower-space boldish" ><strong>Job description:</strong></p>
       <pre class="h6">{{ job.jobDescription }}
       </pre>
     </pre>

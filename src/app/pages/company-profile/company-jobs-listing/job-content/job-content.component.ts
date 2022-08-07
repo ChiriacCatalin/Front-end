@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Job } from 'src/app/services/jobs/types/job.type';
 
 @Component({
@@ -9,5 +10,10 @@ import { Job } from 'src/app/services/jobs/types/job.type';
 export class JobContentComponent {
   @Input() jobId?: number;
   @Input() job?: Job;
-  constructor() { }
+
+  constructor(private sanitizer: DomSanitizer) { }
+
+  sanitize(url: string | undefined) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url!);
+  }
 }
