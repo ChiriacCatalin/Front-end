@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { take, from } from 'rxjs';
@@ -7,15 +7,16 @@ import { CompanyService } from 'src/app/services/company/company.service';
 import { Company } from 'src/app/services/company/types/company.types';
 import { ModalsDataService } from 'src/app/services/data/modals-data.service';
 import { JobService } from 'src/app/services/jobs/job.service';
-import { Job } from 'src/app/services/user/types/jobs.types';
+import { Job } from 'src/app/services/jobs/types/job.type';
 
 @Component({
   selector: 'app-create-job-offer',
   templateUrl: './create-job-offer.component.html',
   styleUrls: ['./create-job-offer.component.css']
 })
-export class CreateJobOfferComponent {
-  @Input() company?: Company;
+export class CreateJobOfferComponent  implements OnChanges{
+  @Input() job?: Job;
+  @Input() uniqueId?: string;
 
   jobTypes?: string[];
   experienceLevels?: string[];
@@ -46,6 +47,23 @@ export class CreateJobOfferComponent {
     this.country = modalsData.country;
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.job);
+    if (this.job) {
+      let job_copy = { ...this.job };
+      this.formGroup.setValue({
+        jobTitle: job_copy.jobTitle,
+        jobType: job_copy.jobType,
+        experienceLevel: job_copy.experienceLevel,
+        onSiteRemote: job_copy.onSiteRemote,
+        city: job_copy.city,
+        country: job_copy.country,
+        jobDescription: job_copy.jobDescription ? job_copy.jobDescription : null,
+        jobVideo: job_copy.jobVideo ? job_copy.jobVideo : null
+      });
+    }
+  }
+
   onSave() {
     const formValues = {
       ... this.formGroup.getRawValue(),
@@ -67,6 +85,10 @@ export class CreateJobOfferComponent {
   }
 
   onExit() {
+
+  }
+  
+  onDelete(){
 
   }
 

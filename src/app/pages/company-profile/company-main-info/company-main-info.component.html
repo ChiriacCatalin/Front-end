@@ -21,7 +21,7 @@
         <div class="col-lg-6 px-sm-4">
           <div class="col-md-10 px-sm-4">
             <img src="{{ company?.imageUrl }}" class="img-fluid rounded-circle standard-max-size mt-2" alt="company logo" />
-            <div class="">
+            <div *ngIf="authService.userId === companyId">
               <button mat-mini-fab class="back-color position" (click)="uploadButtonClicked()">
                 <mat-icon>add_a_photo</mat-icon>
               </button>

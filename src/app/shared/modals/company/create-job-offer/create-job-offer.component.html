@@ -1,6 +1,6 @@
 <div
   class="modal fade"
-  id="staticBackdropJobOffer"
+  id="{{ uniqueId ? uniqueId : 'staticBackdropJobOffer' }}"
   data-bs-backdrop="static"
   data-bs-keyboard="false"
   tabindex="-1"
@@ -92,15 +92,16 @@
         </form>
       </div>
       <div class="modal-footer">
-        <div *ngIf="!company">
+        <div *ngIf="!job">
           <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onSave()" data-bs-dismiss="modal">
             Create job offer
           </button>
         </div>
-        <div *ngIf="company">
+        <div *ngIf="job">
           <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onUpdate()" data-bs-dismiss="modal">
             Update
           </button>
+          <button type="submit" class="btn btn-danger ms-1" (click)="onDelete()" data-bs-dismiss="modal">Delete</button>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@
 }
 
 .job-card {
-  padding: 1rem 1.25rem;
+  padding: 0.5rem 1.25rem;
 }
 
 a:hover {
@@ -24,6 +24,10 @@ a {
 .standard-size {
   max-height: 10rem;
   max-width: 100%;
+}
+
+.margin-float{
+  margin-bottom: -2rem;
 }
 
 .edit_item {

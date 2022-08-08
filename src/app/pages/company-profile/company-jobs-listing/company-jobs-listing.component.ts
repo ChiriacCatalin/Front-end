@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs';
+import { AuthService } from 'src/app/services';
 import { JobService } from 'src/app/services/jobs/job.service';
 import { Job } from 'src/app/services/jobs/types/job.type';
 
@@ -15,7 +16,8 @@ export class CompanyJobsListingComponent implements OnInit {
   jobs?: Job[];
   isLoading = false;
 
-  constructor(private router: Router, private readonly route: ActivatedRoute, private jobService: JobService) {
+  constructor(private router: Router, private readonly route: ActivatedRoute,
+    private jobService: JobService, readonly authService: AuthService) {
     this.companyId = this.route.snapshot.params['companyId'];
   }
 
