@@ -21,15 +21,17 @@ export class SignInComponent {
     else { /// if it's  company
       navigator = from(this.router.navigate(['sign-Up-company'], { state: { comesFromSignUp: true } }));
     }
-
     navigator.pipe(take(1)).subscribe(response => {
-      if (!response) {
-        if (this.selection === 'user')
-          this.router.navigate(['profile', this.authService.userId]);
-        else
-          this.router.navigate(['company', this.authService.userId]);
+      if (this.authService.userId) {
+        if (!response) {
+          if (this.selection === 'user')
+            this.router.navigate(['profile', this.authService.userId]);
+          else
+            this.router.navigate(['company', this.authService.userId]);
+        }
       }
     });
   }
+
 
 }

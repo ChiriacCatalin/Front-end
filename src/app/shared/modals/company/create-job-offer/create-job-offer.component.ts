@@ -14,7 +14,7 @@ import { Job } from 'src/app/services/jobs/types/job.type';
   templateUrl: './create-job-offer.component.html',
   styleUrls: ['./create-job-offer.component.css']
 })
-export class CreateJobOfferComponent  implements OnChanges{
+export class CreateJobOfferComponent implements OnChanges {
   @Input() job?: Job;
   @Input() uniqueId?: string;
 
@@ -48,7 +48,6 @@ export class CreateJobOfferComponent  implements OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.job);
     if (this.job) {
       let job_copy = { ...this.job };
       this.formGroup.setValue({
@@ -65,14 +64,8 @@ export class CreateJobOfferComponent  implements OnChanges{
   }
 
   onSave() {
-    const formValues = {
-      ... this.formGroup.getRawValue(),
-      companyName: this.authService.companyData?.name,
-      imgUrl: this.authService.companyData?.imageUrl,
-      companyId: this.authService.userId,
-      companySize: this.authService.companyData?.companySize
-    };
-    this.jobService.createJob(formValues, this.authService.userId!).pipe(take(1)).subscribe(_ => {
+    const jobData = this.getJobData();
+    this.jobService.createJob(jobData, this.authService.userId!).pipe(take(1)).subscribe(_ => {
       from(this.router.navigate([''], { skipLocationChange: true })).pipe(take(1)).subscribe(_ => {
         this.router.navigate(['/company', this.authService.userId]);
       });
@@ -81,15 +74,34 @@ export class CreateJobOfferComponent  implements OnChanges{
   }
 
   onUpdate() {
+    const jobData = this.getJobData();
+    this.jobService.updateJob(this.job!.companyId, this.job!.id, jobData)
+      .pipe(take(1)).subscribe(_ => {
+        from(this.router.navigate([''], { skipLocationChange: true })).pipe(take(1)).subscribe(_ => {
+          this.router.navigate(['/company', this.authService.userId]);
+        });
+      });
 
   }
 
-  onExit() {
-
+  onDelete() {
+    this.jobService.deleteJob(this.job!.companyId, this.job!.id).pipe(take(1)).subscribe(_ => {
+      from(this.router.navigate([''], { skipLocationChange: true })).pipe(take(1)).subscribe(_ => {
+        this.router.navigate(['/company', this.authService.userId]);
+      });
+    });
   }
-  
-  onDelete(){
 
+
+  getJobData() {
+    const formValues = {
+      ... this.formGroup.getRawValue(),
+      companyName: this.authService.companyData?.name,
+      imgUrl: this.authService.companyData?.imageUrl,
+      companyId: this.authService.userId,
+      companySize: this.authService.companyData?.companySize
+    };
+    return formValues;
   }
 
 }

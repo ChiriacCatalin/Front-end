@@ -24,4 +24,14 @@ export class JobService {
     }
     return this.http.get<Job[]>(url, { params });
   }
+
+  deleteJob(companyId: string, jobId: string): Observable<unknown> {
+    const url = `${environment.apiUrl}/api/job/${companyId}/${jobId}`;
+    return this.http.delete(url);
+  }
+
+  updateJob(companyId: string, jobId: string, obj: object): Observable<unknown> {
+    const url = `${environment.apiUrl}/api/job/${companyId}/${jobId}`;
+    return this.http.put(url, { ...obj });
+  }
 }

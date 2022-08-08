@@ -39,6 +39,10 @@ const routes: Routes = [
   {
     path: 'company/:companyId',
     component: CompanyProfileComponent
+  },
+  {
+    path: '**',
+    component: SignInComponent
   }
 ];
 

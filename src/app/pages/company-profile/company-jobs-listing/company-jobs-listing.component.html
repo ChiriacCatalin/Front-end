@@ -14,7 +14,7 @@
   <div class="accordion mx-sm-5 mt-sm-3 mb-sm-3" id="jobsList">
     <div class="accordion-item my-3 border-4" *ngFor="let job of jobs; let i = index">
       <app-create-job-offer [job]="job" [uniqueId]="'jobEdit' + i"></app-create-job-offer>
-      
+
       <h2 class="accordion-header" id="headingOne">
         <div
           class="job-card ps-1 pe-0 px-sm-2"
@@ -36,7 +36,7 @@
             </div>
             <div class="col-9 col-lg-10 ps-0 ps-sm-3">
               <h5 class="linkk">{{ job.jobTitle }}</h5>
-              <a class="h6" data-bs-toggle="collapse" data-bs-target="" (click)="onCompanyClicked()">{{ job.companyName }}</a>
+              <a class="h6" data-bs-toggle="collapse" data-bs-target="" (click)="onCompanyClicked(i)">{{ job.companyName }}</a>
               <h6>{{ job.jobType }} • {{ job.experienceLevel }}</h6>
               <h6>{{ job.city }}, {{ job.country }} • ({{ job.onSiteRemote }})</h6>
               <h6>Posted: {{ job.date }}</h6>

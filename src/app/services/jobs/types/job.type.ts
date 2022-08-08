@@ -10,7 +10,7 @@ export type Job = {
     imgUrl?: string;
     companyId: string;
     companySize: string;
-    date: Date;
+    date: string;
     jobDescription: string;
     jobVideo?: string;
 }
