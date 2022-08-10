@@ -8,19 +8,29 @@
         <div class="row g-0">
           <div class="px-sm-0 d-flex justify-content-center">
             <img
-              src="https://picsum.photos/id/237/200/200"
+              src="{{user? user.mainInfo!.imageUrl : company!.imageUrl}}"
               class="img-fluid rounded-circle standard-max-size mt-3 mt-md-4"
               alt="profile pic"
             />
           </div>
 
           <div class="card-body px-sm-2 px-lg-3">
-            <h5 class="card-title border d-flex justify-content-center">Chiriac Catalin</h5>
-            <p class="card-text mt-4"><strong>Studied at: </strong>Universitatea Alexandru Ioan Cuza</p>
-            <p class="card-text"><strong>Works at: </strong>Freeloading team</p>
-            <p class="card-text"><strong>Contact: </strong>catalin.chiriac00@gmail.com</p>
-            <p class="card-text"><strong>Address: </strong>Iasi, Romania</p>
-
+            <div *ngIf="authService.userToken?.type === 'user'">
+              <h5 class="card-title d-flex justify-content-center linkk" (click)="onUserClicked()">{{ user!.mainInfo?.name }}</h5>
+              <p class="card-text mt-4 px-lg-2"><strong>Studied at: </strong>{{ user!.mainInfo?.studiedAt }}</p>
+              <p class="card-text px-lg-2" *ngIf="user!.mainInfo?.worksAt"><strong>Works at: </strong>{{ user!.mainInfo?.worksAt }}</p>
+              <p class="card-text px-lg-2"><strong>Contact: </strong>{{ user!.mainInfo?.email }}</p>
+              <p class="card-text px-lg-2"><strong>Address: </strong>{{ user!.mainInfo?.city }}, {{ user!.mainInfo?.country }}</p>
+            </div>
+            <div *ngIf="authService.userToken?.type === 'company'">
+              <h5 class="card-title d-flex justify-content-center linkk" (click)="onUserClicked()">{{ company?.name }}</h5>
+              <p class="card-text mt-4 px-lg-2"><strong>Industry: </strong>{{ company?.industry }}</p>
+              <p class="card-text px-lg-2" *ngIf="company?.website">
+                <strong>Website: </strong> <a href="{{company?.website}}" target="_blank">{{ company?.website }}</a>
+              </p>
+              <p class="card-text px-lg-2"><strong>Contact: </strong>{{ company?.contact }}</p>
+              <p class="card-text px-lg-2"><strong>Headquarters: </strong>{{ company?.headquarters }}</p>
+            </div>
             <!-- <h5 class="card-title">{{ user!.mainInfo!.name }}</h5>
               <p class="card-text mt-4"><b>Address: </b>{{ address }}</p>
               <p class="card-text"><b>Birthdate: </b>{{ user!.mainInfo!.birthdate }}</p>

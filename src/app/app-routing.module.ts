@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardCompanyService } from './guards/auth-guard-company.service';
 import { AuthGuardService } from './guards/auth-guard.service';
+import { OtherPagesGuardService } from './guards/other-pages-guard.service';
 import { CompanyProfileComponent, LoginComponent } from './pages';
 import { HomeComponent } from './pages/home/home.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
@@ -12,7 +13,8 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [OtherPagesGuardService]
   },
   {
     path: 'profile/:userId',
