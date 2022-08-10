@@ -1,0 +1,35 @@
+<div class="d-none d-sm-block">
+  <div class="d-flex justify-content-center" *ngIf="isLoading">
+    <app-spinner></app-spinner>
+  </div>
+  <div *ngIf="!isLoading">
+    <div class="ms-lg-5">
+      <div class="card ms-sm-2 ms-md-3 shadow" style="max-width: 100%">
+        <div class="row g-0">
+          <div class="px-sm-0 d-flex justify-content-center">
+            <img
+              src="https://picsum.photos/id/237/200/200"
+              class="img-fluid rounded-circle standard-max-size mt-3 mt-md-4"
+              alt="profile pic"
+            />
+          </div>
+
+          <div class="card-body px-sm-2 px-lg-3">
+            <h5 class="card-title border d-flex justify-content-center">Chiriac Catalin</h5>
+            <p class="card-text mt-4"><strong>Studied at: </strong>Universitatea Alexandru Ioan Cuza</p>
+            <p class="card-text"><strong>Works at: </strong>Freeloading team</p>
+            <p class="card-text"><strong>Contact: </strong>catalin.chiriac00@gmail.com</p>
+            <p class="card-text"><strong>Address: </strong>Iasi, Romania</p>
+
+            <!-- <h5 class="card-title">{{ user!.mainInfo!.name }}</h5>
+              <p class="card-text mt-4"><b>Address: </b>{{ address }}</p>
+              <p class="card-text"><b>Birthdate: </b>{{ user!.mainInfo!.birthdate }}</p>
+              <p class="card-text"><b>Contact: </b> {{ user!.mainInfo!.email }}</p>
+              <p class="card-text"><b>Studied at: </b> {{ user!.mainInfo!.studiedAt }}</p>
+              <p *ngIf="user?.mainInfo?.worksAt" class="card-text"><b>Works at: </b> {{ user!.mainInfo!.worksAt }}</p> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

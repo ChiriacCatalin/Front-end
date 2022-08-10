@@ -25,6 +25,15 @@ export class JobService {
     return this.http.get<Job[]>(url, { params });
   }
 
+  getAllJobs(lastDate?: number): Observable<Job[]> {
+    const url = `${environment.apiUrl}/api/jobs`;
+    let params;
+    if (lastDate) {
+      params = new HttpParams().set('lastDate', lastDate);
+    }
+    return this.http.get<Job[]>(url, { params });
+  }
+
   deleteJob(companyId: string, jobId: string): Observable<unknown> {
     const url = `${environment.apiUrl}/api/job/${companyId}/${jobId}`;
     return this.http.delete(url);
@@ -33,5 +42,23 @@ export class JobService {
   updateJob(companyId: string, jobId: string, obj: object): Observable<unknown> {
     const url = `${environment.apiUrl}/api/job/${companyId}/${jobId}`;
     return this.http.put(url, { ...obj });
+  }
+
+
+  getDate(postingTime: string) {
+    let value = Math.floor((new Date().getTime() - +postingTime) / 60000);
+    const timeName = ['minutes ago', 'hours ago', 'days ago', 'weeks ago', 'months ago', 'years ago'];
+    const timeNameSingular = ['minute ago', 'hour ago', 'day ago', 'week ago', 'month ago', 'year ago'];
+    const timeDivValues = [60, 24, 7, 4, 12];
+    let i;
+    for (i = 0; i < 4; ++i) {
+      if (value > timeDivValues[i])
+        value /= timeDivValues[i];
+      else break;
+    }
+    value = Math.floor(value);
+    if (i === 4 && value < 12)
+      i = 3;
+    return `${Math.floor(value)} ${value === 1 ? timeNameSingular[i] : timeName[i]}`;
   }
 }

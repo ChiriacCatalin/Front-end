@@ -18,7 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
-import { CompanyProfileComponent, HomeComponent, JobsComponent, LoginComponent } from './pages';
+import { CompanyProfileComponent, HomeComponent, JobsComponent, LoginComponent, ProfileMiniDataComponent } from './pages';
 import { HttpClientModule } from '@angular/common/http';
 import { CompanyMainInfoComponent } from './pages/company-profile/company-main-info';
 import { CompanyAboutComponent } from './pages/company-profile/company-about';
@@ -48,7 +48,8 @@ import { JobContentComponent } from './pages/company-profile/company-jobs-listin
     CompanyJobsListingComponent,
     JobContentComponent,
     SignInComponent,
-    SignUpCompanyComponent
+    SignUpCompanyComponent,
+    ProfileMiniDataComponent
   ],
   imports: [
     BrowserModule,

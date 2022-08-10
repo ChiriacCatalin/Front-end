@@ -1,1 +1,42 @@
-<p>home works!</p>
+<div class="d-flex justify-content-center" *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
+<div *ngIf="!isLoading">
+  <div class="row">
+    <div class="col-sm-3 pe-sm-0 pe-lg-2">
+        <app-profile-mini-data></app-profile-mini-data>
+        <h1 class="d-sm-none d-flex justify-content-center mt-3 t-color">New jobs</h1>
+    </div>
+    <div class="col-12 col-sm-9">
+      <div class="accordion me-sm-2 mx-md-3 me-lg-5 ms-lg-3 mt-sm-3 mb-sm-3" id="jobsList">
+        <div class="accordion-item my-3 border-4" *ngFor="let job of jobs; let i = index">
+          <app-create-job-offer [job]="job" [uniqueId]="'jobEdit' + i"></app-create-job-offer>
+
+          <h2 class="accordion-header" id="headingOne">
+            <div
+              class="job-card ps-1 pe-0 px-sm-2"
+              data-bs-toggle="collapse"
+              attr.data-bs-target="#job{{ i }}"
+              aria-expanded="true"
+              attr.aria-controls="job{{ i }}"
+            >
+              <div class="row">
+                <div class="col-3 col-lg-2">
+                  <img src="{{ job.imgUrl }}" class="standard-size mt-2 me-lg-4" />
+                </div>
+                <div class="col-9 col-lg-10 ps-0 ps-sm-3">
+                  <h5 class="linkk">{{ job.jobTitle }}</h5>
+                  <a class="h6" data-bs-toggle="collapse" data-bs-target="" (click)="onCompanyClicked(i)">{{ job.companyName }}</a>
+                  <h6>{{ job.jobType }} • {{ job.experienceLevel }}</h6>
+                  <h6>{{ job.city }}, {{ job.country }} • ({{ job.onSiteRemote }})</h6>
+                  <h6>Posted: {{ job.date }}</h6>
+                </div>
+              </div>
+            </div>
+          </h2>
+          <app-job-content [job]="job" [jobId]="i"></app-job-content>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
