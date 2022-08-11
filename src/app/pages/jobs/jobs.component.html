@@ -1,1 +1,62 @@
-<p>jobs works!</p>
+<div class="d-flex justify-content-center" *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
+<div *ngIf="!isLoading && selectedJob">
+  <div class="row pt-2 px-0 mx-0 d-flex justify-content-center">
+    <div class="col-sm-5 ps-0 pe-0">
+      <div class="card">
+        <div class="card-body" id="jobsList">
+          <div *ngFor="let job of jobs; let i = index">
+            <div class="row" (click)="selectJobOffer(i)" id="'jobEdit' + i" data-bs-toggle="collapse" attr.data-bs-target="#job{{ i }}">
+              <div class="col-3 col-lg-2 px-1 px-lg-2">
+                <img src="{{ job.imgUrl }}" class="standard-size mt-2 me-lg-4" />
+              </div>
+              <div class="col-9 col-lg-10 ps-0 ps-sm-3 pe-0">
+                <h5 class="linkk">{{ job.jobTitle }}</h5>
+                <a class="h6" data-bs-toggle="collapse" data-bs-target="" (click)="onCompanyClicked(i)">{{ job.companyName }}</a>
+                <h6>{{ job.jobType }} • {{ job.experienceLevel }}</h6>
+                <h6>{{ job.city }}, {{ job.country }} • ({{ job.onSiteRemote }})</h6>
+                <h6>Posted: {{ job.date }}</h6>
+              </div>
+              <hr>
+              <div class="d-sm-none" *ngIf="mobile">
+                <app-job-content [job]="job" [jobId]="i"></app-job-content>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 px-0 d-none d-sm-block">
+      <div class="card">
+        <div class="accordion-body">
+          <p class="h4 mb-0 text-look boldish">{{ selectedJob!.jobTitle }}</p>
+          <p class="h5 mb-0 text-look">{{ selectedJob!.companyName }} • {{ selectedJob!.companySize }} employees</p>
+          <p class="h5 mb-0 text-look">{{ selectedJob!.city }}, {{ selectedJob!.country }} • ({{ selectedJob!.onSiteRemote }})</p>
+          <p class="h5 mb-0 text-look">{{ selectedJob!.jobType }} • {{ selectedJob!.experienceLevel }}</p>
+          <p class="h5 mb-0 text-look"><span class="boldish"> Posted:</span> {{ selectedJob!.date }}</p>
+          <pre>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 py-lg-3 d-flex align-items-center" *ngIf="selectedJob!?.jobVideo">
+          <div class="ratio ratio-16x9">
+            <iframe
+              width="1520"
+              height="553"
+              [src]="sanitize(selectedJob!.jobVideo)"
+              class="card-img-top"
+              title="YouTube video player"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <p class="h5 lower-space boldish" ><strong>Job description:</strong></p>
+      <pre class="h6">{{ selectedJob!.jobDescription }}
+      </pre>
+    </pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

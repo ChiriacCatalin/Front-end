@@ -1,0 +1,46 @@
+
+  a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  
+  .standard-size {
+    max-height: 10rem;
+    max-width: 100%;
+  }
+  
+  .card {
+    height: 89vh;
+    overflow-y: scroll;
+    overflow-x: wrap;
+  }
+
+
+  pre {
+    white-space: pre-wrap; /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+    overflow: hidden;
+  }
+  
+  .text-look {
+    line-height: 2;
+    font-weight: normal;
+  }
+  
+  .boldish {
+    font-weight: 500;
+  }
+  
+  .lower-space {
+    margin-bottom: -1rem;
+  }
+  

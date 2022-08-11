@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { take } from 'rxjs';
 import { AuthService } from 'src/app/services';
 import { User } from 'src/app/services/user/types/user.types';
 import { UserService } from 'src/app/services/user/user.service';
