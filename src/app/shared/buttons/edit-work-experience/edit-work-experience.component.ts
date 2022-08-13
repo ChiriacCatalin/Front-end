@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-work-experience',
@@ -7,15 +7,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./edit-work-experience.component.css']
 })
 export class EditWorkExperienceComponent {
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
 
   constructor() {
-    this.formGroup = new FormGroup({
-      workPosition: new FormControl(null, [Validators.required]),
-      workStartDate: new FormControl(null, Validators.required),
-      workEndDate: new FormControl(null, []),
-      workDescription: new FormControl(null, []),
-      workVideo: new FormControl(null, []),
+    this.formGroup = new UntypedFormGroup({
+      workPosition: new UntypedFormControl(null, [Validators.required]),
+      workStartDate: new UntypedFormControl(null, Validators.required),
+      workEndDate: new UntypedFormControl(null, []),
+      workDescription: new UntypedFormControl(null, []),
+      workVideo: new UntypedFormControl(null, []),
     });
   }
 

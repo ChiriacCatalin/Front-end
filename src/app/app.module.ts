@@ -26,6 +26,7 @@ import { SignInComponent } from './pages/sign-in';
 import { SignUpCompanyComponent } from './pages/sign-up-company/sign-up-company.component';
 import { CompanyJobsListingComponent } from './pages/company-profile/company-jobs-listing/company-jobs-listing.component';
 import { JobContentComponent } from './pages/company-profile/company-jobs-listing/job-content/job-content.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { JobContentComponent } from './pages/company-profile/company-jobs-listin
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

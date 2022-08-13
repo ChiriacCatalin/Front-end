@@ -32,7 +32,7 @@ export class AuthService {
 
   signOut() {
     this.afAuth.signOut();
-    this.router.navigate(['']);
+    this.router.navigate(['sign-In']);
   }
 
   private initializeUser(): User {

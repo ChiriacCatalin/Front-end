@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { from, take } from 'rxjs';
 import { AuthService } from 'src/app/services';
@@ -15,16 +15,16 @@ export class SignupCompanyMainComponent implements OnChanges {
   @ViewChild('myModalTriggerCompanyAbout') myModalTrigger!: ElementRef;
   @Input() company?: Company;
 
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
   constructor(private readonly router: Router,
     private readonly authService: AuthService,
     private companyService: CompanyService) {
-    this.formGroup = new FormGroup({
-      name: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(200)]),
-      salesPitch: new FormControl(null, [Validators.required, Validators.maxLength(500)]),
-      industry: new FormControl(null, [Validators.required, Validators.maxLength(300)]),
-      headquarters: new FormControl(null, [Validators.required, Validators.maxLength(100), Validators.min(2)]),
-      companyVideo: new FormControl(null, [Validators.maxLength(500)])
+    this.formGroup = new UntypedFormGroup({
+      name: new UntypedFormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(200)]),
+      salesPitch: new UntypedFormControl(null, [Validators.required, Validators.maxLength(500)]),
+      industry: new UntypedFormControl(null, [Validators.required, Validators.maxLength(300)]),
+      headquarters: new UntypedFormControl(null, [Validators.required, Validators.maxLength(100), Validators.min(2)]),
+      companyVideo: new UntypedFormControl(null, [Validators.maxLength(500)])
     });
   }
 

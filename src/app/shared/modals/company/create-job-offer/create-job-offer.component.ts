@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { take, from } from 'rxjs';
 import { AuthService } from 'src/app/services';
@@ -24,21 +24,21 @@ export class CreateJobOfferComponent implements OnChanges {
   city?: string[];
   country?: string[];
 
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
   constructor(private readonly router: Router,
     private readonly authService: AuthService,
     private companyService: CompanyService,
     private modalsData: ModalsDataService,
     private jobService: JobService) {
-    this.formGroup = new FormGroup({
-      jobTitle: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(200)]),
-      jobType: new FormControl('Full-time', [Validators.required, Validators.maxLength(500), Validators.min(2)]),
-      experienceLevel: new FormControl('Entry level', [Validators.required, Validators.maxLength(200), Validators.min(2)]),
-      onSiteRemote: new FormControl('On-Site', [Validators.required, Validators.maxLength(100), Validators.min(2)]),
-      city: new FormControl(null, [Validators.required, Validators.maxLength(100), Validators.min(2)]),
-      country: new FormControl(null, [Validators.required, Validators.maxLength(100), Validators.min(2)]),
-      jobDescription: new FormControl(null, [Validators.required, Validators.maxLength(20000), Validators.min(2)]),
-      jobVideo: new FormControl(null, [Validators.maxLength(500)])
+    this.formGroup = new UntypedFormGroup({
+      jobTitle: new UntypedFormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(200)]),
+      jobType: new UntypedFormControl('Full-time', [Validators.required, Validators.maxLength(500), Validators.min(2)]),
+      experienceLevel: new UntypedFormControl('Entry level', [Validators.required, Validators.maxLength(200), Validators.min(2)]),
+      onSiteRemote: new UntypedFormControl('On-Site', [Validators.required, Validators.maxLength(100), Validators.min(2)]),
+      city: new UntypedFormControl(null, [Validators.required, Validators.maxLength(100), Validators.min(2)]),
+      country: new UntypedFormControl(null, [Validators.required, Validators.maxLength(100), Validators.min(2)]),
+      jobDescription: new UntypedFormControl(null, [Validators.required, Validators.maxLength(20000), Validators.min(2)]),
+      jobVideo: new UntypedFormControl(null, [Validators.maxLength(500)])
     });
     this.jobTypes = modalsData.jobTypes;
     this.experienceLevels = modalsData.experienceLevels;

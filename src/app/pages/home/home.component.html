@@ -2,10 +2,10 @@
   <app-spinner></app-spinner>
 </div>
 <div *ngIf="!isLoading">
-  <div class="row">
+  <div class="row mx-0">
     <div class="col-sm-3 pe-sm-0 pe-lg-2">
-        <app-profile-mini-data></app-profile-mini-data>
-        <h1 class="d-sm-none d-flex justify-content-center mt-3 t-color">New jobs</h1>
+      <app-profile-mini-data></app-profile-mini-data>
+      <h1 class="d-sm-none d-flex justify-content-center mt-3 t-color">New jobs</h1>
     </div>
     <div class="col-12 col-sm-9">
       <div class="accordion me-sm-2 mx-md-3 me-lg-5 ms-lg-3 mt-sm-3 mb-sm-3" id="jobsList">
@@ -39,4 +39,10 @@
       </div>
     </div>
   </div>
+</div>
+
+<div infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1000" (scrolled)="onScroll()"></div>
+
+<div class="d-flex justify-content-center my-4" style="height: 3rem;" *ngIf="!isFinished">
+  <app-spinner></app-spinner>
 </div>

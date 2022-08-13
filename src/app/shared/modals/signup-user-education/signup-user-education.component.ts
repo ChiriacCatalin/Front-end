@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { from, take } from 'rxjs';
 import { AuthService } from 'src/app/services';
@@ -17,18 +17,18 @@ export class SignupUserEducationComponent implements OnChanges {
   @Input() uniqueId?: string;
   @Input() newElement: boolean = false;
 
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
   index?: number;
 
 
   constructor(private authService: AuthService, private router: Router, private userService: UserService) {
-    this.formGroup = new FormGroup({
-      school: new FormControl(null, [Validators.required]),
-      schoolDegree: new FormControl(null, Validators.required),
-      schoolStartDate: new FormControl(null, Validators.required),
-      schoolEndDate: new FormControl(null, []),
-      schoolDescription: new FormControl(null, []),
-      schoolVideo: new FormControl(null, []),
+    this.formGroup = new UntypedFormGroup({
+      school: new UntypedFormControl(null, [Validators.required]),
+      schoolDegree: new UntypedFormControl(null, Validators.required),
+      schoolStartDate: new UntypedFormControl(null, Validators.required),
+      schoolEndDate: new UntypedFormControl(null, []),
+      schoolDescription: new UntypedFormControl(null, []),
+      schoolVideo: new UntypedFormControl(null, []),
     });
   }
   ngOnChanges(changes: SimpleChanges): void {

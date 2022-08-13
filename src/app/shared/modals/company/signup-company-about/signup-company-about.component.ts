@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router'; import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { switchMap, take } from 'rxjs';
@@ -14,17 +14,17 @@ import { CompanyService } from 'src/app/services/company/company.service';
 })
 export class SignupCompanyAboutComponent {
 
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
   constructor(private readonly router: Router,
     private readonly authService: AuthService,
     private readonly companyService: CompanyService) {
-    this.formGroup = new FormGroup({
-      website: new FormControl(null, [Validators.maxLength(200)]),
-      aboutUs: new FormControl(null, [Validators.required, Validators.maxLength(10000)]),
-      contact: new FormControl(null, [Validators.required, Validators.maxLength(200), Validators.email]),
-      companySize: new FormControl('1-10', [Validators.maxLength(8)]),
-      founded: new FormControl(2022, [Validators.maxLength(10), Validators.min(1900), Validators.max(2100)]),
-      companyAboutVideo: new FormControl(null, [Validators.maxLength(500)])
+    this.formGroup = new UntypedFormGroup({
+      website: new UntypedFormControl(null, [Validators.maxLength(200)]),
+      aboutUs: new UntypedFormControl(null, [Validators.required, Validators.maxLength(10000)]),
+      contact: new UntypedFormControl(null, [Validators.required, Validators.maxLength(200), Validators.email]),
+      companySize: new UntypedFormControl('1-10', [Validators.maxLength(8)]),
+      founded: new UntypedFormControl(2022, [Validators.maxLength(10), Validators.min(1900), Validators.max(2100)]),
+      companyAboutVideo: new UntypedFormControl(null, [Validators.maxLength(500)])
     });
   }
 

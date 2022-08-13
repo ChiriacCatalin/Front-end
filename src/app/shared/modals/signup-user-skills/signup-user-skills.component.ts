@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { disableDebugTools } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -23,15 +23,15 @@ export class SignupUserSkillsComponent implements OnChanges {
   toolsAndLanguagesOptions: string[] = ['C++', 'Javascript', 'Java', 'Nodejs', 'Angular', 'Java', 'React'];
   personalSkills?: Chips;
   personalSkillsOptions: string[] = ['Teamwork', 'Time management', 'Good Leader', 'Patient'];
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
   fieldsOfExpertise_copy?: string[];
   toolsAndLanguages_copy?: string[];
   personalSkills_copy?: string[];
 
   constructor(private readonly userService: UserService,
     private readonly router: Router, private authService: AuthService) {
-    this.formGroup = new FormGroup({
-      skillsVideo: new FormControl(null, [Validators.maxLength(200)])
+    this.formGroup = new UntypedFormGroup({
+      skillsVideo: new UntypedFormControl(null, [Validators.maxLength(200)])
     });
     if (!this.toEdit) {
       this.fieldsOfExpertise = {

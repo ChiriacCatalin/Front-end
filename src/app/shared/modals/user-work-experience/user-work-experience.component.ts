@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { from, switchMap, take } from 'rxjs';
@@ -19,17 +19,17 @@ export class UserWorkExperienceComponent implements OnChanges {
   @Input() job?: Job;
   @Input() uniqueId?: string;
   @Input() newElement: boolean = false;
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
   index?: number;
 
   constructor(private authService: AuthService, private router: Router, private userService: UserService) {
-    this.formGroup = new FormGroup({
-      company: new FormControl(this.job ? this.job?.company : null, [Validators.required, Validators.minLength(2)]),
-      workPosition: new FormControl(null, [Validators.required]),
-      workStartDate: new FormControl(null, Validators.required),
-      workEndDate: new FormControl(null, []),
-      workDescription: new FormControl(null, []),
-      workVideo: new FormControl(null, []),
+    this.formGroup = new UntypedFormGroup({
+      company: new UntypedFormControl(this.job ? this.job?.company : null, [Validators.required, Validators.minLength(2)]),
+      workPosition: new UntypedFormControl(null, [Validators.required]),
+      workStartDate: new UntypedFormControl(null, Validators.required),
+      workEndDate: new UntypedFormControl(null, []),
+      workDescription: new UntypedFormControl(null, []),
+      workVideo: new UntypedFormControl(null, []),
     });
   }
 

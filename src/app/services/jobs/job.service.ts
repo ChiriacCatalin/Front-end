@@ -25,7 +25,7 @@ export class JobService {
     return this.http.get<Job[]>(url, { params });
   }
 
-  getAllJobs(lastDate?: number): Observable<Job[]> {
+  getAllJobs(lastDate?: string): Observable<Job[]> {
     const url = `${environment.apiUrl}/api/jobs`;
     let params;
     if (lastDate) {

@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { from, switchMap, take } from 'rxjs';
@@ -19,16 +19,16 @@ export class SignupUserPersonalProjectsComponent implements OnChanges {
   @Input() project?: Project;
   @Input() uniqueId?: string;
   @Input() newElement: boolean = false;
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
   index?: number;
 
   constructor(private readonly userService: UserService, private readonly router: Router, private readonly authService: AuthService) {
-    this.formGroup = new FormGroup({
-      projectName: new FormControl(null, [Validators.required]),
-      projectStartDate: new FormControl(null, Validators.required),
-      projectEndDate: new FormControl(null, []),
-      projectDescription: new FormControl(null, []),
-      projectVideo: new FormControl(null, []),
+    this.formGroup = new UntypedFormGroup({
+      projectName: new UntypedFormControl(null, [Validators.required]),
+      projectStartDate: new UntypedFormControl(null, Validators.required),
+      projectEndDate: new UntypedFormControl(null, []),
+      projectDescription: new UntypedFormControl(null, []),
+      projectVideo: new UntypedFormControl(null, []),
     });
   }
 

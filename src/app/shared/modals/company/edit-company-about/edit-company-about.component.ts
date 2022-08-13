@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { take, from } from 'rxjs';
 import { AuthService } from 'src/app/services';
@@ -14,19 +14,19 @@ import { Company } from 'src/app/services/company/types/company.types';
 export class EditCompanyAboutComponent implements OnChanges {
   @Input() company?: Company;
 
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
   constructor(private readonly router: Router,
     private readonly authService: AuthService,
     private readonly companyService: CompanyService) {
-    this.formGroup = new FormGroup({
-      website: new FormControl(null, [Validators.maxLength(200)]),
-      aboutUs: new FormControl(null, [Validators.required, Validators.maxLength(10000)]),
-      contact: new FormControl(null, [Validators.required, Validators.maxLength(200), Validators.email]),
-      companySize: new FormControl('1-10', [Validators.required, Validators.maxLength(8)]),
-      industry: new FormControl(null, [Validators.required, Validators.maxLength(200)]),
-      headquarters: new FormControl(null, [Validators.required, Validators.maxLength(100), Validators.minLength(2)]),
-      founded: new FormControl(2022, [Validators.required, Validators.maxLength(10), Validators.min(1900), Validators.max(2100)]),
-      companyAboutVideo: new FormControl(null, [Validators.maxLength(500)])
+    this.formGroup = new UntypedFormGroup({
+      website: new UntypedFormControl(null, [Validators.maxLength(200)]),
+      aboutUs: new UntypedFormControl(null, [Validators.required, Validators.maxLength(10000)]),
+      contact: new UntypedFormControl(null, [Validators.required, Validators.maxLength(200), Validators.email]),
+      companySize: new UntypedFormControl('1-10', [Validators.required, Validators.maxLength(8)]),
+      industry: new UntypedFormControl(null, [Validators.required, Validators.maxLength(200)]),
+      headquarters: new UntypedFormControl(null, [Validators.required, Validators.maxLength(100), Validators.minLength(2)]),
+      founded: new UntypedFormControl(2022, [Validators.required, Validators.maxLength(10), Validators.min(1900), Validators.max(2100)]),
+      companyAboutVideo: new UntypedFormControl(null, [Validators.maxLength(500)])
     });
   }
 

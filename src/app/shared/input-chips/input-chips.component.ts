@@ -1,6 +1,6 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
@@ -16,7 +16,7 @@ export class InputChipsComponent implements OnChanges {
   @ViewChild('itemInput') itemInput!: ElementRef<HTMLInputElement>;
   @Input() fields?: Chips;
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  itemCtrl = new FormControl(); // the input area
+  itemCtrl = new UntypedFormControl(); // the input area
   filteredItems: Observable<string[]>;
   label: string = '';
   itemsEntered?: string[] = [];

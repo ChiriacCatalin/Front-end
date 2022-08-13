@@ -15,6 +15,9 @@ import { Job } from 'src/app/services/jobs/types/job.type';
 export class HomeComponent implements OnInit {
   isLoading: boolean = false;
   jobs?: Job[];
+  isFinished: boolean = true;
+  lastKey?: string;
+  noJobs: boolean = false;
 
   constructor(private authService: AuthService, private jobService: JobService, private router: Router) { }
 
@@ -22,6 +25,8 @@ export class HomeComponent implements OnInit {
     this.isLoading = true;
     this.jobService.getAllJobs().pipe(untilDestroyed(this)).subscribe(jobs => {
       this.jobs = jobs;
+      if (jobs.length > 0)
+        this.lastKey = this.jobs[this.jobs.length - 1].date;
       this.jobs.forEach(job => {
         job.date = this.jobService.getDate(job.date);
       });
@@ -35,4 +40,27 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  onScroll() {
+    if (!this.noJobs) {
+      this.isFinished = false;
+      this.jobService.getAllJobs(this.lastKey).pipe(untilDestroyed(this)).subscribe(jobs => {
+        if (jobs.length > 0) {
+          if (this.lastKey === jobs[jobs.length - 1].date) {
+            this.noJobs = true;
+          }
+          this.lastKey = jobs[jobs.length - 1].date;
+        }
+        if (!this.noJobs) {
+
+          jobs.forEach(job => {
+            job.date = this.jobService.getDate(job.date);
+            if (jobs.length === 0)
+              this.isFinished = true;
+          });
+          this.jobs = this.jobs?.concat(jobs);
+        }
+        this.isFinished = true;
+      });
+    }
+  }
 }
