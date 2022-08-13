@@ -38,7 +38,7 @@
           <a class="nav-link" routerLink="" *ngIf="authService.isLoggedIn">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="jobs">Jobs</a>
+          <a class="nav-link" routerLink="jobs" *ngIf="authService.isLoggedIn">Jobs</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" *ngIf="authService.isLoggedIn" (click)="onProfileClick()">Profile</a>

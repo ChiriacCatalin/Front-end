@@ -25,7 +25,7 @@
       </div>
       <div class="card-body">
         <p class="mt-lg-4 px-3"><strong>About Us: </strong> {{ company?.aboutUs }}</p>
-        <p class="mt-lg-4 px-3">
+        <p class="mt-lg-4 px-3" *ngIf="company?.website">
           <strong>Website: </strong> <a href="{{ company?.website }}" target="_blank">{{ company?.website }}</a>
         </p>
         <p class="px-3"><strong>Contact: </strong> {{ company?.contact }}</p>

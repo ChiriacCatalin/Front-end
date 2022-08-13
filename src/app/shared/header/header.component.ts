@@ -18,7 +18,7 @@ export class HeaderComponent {
     from(this.router.navigate(['jobs'], { skipLocationChange: true })).subscribe(_ => {
       localStorage.removeItem('userData');
       this.authService.userId = undefined;
-      this.router.navigate(['']);
+      this.router.navigate(['sign-In']);
     });
   }
 

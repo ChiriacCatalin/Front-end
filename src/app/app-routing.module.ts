@@ -18,11 +18,13 @@ const routes: Routes = [
   },
   {
     path: 'profile/:userId',
-    component: UserProfileComponent
+    component: UserProfileComponent,
+    canActivate: [OtherPagesGuardService]
   },
   {
     path: 'jobs',
-    component: JobsComponent
+    component: JobsComponent,
+    canActivate: [OtherPagesGuardService]
   },
   {
     path: 'sign-Up-company',
@@ -40,7 +42,8 @@ const routes: Routes = [
   },
   {
     path: 'company/:companyId',
-    component: CompanyProfileComponent
+    component: CompanyProfileComponent,
+    canActivate: [OtherPagesGuardService]
   },
   {
     path: '**',

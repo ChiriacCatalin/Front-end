@@ -9,7 +9,7 @@
           <div *ngFor="let job of jobs; let i = index">
             <div class="row" (click)="selectJobOffer(i)" id="'jobEdit' + i" data-bs-toggle="collapse" attr.data-bs-target="#job{{ i }}">
               <div class="col-3 col-lg-2 px-1 px-lg-2">
-                <img src="{{ job.imgUrl }}" class="standard-size mt-2 me-lg-4" />
+                <img src="{{ job.imgUrl }}" class="standard-size my-2 me-lg-4" />
               </div>
               <div class="col-9 col-lg-10 ps-0 ps-sm-3 pe-0">
                 <h5 class="linkk">{{ job.jobTitle }}</h5>

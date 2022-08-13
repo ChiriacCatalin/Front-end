@@ -11,6 +11,7 @@
   <app-create-job-offer></app-create-job-offer>
   <!-- </div> -->
 
+  <div *ngIf="jobs && jobs!.length > 0">
   <div class="accordion mx-sm-5 mt-sm-3 mb-sm-3" id="jobsList">
     <div class="accordion-item my-3 border-4" *ngFor="let job of jobs; let i = index">
       <app-create-job-offer [job]="job" [uniqueId]="'jobEdit' + i"></app-create-job-offer>
@@ -32,7 +33,7 @@
             </div>
 
             <div class="col-3 col-lg-2">
-              <img src="{{ job.imgUrl }}" class="standard-size mt-2 me-lg-4" />
+              <img src="{{ job.imgUrl }}" class="standard-size my-2 me-lg-4" />
             </div>
             <div class="col-9 col-lg-10 ps-0 ps-sm-3">
               <h5 class="linkk">{{ job.jobTitle }}</h5>
@@ -47,4 +48,9 @@
       <app-job-content [job]="job" [jobId]="i"></app-job-content>
     </div>
   </div>
+</div>
+<div *ngIf="jobs && jobs!.length === 0" class="mx-sm-5 my-sm-5 d-flex justify-content-center">
+  <h2>The company doesn't have any active job offers posted...
+  </h2>
+</div>
 </div>

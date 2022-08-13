@@ -20,7 +20,7 @@ export class SignupCompanyAboutComponent {
     private readonly companyService: CompanyService) {
     this.formGroup = new FormGroup({
       website: new FormControl(null, [Validators.maxLength(200)]),
-      aboutUs: new FormControl(null, [Validators.required, Validators.maxLength(500)]),
+      aboutUs: new FormControl(null, [Validators.required, Validators.maxLength(10000)]),
       contact: new FormControl(null, [Validators.required, Validators.maxLength(200), Validators.email]),
       companySize: new FormControl('1-10', [Validators.maxLength(8)]),
       founded: new FormControl(2022, [Validators.maxLength(10), Validators.min(1900), Validators.max(2100)]),
