@@ -4,7 +4,7 @@
 <div *ngIf="!isLoading && selectedJob">
   <div class="row pt-2 px-0 mx-0 d-flex justify-content-center">
     <div class="col-sm-5 ps-0 pe-0">
-      <div class="card">
+      <div class="card" infinite-scroll [infiniteScrollContainer]="'.card'" [fromRoot]="true" [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1000" (scrolled)="onScroll()">
         <div class="card-body" id="jobsList">
           <div *ngFor="let job of jobs; let i = index">
             <div class="row" (click)="selectJobOffer(i)" id="'jobEdit' + i" data-bs-toggle="collapse" attr.data-bs-target="#job{{ i }}">
@@ -24,6 +24,13 @@
               </div>
             </div>
           </div>
+          <div class="d-flex justify-content-center my-4 end-page-notification" *ngIf="!isFinished">
+            <app-spinner></app-spinner>
+          </div>
+          <div *ngIf="noJobs">
+            <h4 class="d-flex justify-content-center my-4 end-page-notification">There are no more jobs found....</h4>
+          </div>
+          
         </div>
       </div>
     </div>

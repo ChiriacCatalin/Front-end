@@ -12,45 +12,51 @@
   <!-- </div> -->
 
   <div *ngIf="jobs && jobs!.length > 0">
-  <div class="accordion mx-sm-5 mt-sm-3 mb-sm-3" id="jobsList">
-    <div class="accordion-item my-3 border-4" *ngFor="let job of jobs; let i = index">
-      <app-create-job-offer [job]="job" [uniqueId]="'jobEdit' + i"></app-create-job-offer>
+    <div class="accordion mx-sm-5 mt-sm-3 mb-sm-3" id="jobsList">
+      <div class="accordion-item my-3 border-4" *ngFor="let job of jobs; let i = index">
+        <app-create-job-offer [job]="job" [uniqueId]="'jobEdit' + i"></app-create-job-offer>
 
-      <h2 class="accordion-header" id="headingOne">
-        <div
-          class="job-card ps-1 pe-0 px-sm-2"
-          data-bs-toggle="collapse"
-          attr.data-bs-target="#job{{ i }}"
-          aria-expanded="true"
-          attr.aria-controls="job{{ i }}"
-        >
-          <div class="row">
+        <h2 class="accordion-header" id="headingOne">
+          <div
+            class="job-card ps-1 pe-0 px-sm-2"
+            data-bs-toggle="collapse"
+            attr.data-bs-target="#job{{ i }}"
+            aria-expanded="true"
+            attr.aria-controls="job{{ i }}"
+          >
+            <div class="row">
+              <div class="d-flex justify-content-end margin-float" *ngIf="authService.userId === companyId">
+                <button class="edit_item" data-bs-toggle="modal" [attr.data-bs-target]="'#jobEdit' + i" mat-mini-fab>
+                  <mat-icon data-bs-toggle="collapse" data-bs-target="">edit</mat-icon>
+                </button>
+              </div>
 
-            <div class="d-flex justify-content-end margin-float" *ngIf="authService.userId === companyId">
-              <button class="edit_item" data-bs-toggle="modal" [attr.data-bs-target]="'#jobEdit' + i" mat-mini-fab>
-                <mat-icon data-bs-toggle="collapse" data-bs-target="">edit</mat-icon>
-              </button>
-            </div>
-
-            <div class="col-3 col-lg-2">
-              <img src="{{ job.imgUrl }}" class="standard-size my-2 me-lg-4" />
-            </div>
-            <div class="col-9 col-lg-10 ps-0 ps-sm-3">
-              <h5 class="linkk">{{ job.jobTitle }}</h5>
-              <a class="h6" data-bs-toggle="collapse" data-bs-target="" (click)="onCompanyClicked(i)">{{ job.companyName }}</a>
-              <h6>{{ job.jobType }} • {{ job.experienceLevel }}</h6>
-              <h6>{{ job.city }}, {{ job.country }} • ({{ job.onSiteRemote }})</h6>
-              <h6>Posted: {{ job.date }}</h6>
+              <div class="col-3 col-lg-2">
+                <img src="{{ job.imgUrl }}" class="standard-size my-2 me-lg-4" />
+              </div>
+              <div class="col-9 col-lg-10 ps-0 ps-sm-3">
+                <h5 class="linkk">{{ job.jobTitle }}</h5>
+                <a class="h6" data-bs-toggle="collapse" data-bs-target="" (click)="onCompanyClicked(i)">{{ job.companyName }}</a>
+                <h6>{{ job.jobType }} • {{ job.experienceLevel }}</h6>
+                <h6>{{ job.city }}, {{ job.country }} • ({{ job.onSiteRemote }})</h6>
+                <h6>Posted: {{ job.date }}</h6>
+              </div>
             </div>
           </div>
-        </div>
-      </h2>
-      <app-job-content [job]="job" [jobId]="i"></app-job-content>
+        </h2>
+        <app-job-content [job]="job" [jobId]="i"></app-job-content>
+      </div>
+      <div infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1000" (scrolled)="onScroll()"></div>
+
+      <div class="d-flex justify-content-center my-4 end-page-notification" *ngIf="!isFinished">
+        <app-spinner></app-spinner>
+      </div>
+      <div *ngIf="noJobs">
+        <h2 class="d-flex justify-content-center my-4 end-page-notification">There are no more jobs found....</h2>
+      </div>
     </div>
   </div>
-</div>
-<div *ngIf="jobs && jobs!.length === 0" class="mx-sm-5 my-sm-5 d-flex justify-content-center">
-  <h2>The company doesn't have any active job offers posted...
-  </h2>
-</div>
+  <div *ngIf="jobs && jobs!.length === 0" class="mx-sm-5 my-sm-5 d-flex justify-content-center">
+    <h2>The company doesn't have any active job offers posted...</h2>
+  </div>
 </div>

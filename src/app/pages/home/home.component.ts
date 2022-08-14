@@ -45,13 +45,14 @@ export class HomeComponent implements OnInit {
       this.isFinished = false;
       this.jobService.getAllJobs(this.lastKey).pipe(untilDestroyed(this)).subscribe(jobs => {
         if (jobs.length > 0) {
-          if (this.lastKey === jobs[jobs.length - 1].date) {
-            this.noJobs = true;
-          }
+          // if (this.lastKey === jobs[jobs.length - 1].date) {
+          //   this.noJobs = true;
+          // }
           this.lastKey = jobs[jobs.length - 1].date;
         }
+        if (jobs.length === 0)
+          this.noJobs = true;
         if (!this.noJobs) {
-
           jobs.forEach(job => {
             job.date = this.jobService.getDate(job.date);
             if (jobs.length === 0)

@@ -1,41 +1,45 @@
 .job-card:not(.collapsed) {
-    color: #0c63e4;
-    background-color: #e7f1ff;
-    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
-  }
-  
-  .job-card {
-    padding: 0.5rem 1.25rem;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-  
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .linkk{
-    margin-bottom: -5px;
-  }
-  
-  .standard-size {
-    max-height: 10rem;
-    max-width: 100%;
-  }
-  
-  .margin-float{
-    margin-bottom: -2rem;
-  }
-  
-  .edit_item {
-    background-color: rgb(234, 229, 229);
-  }
+  color: #0c63e4;
+  background-color: #e7f1ff;
+  box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}
 
-  .t-color {
-    color: #6a6767;
-    text-shadow: 2px 2px #a19d9d;
-  }
+.job-card {
+  padding: 0.5rem 1.25rem;
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.linkk {
+  margin-bottom: -5px;
+}
+
+.standard-size {
+  max-height: 10rem;
+  max-width: 100%;
+}
+
+.margin-float {
+  margin-bottom: -2rem;
+}
+
+.edit_item {
+  background-color: rgb(234, 229, 229);
+}
+
+.t-color {
+  color: #6a6767;
+  text-shadow: 2px 2px #a19d9d;
+}
+
+.end-page-notification {
+  height: 3rem;
+}
