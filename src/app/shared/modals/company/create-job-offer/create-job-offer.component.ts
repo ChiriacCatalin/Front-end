@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { take, from } from 'rxjs';
 import { AuthService } from 'src/app/services';
@@ -35,8 +35,9 @@ export class CreateJobOfferComponent implements OnChanges {
       jobType: new UntypedFormControl('Full-time', [Validators.required, Validators.maxLength(500), Validators.min(2)]),
       experienceLevel: new UntypedFormControl('Entry level', [Validators.required, Validators.maxLength(200), Validators.min(2)]),
       onSiteRemote: new UntypedFormControl('On-Site', [Validators.required, Validators.maxLength(100), Validators.min(2)]),
-      city: new UntypedFormControl(null, [Validators.required, Validators.maxLength(100), Validators.min(2)]),
-      country: new UntypedFormControl(null, [Validators.required, Validators.maxLength(100), Validators.min(2)]),
+      city: new UntypedFormControl(null, [Validators.required, Validators.maxLength(150), Validators.min(2)]),
+      country: new UntypedFormControl(null, [Validators.required, Validators.maxLength(150),
+      Validators.min(2), this.existingCountry.bind(this)]),
       jobDescription: new UntypedFormControl(null, [Validators.required, Validators.maxLength(20000), Validators.min(2)]),
       jobVideo: new UntypedFormControl(null, [Validators.maxLength(500)])
     });
@@ -102,6 +103,13 @@ export class CreateJobOfferComponent implements OnChanges {
       companySize: this.authService.companyData?.companySize
     };
     return formValues;
+  }
+
+  existingCountry(control: FormControl): { [s: string]: boolean } | null {
+    if (!(this.country?.indexOf(control.value) !== -1)) {
+      return { 'notValid': true };
+    }
+    return null;
   }
 
 }
