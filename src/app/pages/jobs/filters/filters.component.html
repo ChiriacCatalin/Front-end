@@ -1,68 +1,89 @@
-<nav class="navbar bg-light border-top">
-  <form class="container-fluid" [formGroup]="filterFormGroup">
-    <button class="btn btn-sm rounded-pill no-contour p-0 cursor-inactive" type="button">
-      <select class="btn btn-sm btn-outline-secondary rounded-pill btn-colors btn-shadows form-control" id="date" formControlName="date">
-        <option value="null" selected disabled hidden>Date Posted</option>
-        <option value="2592000000">Past Month</option>
-        <option value="604800000">Past Week</option>
-        <option value="86400000">Past 24 hours</option>
-      </select>
-    </button>
+<nav class="navbar navbar-expand-md bg-light border-top">
+  <button
+    class="navbar-toggler btn btn-sm btn-outline-secondary borders rounded-pill btn-colors btn-shadows mb-1 ms-sm-4"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#filtersSupportedContent"
+    aria-controls="filtersSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    Filters
+  </button>
 
-    <button class="btn btn-sm rounded-pill no-contour p-0 cursor-inactive" type="button">
-      <select
-        class="btn btn-sm btn-outline-secondary rounded-pill btn-colors btn-shadows form-control"
-        id="experienceLevel"
-        formControlName="experienceLevel"
-      >
-        <option value="null" selected disabled hidden>Experience Level</option>
-        <option *ngFor="let level of experienceLevels" value="{{ level }}">{{ level }}</option>
-      </select>
-    </button>
+  <div class="collapse navbar-collapse" id="filtersSupportedContent">
+    <form class="container-fluid d-md-flex justify-content-center" [formGroup]="filterFormGroup">
+      <button class="btn btn-sm rounded-pill no-contour p-0 cursor-inactive me-1 me-sm-3 ms-sm-2 ms-md-0" type="button">
+        <select class="btn btn-sm btn-outline-secondary rounded-pill btn-colors btn-shadows form-control" id="date" formControlName="date">
+          <option value="null" selected disabled hidden>Date Posted</option>
+          <option value="2592000000">Past Month</option>
+          <option value="604800000">Past Week</option>
+          <option value="86400000">Past 24 hours</option>
+        </select>
+      </button>
 
-    <button class="btn btn-sm rounded-pill no-contour p-0 cursor-inactive" type="button">
-      <select
-        class="btn btn-sm btn-outline-secondary rounded-pill btn-colors btn-shadows form-control"
-        id="jobType"
-        formControlName="jobType"
-      >
-        <option value="null" selected disabled hidden>Job type</option>
-        <option *ngFor="let type of jobTypes" value="{{ type }}">{{ type }}</option>
-      </select>
-    </button>
+      <button class="btn btn-sm rounded-pill no-contour p-0 cursor-inactive me-1 me-sm-3" type="button">
+        <select
+          class="btn btn-sm btn-outline-secondary rounded-pill btn-colors btn-shadows form-control"
+          id="experienceLevel"
+          formControlName="experienceLevel"
+        >
+          <option value="null" selected disabled hidden>Experience Level</option>
+          <option *ngFor="let level of experienceLevels" value="{{ level }}">{{ level }}</option>
+        </select>
+      </button>
 
-    <button class="btn btn-sm rounded-pill no-contour p-0 cursor-inactive" type="button">
-      <select
-        class="btn btn-sm btn-outline-secondary rounded-pill btn-colors btn-shadows form-control"
-        id="onSiteRemote"
-        formControlName="onSiteRemote"
-      >
-        <option value="null" selected disabled hidden>On-site/ Remote</option>
-        <option *ngFor="let location of siteRemote" value="{{ location }}">{{ location }}</option>
-      </select>
-    </button>
+      <button class="btn btn-sm rounded-pill no-contour p-0 cursor-inactive me-1 me-sm-3" type="button">
+        <select
+          class="btn btn-sm btn-outline-secondary rounded-pill btn-colors btn-shadows form-control"
+          id="jobType"
+          formControlName="jobType"
+        >
+          <option value="null" selected disabled hidden>Job type</option>
+          <option *ngFor="let type of jobTypes" value="{{ type }}">{{ type }}</option>
+        </select>
+      </button>
 
-    <button class="btn btn-sm rounded-pill no-contour p-0 cursor-inactive" type="button">
-      <input class="form-control btn-sm btn-shadows" list="datalistOptions" id="country" placeholder="Country:" formControlName="country" />
-      <datalist id="datalistOptions">
-        <option *ngFor="let countr of country; let i = index" value="{{ countr }}">{{ countr }}</option>
-      </datalist>
-    </button>
+      <button class="btn btn-sm rounded-pill no-contour p-0 cursor-inactive me-1 me-sm-3" type="button">
+        <select
+          class="btn btn-sm btn-outline-secondary rounded-pill btn-colors btn-shadows form-control"
+          id="onSiteRemote"
+          formControlName="onSiteRemote"
+        >
+          <option value="null" selected disabled hidden>On-site/ Remote</option>
+          <option *ngFor="let location of siteRemote" value="{{ location }}">{{ location }}</option>
+        </select>
+      </button>
 
-    <button class="btn btn-sm rounded-pill no-contour p-0 cursor-inactive" type="button">
-      <input class="form-control btn-sm btn-shadows" list="datalistOptions2" id="city" placeholder="City:" formControlName="city" />
-      <datalist id="datalistOptions2">
-        <option *ngFor="let town of city; let i = index" value="{{ town }}">{{ town }}</option>
-      </datalist>
-    </button>
+      <button class="btn btn-sm rounded-pill no-contour p-0 cursor-inactive me-1 me-sm-3" type="button">
+        <input
+          class="form-control btn-sm btn-shadows ms-sm-2 ms-md-0"
+          list="datalistOptions"
+          id="country"
+          placeholder="Country:"
+          formControlName="country"
+        />
+        <datalist id="datalistOptions">
+          <option *ngFor="let countr of country; let i = index" value="{{ countr }}">{{ countr }}</option>
+        </datalist>
+      </button>
 
-    <button
-      type="button"
-      class="btn btn-sm rounded-pill btn-outline-secondary"
-      [disabled]="!filterFormGroup.valid"
-      (click)="onApplyFilters()"
-    >
-      Apply Filters
-    </button>
-  </form>
+      <button class="btn btn-sm rounded-pill no-contour p-0 cursor-inactive me-1 me-sm-3" type="button">
+        <input
+          class="form-control btn-sm btn-shadows ms-sm-2 ms-md-0"
+          list="datalistOptions2"
+          id="city"
+          placeholder="City:"
+          formControlName="city"
+        />
+        <datalist id="datalistOptions2">
+          <option *ngFor="let town of city; let i = index" value="{{ town }}">{{ town }}</option>
+        </datalist>
+      </button>
+
+      <button type="button" class="btn btn-sm btn-success rounded-pill ms-3" [disabled]="!filterFormGroup.valid" (click)="onApplyFilters()">
+        Apply Filters
+      </button>
+    </form>
+  </div>
 </nav>

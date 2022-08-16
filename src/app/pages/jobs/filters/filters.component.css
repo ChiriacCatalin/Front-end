@@ -1,31 +1,39 @@
-.btn-colors:hover{
-    background-color: rgb(185, 182, 182);
-    box-shadow: 0.2rem 0.2rem 0.3rem 0.1rem rgb(129, 129, 129); 
+.btn-colors:hover {
+  background-color: rgb(185, 182, 182);
+  box-shadow: 0.2rem 0.2rem 0.3rem 0.1rem rgb(129, 129, 129);
 }
 
-.btn-shadows:hover{
-    box-shadow: 0.2rem 0.2rem 0.3rem 0.1rem rgb(129, 129, 129); 
+nav {
+    box-shadow: 0.2rem 0.2rem 0.3rem 0.0rem rgb(129, 129, 129);
 }
 
-.btn:focus{
-    outline: none;
-    box-shadow: none;
+.btn-shadows:hover {
+  box-shadow: 0.2rem 0.2rem 0.3rem 0.1rem rgb(129, 129, 129);
 }
 
-option{
-    color: #6c757d;
-    background-color: white;
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+option {
+  color: #6c757d;
+  background-color: white;
 }
 
 .cursor-inactive {
-    cursor: default;
+  cursor: default;
 }
 
 input.placeholder {
-    text-align: center;
+  text-align: center;
 }
 
 input.ng-invalid.ng-touched,
 textarea.ng-invalid.ng-touched {
   border: 1px solid red;
+}
+
+.navbar-toggler {
+  border-color: #6c757d;
 }
