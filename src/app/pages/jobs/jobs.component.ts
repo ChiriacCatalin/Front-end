@@ -5,6 +5,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { from, take } from 'rxjs';
 import { AuthService } from 'src/app/services';
 import { JobService } from 'src/app/services/jobs/job.service';
+import { filterOptions } from 'src/app/services/jobs/types/filter-options.type';
 import { Job } from 'src/app/services/jobs/types/job.type';
 
 @UntilDestroy()
@@ -22,22 +23,13 @@ export class JobsComponent implements OnInit, DoCheck {
   lastKey?: string;
   noJobs: boolean = false;
 
+  filters?: filterOptions;
+
   constructor(private authService: AuthService, private jobService: JobService,
     private router: Router, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.isLoading = true;
-    this.jobService.getAllJobs().pipe(untilDestroyed(this)).subscribe(jobs => {
-      this.jobs = jobs;
-      if (jobs.length > 0)
-        this.lastKey = this.jobs[this.jobs.length - 1].date;
-      this.jobs.forEach(job => {
-        job.date = this.jobService.getDate(job.date);
-      });
-      if (this.jobs.length > 0)
-        this.selectedJob = this.jobs[0];
-      this.isLoading = false;
-    });
+    this.getJobs();
   }
 
   ngDoCheck(): void {
@@ -45,6 +37,13 @@ export class JobsComponent implements OnInit, DoCheck {
       this.mobile = true;
     else
       this.mobile = false;
+  }
+
+  applyFilter($event: filterOptions) {
+    this.filters = $event;
+    this.jobs = [];
+    this.selectedJob = undefined;
+    this.getJobs(this.filters);
   }
 
   selectJobOffer(index: number) {
@@ -60,7 +59,7 @@ export class JobsComponent implements OnInit, DoCheck {
   onScroll() {
     if (!this.noJobs) {
       this.isFinished = false;
-      this.jobService.getAllJobs(this.lastKey).pipe(untilDestroyed(this)).subscribe(jobs => {
+      this.jobService.getAllJobs(this.lastKey, this.filters).pipe(untilDestroyed(this)).subscribe(jobs => {
         if (jobs.length > 0) {
           // if (this.lastKey === jobs[jobs.length - 1].date) {
           //   this.noJobs = true;
@@ -80,6 +79,21 @@ export class JobsComponent implements OnInit, DoCheck {
         this.isFinished = true;
       });
     }
+  }
+
+  getJobs(filters?: filterOptions) {
+    this.isLoading = true;
+    this.jobService.getAllJobs(undefined, this.filters).pipe(untilDestroyed(this)).subscribe(jobs => {
+      this.jobs = jobs;
+      if (jobs.length > 0)
+        this.lastKey = this.jobs[this.jobs.length - 1].date;
+      this.jobs.forEach(job => {
+        job.date = this.jobService.getDate(job.date);
+      });
+      if (this.jobs.length > 0)
+        this.selectedJob = this.jobs[0];
+      this.isLoading = false;
+    });
   }
 
   sanitize(url: string | undefined) {

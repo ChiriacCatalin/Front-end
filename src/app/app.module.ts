@@ -27,6 +27,7 @@ import { SignUpCompanyComponent } from './pages/sign-up-company/sign-up-company.
 import { CompanyJobsListingComponent } from './pages/company-profile/company-jobs-listing/company-jobs-listing.component';
 import { JobContentComponent } from './pages/company-profile/company-jobs-listing/job-content/job-content.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { FiltersComponent } from './pages/jobs/filters/filters.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     JobContentComponent,
     SignInComponent,
     SignUpCompanyComponent,
-    ProfileMiniDataComponent
+    ProfileMiniDataComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
