@@ -16,6 +16,7 @@ import { SignupCompanyAboutComponent } from './modals/company/signup-company-abo
 import { SignupCompanyMainComponent } from './modals/company/signup-company-main/signup-company-main.component';
 import { EditCompanyAboutComponent } from './modals/company/edit-company-about/edit-company-about.component';
 import { CreateJobOfferComponent } from './modals/company/create-job-offer/create-job-offer.component';
+import { ApplyForJobComponent } from './modals/company/apply-for-job/apply-for-job.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { CreateJobOfferComponent } from './modals/company/create-job-offer/creat
     SignupCompanyAboutComponent,
     SignupCompanyMainComponent,
     EditCompanyAboutComponent,
-    CreateJobOfferComponent
+    CreateJobOfferComponent,
+    ApplyForJobComponent
   ],
   declarations: [
     HeaderComponent,
@@ -51,7 +53,8 @@ import { CreateJobOfferComponent } from './modals/company/create-job-offer/creat
     SignupCompanyAboutComponent,
     SignupCompanyMainComponent,
     EditCompanyAboutComponent,
-    CreateJobOfferComponent
+    CreateJobOfferComponent,
+    ApplyForJobComponent
   ]
 })
 export class SharedModule { }

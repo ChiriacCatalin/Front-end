@@ -1,0 +1,69 @@
+<div *ngIf="uniqueId">
+  <div
+    class="modal fade"
+    id="{{ uniqueId ? uniqueId : 'staticBackdropJobApply' }}"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Apply for the job</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formGroup">
+            <div class="">
+              <label for="jobMotivation" class="col-form-label h6">Self presentation:</label>
+              <textarea
+                class="form-control"
+                id="jobMotivation"
+                formControlName="jobMotivation"
+                placeholder="Describe the way you distinguish yourself from others:"
+                rows="7"
+              ></textarea>
+            </div>
+
+            <div class="" *ngIf="questions">
+              <p class="h5 mt-4 mb-3">The company prepared a set of questions for you to answer in a short video:</p>
+              <pre class="h6" *ngFor="let question of questions">  -  {{ question }}</pre>
+              <label for="interviewVideo" class="col-form-label h6">Pre-interview video response:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="interviewVideo"
+                placeholder="The youtube video url containing your answers to the questions:"
+                formControlName="interviewVideo"
+              />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <div>
+            <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid" (click)="onApply()" data-bs-dismiss="modal">
+              Apply for the job
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row no-gutters">
+  <div class=" col-md-12 ml-auto">
+    <div class="alert alert-success shadow my-3" role="alert" style="border-radius: 3px">
+      <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+          <span aria-hidden="True" style="color:#155724">&times;</span>
+      </button>
+      <div class="text-center">
+        <svg width="3em" height="3em" viewBox="0 0 16 16" class="m-1 bi bi-shield-fill-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M8 .5c-.662 0-1.77.249-2.813.525a61.11 61.11 0 0 0-2.772.815 1.454 1.454 0 0 0-1.003 1.184c-.573 4.197.756 7.307 2.368 9.365a11.192 11.192 0 0 0 2.417 2.3c.371.256.715.451 1.007.586.27.124.558.225.796.225s.527-.101.796-.225c.292-.135.636-.33 1.007-.586a11.191 11.191 0 0 0 2.418-2.3c1.611-2.058 2.94-5.168 2.367-9.365a1.454 1.454 0 0 0-1.003-1.184 61.09 61.09 0 0 0-2.772-.815C9.77.749 8.663.5 8 .5zm2.854 6.354a.5.5 0 0 0-.708-.708L7.5 8.793 6.354 7.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+        </svg>
+      </div>
+      <p style="font-size:18px" class="mb-0 font-weight-light"><b class="mr-1">Success!</b>You successfully applied to the job!</p>
+    </div>
+  </div>
+</div>
