@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardCompanyService } from './guards/auth-guard-company.service';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { OtherPagesGuardService } from './guards/other-pages-guard.service';
+import { SignInPageGuardService } from './guards/sign-in-page-guard.service.ts.service';
 import { CompanyProfileComponent, LoginComponent } from './pages';
 import { HomeComponent } from './pages/home/home.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
@@ -38,7 +39,8 @@ const routes: Routes = [
   },
   {
     path: 'sign-In',
-    component: SignInComponent
+    component: SignInComponent,
+    canActivate: [SignInPageGuardService]
   },
   {
     path: 'company/:companyId',
@@ -47,7 +49,8 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: SignInComponent
+    component: SignInComponent,
+    canActivate: [SignInPageGuardService]
   }
 ];
 
