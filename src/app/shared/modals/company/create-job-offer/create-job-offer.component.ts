@@ -8,6 +8,7 @@ import { Company } from 'src/app/services/company/types/company.types';
 import { ModalsDataService } from 'src/app/services/data/modals-data.service';
 import { JobService } from 'src/app/services/jobs/job.service';
 import { Job } from 'src/app/services/jobs/types/job.type';
+import { Chips } from 'src/app/shared/input-chips/chips';
 
 @Component({
   selector: 'app-create-job-offer',
@@ -23,6 +24,9 @@ export class CreateJobOfferComponent implements OnChanges {
   siteRemote?: string[];
   city?: string[];
   country?: string[];
+  interviewQuestions?: Chips;
+  questionOptions?: string[];
+  questionsCopy: string[] = [];
 
   formGroup: UntypedFormGroup;
   constructor(private readonly router: Router,
@@ -46,6 +50,12 @@ export class CreateJobOfferComponent implements OnChanges {
     this.siteRemote = modalsData.siteRemote;
     this.city = modalsData.city;
     this.country = modalsData.country;
+    this.questionOptions = modalsData.interviewQuestions;
+    this.interviewQuestions = {
+      label: 'Fields of expertise',
+      dataEntered: this.questionsCopy,
+      dataOptions: this.questionOptions
+    };
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -61,6 +71,12 @@ export class CreateJobOfferComponent implements OnChanges {
         jobDescription: job_copy.jobDescription ? job_copy.jobDescription : null,
         jobVideo: job_copy.jobVideo ? job_copy.jobVideo : null
       });
+      this.questionsCopy = this.job.interviewQuestions ? this.job.interviewQuestions.slice() : [];
+      this.interviewQuestions = {
+        label: 'Fields of expertise',
+        dataEntered: this.questionsCopy,
+        dataOptions: this.questionOptions!
+      };
     }
   }
 
@@ -97,6 +113,7 @@ export class CreateJobOfferComponent implements OnChanges {
   getJobData() {
     const formValues = {
       ... this.formGroup.getRawValue(),
+      'interviewQuestions': this.questionsCopy ? this.questionsCopy : [],
       companyName: this.authService.companyData?.name,
       imgUrl: this.authService.companyData?.imageUrl,
       companyId: this.authService.userId,

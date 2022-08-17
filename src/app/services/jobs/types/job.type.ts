@@ -11,6 +11,7 @@ export type Job = {
     companyId: string;
     companySize: string;
     date: string;
+    interviewQuestions?: string[];
     jobDescription: string;
     jobVideo?: string;
 }

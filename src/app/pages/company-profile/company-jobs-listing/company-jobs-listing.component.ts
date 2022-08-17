@@ -48,7 +48,7 @@ export class CompanyJobsListingComponent implements OnInit {
   onScroll() {
     if (!this.noJobs) {
       this.isFinished = false;
-      this.jobService.getAllJobs(this.lastKey).pipe(untilDestroyed(this)).subscribe(jobs => {
+      this.jobService.getJobsByCompanyId(this.companyId, this.lastKey).pipe(untilDestroyed(this)).subscribe(jobs => {
         if (jobs.length > 0) {
           // if (this.lastKey === jobs[jobs.length - 1].date) {
           //   this.noJobs = true;

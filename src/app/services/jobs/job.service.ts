@@ -17,7 +17,7 @@ export class JobService {
     return this.http.post(url, { ...data });
   }
 
-  getJobsByCompanyId(uid: string, lastDate?: number): Observable<Job[]> {
+  getJobsByCompanyId(uid: string, lastDate?: string): Observable<Job[]> {
     const url = `${environment.apiUrl}/api/companies/${uid}/jobs`;
     let params;
     if (lastDate) {
