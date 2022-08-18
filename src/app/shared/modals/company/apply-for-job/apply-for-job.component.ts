@@ -20,6 +20,6 @@ export class ApplyForJobComponent {
   }
 
   onApply() {
-    alert('You successfully applied for the job!');
+   
   }
 }

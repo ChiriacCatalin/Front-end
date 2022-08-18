@@ -11,3 +11,11 @@ pre {
   word-wrap: break-word; /* Internet Explorer 5.5+ */
   overflow: hidden;
 }
+
+.alert {
+  margin-bottom: 0rem;
+}
+
+#confirmationModal .modal-dialog{
+  max-width: 310px;
+}
