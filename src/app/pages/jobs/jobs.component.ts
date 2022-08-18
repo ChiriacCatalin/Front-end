@@ -25,7 +25,7 @@ export class JobsComponent implements OnInit, DoCheck {
 
   filters?: filterOptions;
 
-  constructor(private authService: AuthService, private jobService: JobService,
+  constructor(readonly authService: AuthService, private jobService: JobService,
     private router: Router, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {

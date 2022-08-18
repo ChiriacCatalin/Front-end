@@ -27,9 +27,9 @@
               ></textarea>
             </div>
 
-            <div class="" *ngIf="questions">
+            <div class="" *ngIf="job?.interviewQuestions">
               <p class="h5 mt-4 mb-3">The company prepared a set of questions for you to answer in a short video:</p>
-              <pre class="h6" *ngFor="let question of questions">  -  {{ question }}</pre>
+              <pre class="h6" *ngFor="let question of job!.interviewQuestions">  -  {{ question }}</pre>
               <label for="interviewVideo" class="col-form-label h6">Pre-interview video response:</label>
               <input
                 type="text"

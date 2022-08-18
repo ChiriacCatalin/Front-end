@@ -44,6 +44,11 @@ export class JobService {
     return this.http.put(url, { ...obj });
   }
 
+  addApplicant(data: object, companyId: string, jobId: string, userId?: string) {
+    const url = `${environment.apiUrl}/api/companies/${companyId}/job/${jobId}/applicants/${userId}`;
+    return this.http.post(url, { ...data });
+  }
+
 
   getDate(postingTime: string) {
     let value = Math.floor((new Date().getTime() - +postingTime) / 60000);
