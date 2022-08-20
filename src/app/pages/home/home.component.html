@@ -11,6 +11,9 @@
       <div class="accordion me-sm-2 mx-md-3 me-lg-5 ms-lg-3 mt-sm-3 mb-sm-3" id="jobsList">
         <div class="accordion-item my-3 border-4" *ngFor="let job of jobs; let i = index">
           <!-- <app-create-job-offer [job]="job" [uniqueId]="'jobEdit' + i"></app-create-job-offer> -->
+          <div *ngIf="authService.userToken?.type === 'user'">
+            <app-apply-for-job [job]="job" [uniqueId]="'jobApply' + i"></app-apply-for-job>
+          </div>
 
           <h2 class="accordion-header" id="headingOne">
             <div
@@ -24,16 +27,28 @@
                 <div class="col-3 col-lg-2">
                   <img src="{{ job.imgUrl }}" class="standard-size my-2 me-lg-4" />
                 </div>
-                <div class="col-9 col-lg-10 ps-0 ps-sm-3">
+                <div class="col-9 col-lg-10 ps-0 ps-sm-3" [ngClass]="{ 'mb-negative': authService.userToken?.type === 'user' }">
                   <h5 class="linkk">{{ job.jobTitle }}</h5>
                   <a class="h6" data-bs-toggle="collapse" data-bs-target="" (click)="onCompanyClicked(i)">{{ job.companyName }}</a>
                   <h6>{{ job.jobType }} • {{ job.experienceLevel }}</h6>
                   <h6>{{ job.city }}, {{ job.country }} • ({{ job.onSiteRemote }})</h6>
-                  <h6>Posted: {{ job.date }}</h6>
+                  <h6 class="mb-sm-3">Posted: {{ job.date }}</h6>
+                </div>
+
+                <div class="d-flex justify-content-end mt-negative" *ngIf="authService.userToken?.type === 'user'">
+                  <button
+                    type="button"
+                    class="btn dark-blue rounded-pill btn-shadows me-2 me-lg-3 mb-2"
+                    data-bs-toggle="modal"
+                    [attr.data-bs-target]="'#jobApply' + i"
+                  >
+                    <span data-bs-toggle="collapse">Apply to job</span>
+                  </button>
                 </div>
               </div>
             </div>
           </h2>
+
           <app-job-content [job]="job" [jobId]="i"></app-job-content>
         </div>
       </div>

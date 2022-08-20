@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   lastKey?: string;
   noJobs: boolean = false;
 
-  constructor(private authService: AuthService, private jobService: JobService, private router: Router) { }
+  constructor(readonly authService: AuthService, private jobService: JobService, private router: Router) { }
 
   ngOnInit(): void {
     this.isLoading = true;

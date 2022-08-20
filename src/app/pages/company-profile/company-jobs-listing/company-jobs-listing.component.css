@@ -23,7 +23,7 @@ a {
 }
 
 .standard-size {
-  max-height: 10rem;
+  max-height: 8rem;
   max-width: 100%;
 }
 
@@ -33,4 +33,40 @@ a {
 
 .edit_item {
   background-color: rgb(234, 229, 229);
+}
+
+
+
+.dark-blue {
+  background-color: #0a66c3;
+  color: white;
+}
+
+.mb-negative {
+  margin-bottom: -2rem;
+}
+
+.mt-negative {
+  margin-top: -2rem;
+}
+
+.btn-shadows:hover {
+  background-color: #0b5eb0;
+  box-shadow: 0.2rem 0.2rem 0.3rem 0.1rem rgb(129, 129, 129);
+}
+
+@media (max-width: 768px) {
+  .mb-negative {
+    margin-bottom: 0rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .mb-negative {
+    margin-bottom: 0rem;
+  }
+
+  .mt-negative {
+    margin-top: 0rem;
+  }
 }
