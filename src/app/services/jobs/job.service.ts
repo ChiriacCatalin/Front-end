@@ -55,16 +55,17 @@ export class JobService {
     const timeName = ['minutes ago', 'hours ago', 'days ago', 'weeks ago', 'months ago', 'years ago'];
     const timeNameSingular = ['minute ago', 'hour ago', 'day ago', 'week ago', 'month ago', 'year ago'];
     const timeDivValues = [60, 24, 7, 4, 12];
-    let i;
-    for (i = 0; i < 4; ++i) {
-      if (value > timeDivValues[i])
+    let i, index = 0;
+    for (i = 0; i <= 4; ++i) {
+      if (value >= timeDivValues[i]) {
         value /= timeDivValues[i];
+        index++;
+      }
       else break;
     }
     value = Math.floor(value);
-    if (i === 4 && value < 12)
-      i = 3;
-    return `${Math.floor(value)} ${value === 1 ? timeNameSingular[i] : timeName[i]}`;
+
+    return `${Math.floor(value)} ${value === 1 ? timeNameSingular[index] : timeName[index]}`;
   }
 
   private setParams(lastDate?: string, filters?: filterOptions): HttpParams {
