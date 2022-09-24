@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Applicant } from './types/appliants.types';
 import { filterOptions } from './types/filter-options.type';
 import { Job } from './types/job.type';
 
@@ -49,6 +50,14 @@ export class JobService {
     return this.http.post(url, { ...data });
   }
 
+  getJobApplicants(companyId: string, jobId: string, lastDate?: string) {
+    const url = `${environment.apiUrl}/api/companies/${companyId}/job/${jobId}/applicants`;
+    let params;
+    if (lastDate) {
+      params = new HttpParams().set('lastDate', lastDate);
+    }
+    return this.http.get<Applicant[]>(url, { params });
+  }
 
   getDate(postingTime: string) {
     let value = Math.floor((new Date().getTime() - +postingTime) / 60000);

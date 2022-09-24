@@ -1,0 +1,83 @@
+<div class="d-flex justify-content-center" *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
+<div *ngIf="!isLoading && selectedApplicant">
+  <div class="row pt-2 px-0 mx-0 d-flex justify-content-center">
+    <div class="col-sm-4 ps-0 pe-0">
+      <div
+        class="card"
+        infinite-scroll
+        [infiniteScrollContainer]="'.card'"
+        [fromRoot]="true"
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="1000"
+        (scrolled)="onScroll()"
+      >
+        <div class="card-body" id="jobsList">
+          <div *ngFor="let applicant of applicants; let i = index">
+            <div class="row" (click)="selectApplicant(i)" id="'jobEdit' + i" data-bs-toggle="collapse" attr.data-bs-target="#job{{ i }}">
+              <div class="col-3 col-lg-2 px-1 px-lg-2">
+                <img src="{{ applicant.userProfile }}" class="standard-size my-2 me-lg-4" />
+              </div>
+              <div class="col-9 col-lg-10 ps-0 ps-sm-3 pe-0 mt-1">
+                <a class="h6" data-bs-toggle="collapse" data-bs-target="" (click)="onApplicantClicked(i)">{{ applicant.userName }}</a>
+                <h6 class=""><span class="normal">Contact: </span> {{ applicant.userContact }}</h6>
+                <h6 class=""><span class="normal">Applied: </span> {{ applicant.date }}</h6>
+              </div>
+
+              <hr />
+              <!-- <div class="d-sm-none" *ngIf="mobile">
+                <app-job-content [job]="job" [jobId]="i"></app-job-content>
+              </div> -->
+            </div>
+          </div>
+          <div class="d-flex justify-content-center my-4 end-page-notification" *ngIf="!isFinished">
+            <app-spinner></app-spinner>
+          </div>
+          <div *ngIf="noApplicants || applicants!.length < 5">
+            <h4 class="d-flex justify-content-center my-4 end-page-notification">There are no more applicants...</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 px-0 d-none d-sm-block">
+      <div class="card custom-view">
+        <div class="accordion-body">
+          <div class="row">
+            <div class="col-4 col-lg-3 px-1 px-lg-2">
+              <img src="{{ selectedApplicant.userProfile }}" class="standard-size2 my-2 me-lg-4" />
+            </div>
+            <div class="col-8 col-lg-9 ps-0 ps-sm-3 pe-0 mt-1">
+              <p class="h4 mb-0 text-look boldish"><span class="normal">Name:</span> {{ selectedApplicant!.userName }}</p>
+              <p class="h4 mb-0 text-look boldish"><span class="normal">Contact:</span> {{ selectedApplicant!.userContact }}</p>
+              <p class="h4 mb-0 text-look boldish"><span class="normal"> Applied:</span> {{ selectedApplicant!.date }}</p>
+            </div>
+          </div>
+          <pre>
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-10 py-lg-3 d-flex align-items-center" *ngIf="selectedApplicant?.interviewVideo">
+                <div class="ratio ratio-16x9">
+                  <iframe
+                    width="1520"
+                    height="553"
+                    [src]="sanitize(selectedApplicant.interviewVideo)"
+                    class="card-img-top"
+                    title="YouTube video player"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+            <p class="h5 lower-space boldish"  *ngIf="selectedApplicant?.jobMotivation"><strong>Motivation:</strong></p>
+            <pre class="h6">{{ selectedApplicant!.jobMotivation }}
+            </pre>
+          </pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!isLoading && !selectedApplicant">
+  <h2 class="d-flex justify-content-center my-4 end-page-notification">There were no jobs found...</h2>
+</div>

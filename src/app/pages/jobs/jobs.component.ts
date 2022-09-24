@@ -51,9 +51,10 @@ export class JobsComponent implements OnInit, DoCheck {
   }
 
   onCompanyClicked(index: number) {
-    from(this.router.navigate([''], { skipLocationChange: true })).pipe(take(1)).subscribe(_ => {
-      this.router.navigate(['/company', this.jobs![index].companyId]);
-    });
+    this.router.navigate([]).then(result => {  window.open(`/company/${this.jobs![index].companyId}`, '_blank'); });
+    // from(this.router.navigate([''], { skipLocationChange: true })).pipe(take(1)).subscribe(_ => {
+    //   this.router.navigate(['/company', this.jobs![index].companyId]);
+    // });
   }
 
   onScroll() {

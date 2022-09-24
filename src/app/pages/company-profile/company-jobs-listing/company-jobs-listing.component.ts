@@ -40,9 +40,9 @@ export class CompanyJobsListingComponent implements OnInit {
   }
 
   onCompanyClicked(index: number) {
-    from(this.router.navigate([''], { skipLocationChange: true })).pipe(take(1)).subscribe(_ => {
-      this.router.navigate(['/company', this.jobs![index].companyId]);
-    });
+    // from(this.router.navigate([''], { skipLocationChange: true })).pipe(take(1)).subscribe(_ => {
+    //   this.router.navigate(['/company', this.jobs![index].companyId]);
+    // });
   }
 
   onScroll() {

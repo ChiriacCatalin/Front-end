@@ -5,6 +5,7 @@ import { AuthGuardService } from './guards/auth-guard.service';
 import { OtherPagesGuardService } from './guards/other-pages-guard.service';
 import { SignInPageGuardService } from './guards/sign-in-page-guard.service.ts.service';
 import { CompanyProfileComponent, LoginComponent } from './pages';
+import { JobApplicantsComponent } from './pages/company-profile/job-applicants/job-applicants.component';
 import { HomeComponent } from './pages/home/home.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { SignInComponent } from './pages/sign-in';
@@ -41,6 +42,11 @@ const routes: Routes = [
     path: 'sign-In',
     component: SignInComponent,
     canActivate: [SignInPageGuardService]
+  },
+  {
+    path: 'company/:companyId/job/:jobId/applicants',
+    component: JobApplicantsComponent,
+    canActivate: [OtherPagesGuardService]
   },
   {
     path: 'company/:companyId',
