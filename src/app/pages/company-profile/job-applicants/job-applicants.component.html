@@ -48,7 +48,10 @@
               <img src="{{ selectedApplicant.userProfile }}" class="standard-size2 my-2 me-lg-4" />
             </div>
             <div class="col-8 col-lg-9 ps-0 ps-sm-3 pe-0 mt-1">
-              <p class="h4 mb-0 text-look boldish"><span class="normal">Name:</span> {{ selectedApplicant!.userName }}</p>
+              <p class="h4 mb-0 text-look boldish">
+                <span class="normal">Name: </span>
+                <a class="h4 mb-0 text-look boldish" (click)="onApplicantClicked(-1)">{{ selectedApplicant!.userName }}</a>
+              </p>
               <p class="h4 mb-0 text-look boldish"><span class="normal">Contact:</span> {{ selectedApplicant!.userContact }}</p>
               <p class="h4 mb-0 text-look boldish"><span class="normal"> Applied:</span> {{ selectedApplicant!.date }}</p>
             </div>

@@ -91,6 +91,12 @@ pre {
   .mb-negative {
     margin-bottom: -2rem;
   }
+  .h4{
+    font-size: calc(1rem + 0.3vw);
+  }
+  .h6, h6{
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 385px) {

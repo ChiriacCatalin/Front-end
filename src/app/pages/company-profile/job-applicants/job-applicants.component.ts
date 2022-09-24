@@ -71,7 +71,10 @@ export class JobApplicantsComponent implements OnInit, DoCheck {
 
   }
   onApplicantClicked(index: number) {
-     this.router.navigate([]).then(result => {  window.open(`/profile/${this.applicants![index].userId}`, '_blank'); });
+    if (index === -1)
+      this.router.navigate([]).then(result => { window.open(`/profile/${this.selectedApplicant!.userId}`, '_blank'); });
+    else
+      this.router.navigate([]).then(result => { window.open(`/profile/${this.applicants![index].userId}`, '_blank'); });
   }
 
   getApplicants() {
