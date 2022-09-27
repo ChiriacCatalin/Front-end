@@ -1,8 +1,20 @@
-.logo{
-    width: 5rem;
-    border: 1px solid;
+.logo {
+  width: 5rem;
+  border: 1px solid;
 }
 
-.nav-link{
-    cursor: pointer;
+.nav-link {
+  cursor: pointer;
+}
+
+@media (min-width: 992px) {
+  .ms-dinamic {
+    margin-left: 5vw;
+  }
+}
+
+@media (max-width: 992px) {
+  .ms-dinamic {
+    margin-left: 0vw;
+  }
 }

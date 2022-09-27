@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <div class="ms-md-4">
+    <div class="ms-dinamic">
       <div class="me-sm-5">
         <a class="navbar-brand">
           <img
@@ -24,7 +24,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <form class="d-flex" *ngIf="authService.isLoggedIn">
+      <!-- <form class="d-flex" *ngIf="authService.isLoggedIn">
         <input
           class="form-control me-2"
           type="search"
@@ -32,7 +32,7 @@
           aria-label="Search"
         />
         <button class="btn btn-outline-success" type="submit" >Search</button>
-      </form>
+      </form> -->
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 justify-content-end me-md-5">
         <li class="nav-item">
           <a class="nav-link" routerLink="" *ngIf="authService.isLoggedIn">Home</a>

@@ -1,0 +1,33 @@
+<div
+  id="applicant{{ applicantId }}"
+  class="accordion-collapse collapse"
+  [ngClass]="{ show: applicantId === 0 }"
+  aria-labelledby="headingOne"
+  data-bs-parent="#applicantsList"
+  *ngIf="applicant"
+>
+  <div class="accordion-body">
+    <pre>
+      <p class="h5 lower-space boldish"  *ngIf="applicant?.jobMotivation"><strong>Motivation:</strong></p>
+        <pre class="h6">{{applicant!.jobMotivation }}
+      </pre>
+      <div class="row">
+        <p class="h5 lower-space boldish mb-3"  *ngIf="applicant?.interviewVideo"><strong>Interview response:</strong></p>
+             
+        <div class="col-md-1"></div>
+        <div class="col-md-10 py-lg-3 d-flex align-items-center" *ngIf="applicant?.interviewVideo">
+          <div class="ratio ratio-16x9">
+            <iframe
+              width="1520"
+              height="553"
+              [src]="sanitize(applicant!.interviewVideo)"
+              class="card-img-top"
+              title="YouTube video player"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </pre>
+  </div>
+</div>

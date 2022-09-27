@@ -45,6 +45,7 @@ export class JobApplicantsComponent implements OnInit, DoCheck {
     if (!this.noApplicants) {
       this.isFinished = false;
       this.jobService.getJobApplicants(this.companyId, this.jobId, this.lastKey).pipe(untilDestroyed(this)).subscribe(applicants => {
+        console.log(applicants.length, this.lastKey);
         if (applicants.length > 0) {
           // if (this.lastKey === jobs[jobs.length - 1].date) {
           //   this.noJobs = true;
