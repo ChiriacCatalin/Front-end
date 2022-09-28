@@ -4,7 +4,7 @@
     <div *ngIf="authService.userId === companyId">
       <div class="d-flex justify-content-end me-1 mt-1">
         <button class="edit_item" data-bs-toggle="modal" data-bs-target="#staticBackdropCompanyAboutEdit" mat-mini-fab>
-          <mat-icon>edit</mat-icon>
+          <mat-icon data-toggle="tooltip" data-placement="top" title="Edit">edit</mat-icon>
         </button>
       </div>
       <app-edit-company-about [company]="company"></app-edit-company-about>

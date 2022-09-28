@@ -5,7 +5,7 @@
   <!-- <div *ngIf="authService.userId === userId"> -->
   <div class="d-flex justify-content-end mx-sm-5 mt-2" *ngIf="authService.userId === companyId">
     <button class="icon-style" data-bs-toggle="modal" data-bs-target="#staticBackdropJobOffer" mat-mini-fab>
-      <mat-icon>add</mat-icon>
+      <mat-icon data-toggle="tooltip" data-placement="top" title="Create new job">add</mat-icon>
     </button>
   </div>
   <app-create-job-offer></app-create-job-offer>
@@ -29,11 +29,11 @@
           >
             <div class="row">
               <div class="d-flex justify-content-end margin-float" *ngIf="authService.userId === companyId">
-                <button class="icon-style me-2" mat-mini-fab>
+                <button class="icon-style me-2" mat-mini-fab data-toggle="tooltip" data-placement="top" title="View applicants">
                   <mat-icon data-bs-toggle="collapse" data-bs-target="" (click)="onViewApplicants(i)">people</mat-icon>
                 </button>
                 <button class="icon-style" data-bs-toggle="modal" [attr.data-bs-target]="'#jobEdit' + i" mat-mini-fab>
-                  <mat-icon data-bs-toggle="collapse" data-bs-target="">edit</mat-icon>
+                  <mat-icon data-bs-toggle="collapse" data-bs-target="" data-toggle="tooltip" data-placement="top" title="Edit">edit</mat-icon>
                 </button>
               </div>
 

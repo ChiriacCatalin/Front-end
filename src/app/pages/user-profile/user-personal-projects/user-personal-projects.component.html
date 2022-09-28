@@ -12,7 +12,7 @@
       <div *ngIf="authService.userId === userId">
         <div class="d-flex justify-content-end  mx-sm-5 mt-2">
           <button class="edit_item" data-bs-toggle="modal" data-bs-target="#staticBackdropProject" mat-mini-fab>
-            <mat-icon>add</mat-icon>
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Add new project">add</mat-icon>
           </button>
           <app-signup-user-personal-projects [newElement]="true"></app-signup-user-personal-projects>
         </div>
@@ -28,7 +28,7 @@
     <div *ngIf="authService.userId === userId">
       <div class="d-flex justify-content-end me-1 mt-1">
         <button class="edit_item" data-bs-toggle="modal" [attr.data-bs-target]="'#project' + i" mat-mini-fab>
-          <mat-icon>edit</mat-icon>
+          <mat-icon data-toggle="tooltip" data-placement="top" title="Edit">edit</mat-icon>
         </button>
       </div>
       <app-signup-user-personal-projects [project]="project" [uniqueId]="'project' + i"></app-signup-user-personal-projects>

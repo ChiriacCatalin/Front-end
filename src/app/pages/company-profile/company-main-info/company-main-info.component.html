@@ -9,7 +9,7 @@
     <div *ngIf="authService.userId === companyId">
       <div class="d-flex justify-content-end me-1 mt-1">
         <button class="edit_item" data-bs-toggle="modal" data-bs-target="#staticBackdropCompanyMain" mat-mini-fab>
-          <mat-icon>edit</mat-icon>
+          <mat-icon data-toggle="tooltip" data-placement="top" title="Edit">edit</mat-icon>
         </button>
       </div>
       <!-- <app-edit-user-info [mainInfo]="user!.mainInfo"></app-edit-user-info> -->
@@ -23,7 +23,7 @@
             <img src="{{ company?.imageUrl }}" class="img-fluid rounded-circle standard-max-size mt-2" alt="company logo" />
             <div *ngIf="authService.userId === companyId">
               <button mat-mini-fab class="back-color position" (click)="uploadButtonClicked()">
-                <mat-icon>add_a_photo</mat-icon>
+                <mat-icon data-toggle="tooltip" data-placement="top" title="Add photo">add_a_photo</mat-icon>
               </button>
             </div>
             <input hidden #uploadImageRef type="file" accept=".png, .jpg" (change)="onFileSelected($event)" />

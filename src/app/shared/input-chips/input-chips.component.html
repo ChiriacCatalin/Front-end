@@ -4,7 +4,7 @@
   <mat-chip *ngFor="let item of itemsEntered" (removed)="remove(item)">
     {{ item }}
     <button matChipRemove>
-      <mat-icon>cancel</mat-icon>
+      <mat-icon data-toggle="tooltip" data-placement="top" title="Remove skill">cancel</mat-icon>
     </button>
   </mat-chip>
   <input

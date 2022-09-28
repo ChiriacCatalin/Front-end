@@ -9,7 +9,7 @@
     <div *ngIf="authService.userId === userId">
       <div class="d-flex justify-content-end me-1 mt-1">
         <button class="edit_item" data-bs-toggle="modal" data-bs-target="#staticBackdropSkills" mat-mini-fab>
-          <mat-icon>edit</mat-icon>
+          <mat-icon data-toggle="tooltip" data-placement="top" title="Edit">edit</mat-icon>
         </button>
       </div>
       <app-signup-user-skills [toEdit]="true"></app-signup-user-skills>

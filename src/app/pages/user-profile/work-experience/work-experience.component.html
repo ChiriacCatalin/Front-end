@@ -12,7 +12,7 @@
       <div *ngIf="authService.userId === userId">
         <div class="d-flex justify-content-end  mx-sm-5 mt-2">
           <button class="edit_item" data-bs-toggle="modal" data-bs-target="#staticBackdropWork" mat-mini-fab>
-            <mat-icon>add</mat-icon>
+            <mat-icon data-toggle="tooltip" data-placement="top" title="Add new work experience">add</mat-icon>
           </button>
           <app-edit-user-work-experience [newElement]="true"></app-edit-user-work-experience>
         </div>
@@ -27,7 +27,7 @@
     <div *ngIf="authService.userId === userId">
       <div class="d-flex justify-content-end me-1 mt-1">
         <button class="edit_item" data-bs-toggle="modal" [attr.data-bs-target]="'#job' + i" mat-mini-fab>
-          <mat-icon>edit</mat-icon>
+          <mat-icon data-toggle="tooltip" data-placement="top" title="Edit">edit</mat-icon>
         </button>
       </div>
       <app-edit-user-work-experience [job]="job" [uniqueId]="'job' + i"></app-edit-user-work-experience>

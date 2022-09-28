@@ -13,7 +13,8 @@
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Edit personal projects:</h5>
+        <h5 class="modal-title" id="staticBackdropLabel" *ngIf="!newElement">Edit personal project:</h5>
+        <h5 class="modal-title" id="staticBackdropLabel" *ngIf="newElement">Add personal project:</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onExit()"></button>
       </div>
       <div class="modal-body">
