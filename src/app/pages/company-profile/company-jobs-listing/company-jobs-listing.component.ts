@@ -39,6 +39,11 @@ export class CompanyJobsListingComponent implements OnInit {
     });
   }
 
+  onViewApplicants(index: number) {
+    this.router.navigate([]).
+      then(result => { window.open(`/company/${this.companyId}/job/${this.jobs![index].id}/applicants`, '_blank'); });
+  }
+
   onCompanyClicked(index: number) {
     // from(this.router.navigate([''], { skipLocationChange: true })).pipe(take(1)).subscribe(_ => {
     //   this.router.navigate(['/company', this.jobs![index].companyId]);
