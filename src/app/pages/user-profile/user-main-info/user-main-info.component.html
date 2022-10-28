@@ -3,7 +3,6 @@
 </div>
 <div *ngIf="!isLoading">
   <div class="card mb-3 mx-sm-5 mt-sm-5 border" style="max-width: 100%">
-   
     <!-- edit button functionality -->
     <div *ngIf="authService.userId === userId">
       <div class="d-flex justify-content-end me-1 mt-1">
@@ -30,7 +29,9 @@
           <h5 class="card-title">{{ user!.mainInfo!.name }}</h5>
           <p class="card-text mt-4"><b>Address: </b>{{ address }}</p>
           <p class="card-text"><b>Birthdate: </b>{{ user!.mainInfo!.birthdate }}</p>
-          <p class="card-text"><b>Contact: </b> {{ user!.mainInfo!.email }}</p>
+          <p class="card-text">
+            <b>Contact: </b> <a href="mailto:{{ user!.mainInfo?.email }}">{{ user!.mainInfo!.email }}</a>
+          </p>
           <p class="card-text"><b>Studied at: </b> {{ user!.mainInfo!.studiedAt }}</p>
           <p *ngIf="user?.mainInfo?.worksAt" class="card-text"><b>Works at: </b> {{ user!.mainInfo!.worksAt }}</p>
         </div>

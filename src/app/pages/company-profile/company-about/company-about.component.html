@@ -28,7 +28,9 @@
         <p class="mt-lg-4 px-3" *ngIf="company?.website">
           <strong>Website: </strong> <a href="{{ company?.website }}" target="_blank">{{ company?.website }}</a>
         </p>
-        <p class="px-3"><strong>Contact: </strong> {{ company?.contact }}</p>
+        <p class="px-3">
+          <strong>Contact: </strong> <a href="mailto:{{ company?.contact }}">{{ company?.contact }}</a>
+        </p>
         <p class="px-3"><strong>Industry: </strong> {{ company?.industry }}</p>
         <p class="px-3"><strong>Company size: </strong> {{ company?.companySize }} employees</p>
         <p class="px-3"><strong>Headquaters: </strong> {{ company?.headquarters }}</p>

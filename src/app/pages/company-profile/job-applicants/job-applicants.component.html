@@ -51,7 +51,11 @@
                 <span class="normal">Name: </span>
                 <a class="h4 mb-0 text-look boldish" (click)="onApplicantClicked(-1)">{{ selectedApplicant!.userName }}</a>
               </p>
-              <p class="h4 mb-0 text-look boldish"><span class="normal">Contact:</span> {{ selectedApplicant!.userContact }}</p>
+              <p class="h4 mb-0 text-look boldish">
+                <span class="normal">Contact: </span>
+                <a href="mailto:{{ selectedApplicant!.userContact }}">{{ selectedApplicant!.userContact }}</a>
+              </p>
+
               <p class="h4 mb-0 text-look boldish"><span class="normal"> Applied:</span> {{ selectedApplicant!.date }}</p>
             </div>
           </div>

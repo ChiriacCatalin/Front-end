@@ -14,3 +14,13 @@
 .edit_item {
   background-color: rgb(234, 229, 229);
 }
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: darkblue;
+}
