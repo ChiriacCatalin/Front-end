@@ -15,6 +15,7 @@ import { Chips } from './chips';
 export class InputChipsComponent implements OnChanges {
   @ViewChild('itemInput') itemInput!: ElementRef<HTMLInputElement>;
   @Input() fields?: Chips;
+  @Input() placeHolder: string = 'New skill...';
   separatorKeysCodes: number[] = [ENTER, COMMA];
   itemCtrl = new UntypedFormControl(); // the input area
   filteredItems: Observable<string[]>;

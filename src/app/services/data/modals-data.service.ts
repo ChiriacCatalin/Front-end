@@ -9,7 +9,7 @@ export class ModalsDataService {
   siteRemote: string[] = ['On-Site', 'Remote', 'Hybrid'];
 
   interviewQuestions: string[] = ['Why would you like to join our company', 'Do you have any prior experience?', 
-  'Do you prefer working alone or in a team?', 'Have you worked on a team before?', 'What\'s the largest project you worken on?',
+  'Do you prefer working alone or in a team?', 'Have you worked on a team before?', 'What\'s the largest project you worked on?',
   'What expectations do you have working in our company?', 'How did you come to hear about us?'];
   country: string[] = ['Afghanistan','Albania','Algeria','Andorra','Angola','Anguilla','Antigua and Barbuda','Argentina',
   'Armenia','Aruba','Australia','Austria','Azerbaijan','Bahamas','Bahrain','Bangladesh','Barbados','Belarus','Belgium',

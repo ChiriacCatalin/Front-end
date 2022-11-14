@@ -27,6 +27,7 @@ export class CreateJobOfferComponent implements OnChanges {
   interviewQuestions?: Chips;
   questionOptions?: string[];
   questionsCopy: string[] = [];
+  placeHold: string = 'New Question...';
 
   formGroup: UntypedFormGroup;
   constructor(private readonly router: Router,
@@ -52,7 +53,7 @@ export class CreateJobOfferComponent implements OnChanges {
     this.country = modalsData.country;
     this.questionOptions = modalsData.interviewQuestions;
     this.interviewQuestions = {
-      label: 'Fields of expertise',
+      label: 'Pre-interview questions:',
       dataEntered: this.questionsCopy,
       dataOptions: this.questionOptions
     };
@@ -73,7 +74,7 @@ export class CreateJobOfferComponent implements OnChanges {
       });
       this.questionsCopy = this.job.interviewQuestions ? this.job.interviewQuestions.slice() : [];
       this.interviewQuestions = {
-        label: 'Fields of expertise',
+        label: 'Pre-interview questions:',
         dataEntered: this.questionsCopy,
         dataOptions: this.questionOptions!
       };
