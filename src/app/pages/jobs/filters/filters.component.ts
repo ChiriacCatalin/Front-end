@@ -40,7 +40,7 @@ export class FiltersComponent {
 
 
   existingCountry(control: AbstractControl): { [s: string]: boolean } | null {
-    if (control.touched === false || control.value?.trim() === '') {
+    if (control.touched === false || control.value?.trim() === '' || control.value?.trim() === 'Any') {
       return null;
     }
     if (!(this.country?.indexOf(control.value) !== -1)) {
@@ -52,6 +52,7 @@ export class FiltersComponent {
   onApplyFilters() {
     // console.log(this.filterFormGroup.getRawValue());
     this.filters = this.filterFormGroup.getRawValue();
+    console.log(this.filters);
     this.filterOptions.emit(this.filters);
   }
 
